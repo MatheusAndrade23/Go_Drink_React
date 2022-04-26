@@ -1,4 +1,4 @@
-export const DefaultTheme = {
+export const LightTheme = {
   colors: {
     primaryColor: '#',
     secondaryColor: '#',
