@@ -7,4 +7,8 @@ export const GlobalStyles = createGlobalStyle`
     box-sizing: border-box;
     font-family: ${({ theme }) => theme.fonts.family.default};
   }
+
+  a {
+    text-decoration: none;
+  }
 `;
