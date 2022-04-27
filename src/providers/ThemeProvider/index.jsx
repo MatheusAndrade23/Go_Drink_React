@@ -20,7 +20,7 @@ export const ThemeProvider = ({ children }) => {
 
   return (
     <ThemeStyledProvider theme={theme === 'dark' ? DarkTheme : LightTheme}>
-      <ThemeSwitcherContext.Provider value={ThemeSwitcher}>
+      <ThemeSwitcherContext.Provider value={ThemeSwitcher} whichTheme={theme}>
         {children}
       </ThemeSwitcherContext.Provider>
       <GlobalStyles />

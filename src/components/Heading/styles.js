@@ -27,7 +27,7 @@ const HeadingCase = (uppercase) => css`
 `;
 
 export const Heading = styled.h1`
-  ${({ theme, colorDark, size, uppercase }) => css`
+  ${({ theme, size, uppercase }) => css`
     color: ${theme.colors.thirdColor};
     ${HeadingSize[size](theme)};
     ${HeadingCase(uppercase)};
