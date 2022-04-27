@@ -7,20 +7,20 @@ export const parameters = {
       color: /(background|color)$/i,
       date: /Date$/,
     },
-  // },
-  // backgrounds: {
-  //   default: 'light',
-  //   values: [
-  //     {
-  //       name: 'light',
-  //       value: '#EEEEEE',
-  //     },
-  //     {
-  //       name: 'dark',
-  //       value: '#222831',
-  //     },
-  //   ],
-  // },
+  },
+  backgrounds: {
+    default: 'dark',
+    values: [
+      {
+        name: 'light',
+        value: '#EEEEEE',
+      },
+      {
+        name: 'dark',
+        value: '#222831',
+      },
+    ],
+  },
 };
 
 export const decorators = [
