@@ -6,7 +6,8 @@ export const Footer = styled.footer`
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
+    background-color: ${theme.colors.fourthColor};
     border-top: 2px solid ${theme.colors.primaryColor};
-    padding: ${theme.spacings.medium};
+    padding: ${theme.spacings.small} ${theme.spacings.medium};
   `}
 `;
