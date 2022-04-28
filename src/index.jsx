@@ -10,7 +10,8 @@ import { createRoot } from 'react-dom/client';
 import { ThemeProvider } from './providers/ThemeProvider';
 import { AuthProvider } from './providers/AuthProvider';
 
-import App from './templates/App';
+import { Home } from './templates/Home';
+import { Footer } from './components/Footer';
 
 const root = createRoot(document.getElementById('root'));
 root.render(
@@ -19,9 +20,10 @@ root.render(
       <ThemeProvider>
         <Router>
           <Switch>
-            <Route path="*" element={<App />} />
+            <Route path="*" element={<Home />} />
           </Switch>
         </Router>
+        <Footer />
       </ThemeProvider>
     </AuthProvider>
   </React.StrictMode>,
