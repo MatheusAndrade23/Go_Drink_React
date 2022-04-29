@@ -2,6 +2,7 @@ import styled, { css } from 'styled-components';
 
 export const Input = styled.input`
   ${({ theme, type }) => css`
+    width: 300px;
     outline: none;
     padding: ${theme.spacings.xsmall};
     border: 1px solid ${theme.colors.thirdColor};

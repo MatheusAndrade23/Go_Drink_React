@@ -1,10 +1,14 @@
 import P from 'prop-types';
 import * as Styled from './styles';
 
-export const Home = ({ children }) => {
-  return <Styled.HomeContainer>{children}</Styled.HomeContainer>;
+import { Header } from '../../components/Header';
+
+export const Home = () => {
+  return (
+    <Styled.HomeContainer>
+      <Header />
+    </Styled.HomeContainer>
+  );
 };
 
-Home.propTypes = {
-  children: P.node.isRequired,
-};
+Home.propTypes = {};

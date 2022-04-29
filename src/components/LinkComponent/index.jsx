@@ -6,9 +6,10 @@ export const LinkComponent = ({
   link,
   uppercase = false,
   size = 'small',
+  model = 'standard',
 }) => {
   return (
-    <Styled.Link href={link} uppercase={uppercase} size={size}>
+    <Styled.Link href={link} uppercase={uppercase} size={size} model={model}>
       {children}
     </Styled.Link>
   );
@@ -19,4 +20,5 @@ LinkComponent.propTypes = {
   link: P.string.isRequired,
   uppercase: P.bool,
   size: P.oneOf(['xsmall', 'small', 'medium']),
+  model: P.oneOf(['standard', 'alternative']),
 };
