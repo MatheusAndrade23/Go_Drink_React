@@ -8,6 +8,7 @@ export const DarkTheme = {
   fonts: {
     family: {
       default: "'Open Sans', sans-serif",
+      secondary: "'Montserrat', sans-serif",
     },
     sizes: {
       xsmall: '8px',
