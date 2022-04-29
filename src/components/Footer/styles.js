@@ -5,9 +5,14 @@ export const Footer = styled.footer`
     width: 100%;
     display: flex;
     flex-direction: row;
-    justify-content: space-evenly;
+    justify-content: center;
     background-color: ${theme.colors.fourthColor};
     border-top: 2px solid ${theme.colors.primaryColor};
-    padding: ${theme.spacings.small} ${theme.spacings.medium};
+    padding: ${theme.spacings.medium};
+
+    & p,
+    a {
+      margin: ${theme.spacings.xsmall};
+    }
   `}
 `;
