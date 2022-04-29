@@ -7,6 +7,7 @@ export const ButtonComponent = ({
   bold = true,
   uppercase = false,
   size = 'small',
+  model = 'standard',
 }) => {
   return (
     <Styled.Button
@@ -14,6 +15,7 @@ export const ButtonComponent = ({
       uppercase={uppercase}
       bold={bold}
       size={size}
+      model={model}
     >
       {children}
     </Styled.Button>
@@ -26,4 +28,5 @@ ButtonComponent.propTypes = {
   uppercase: P.bool,
   bold: P.bool,
   size: P.oneOf(['xsmall', 'small', 'medium']),
+  model: P.oneOf(['standard', 'icon']),
 };
