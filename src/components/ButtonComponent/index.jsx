@@ -11,7 +11,7 @@ export const ButtonComponent = ({
 }) => {
   return (
     <Styled.Button
-      onClick={handleSubmit()}
+      onClick={handleSubmit}
       uppercase={uppercase}
       bold={bold}
       size={size}
