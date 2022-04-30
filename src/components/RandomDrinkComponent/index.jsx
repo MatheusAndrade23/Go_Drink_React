@@ -4,9 +4,7 @@ import * as Styled from './styles';
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import { TextComponent } from '../TextComponent';
 import { Heading } from '../Heading';
-import { SmallContainer } from '../SmallContainer';
 import { Loading } from '../Loading';
 
 export const RandomDrinkComponent = () => {
