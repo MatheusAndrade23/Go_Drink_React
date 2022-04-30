@@ -2,8 +2,8 @@ import styled, { css } from 'styled-components';
 
 export const HomeContainer = styled.section`
   ${({ theme }) => css`
+    padding: ${theme.spacings.small};
     width: 100%;
-    height: 100vh;
     background-color: ${theme.colors.fourthColor};
   `}
 `;
