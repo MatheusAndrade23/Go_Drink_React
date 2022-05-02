@@ -4,6 +4,7 @@ export const DarkTheme = {
     secondaryColor: '#393E46',
     thirdColor: '#00ADB5',
     fourthColor: '#222831',
+    shadow: 'rgba(255, 255, 255, 0.64)',
   },
   fonts: {
     family: {
