@@ -20,7 +20,16 @@ root.render(
       <ThemeProvider>
         <Router>
           <Switch>
-            <Route path="*" element={<Home />} />
+            <Route
+              path="/list/non-alcoholic"
+              element={<Home which="non_alcoholic" index="a" />}
+            />
+            <Route
+              path="/list/optional-alcohol"
+              element={<Home which="optional_alcohol" index="a" />}
+            />
+            <Route path="/list/alcoholic" element={<Home />} />
+            <Route path="/" element={<Home />} />
           </Switch>
         </Router>
         <Footer />
