@@ -9,29 +9,11 @@ export const HeaderMenu = () => {
       <LinkComponent link="/" model="alternative">
         My Favorites
       </LinkComponent>
-      <LinkComponent link="/" model="alternative">
-        Alcoholic
-      </LinkComponent>
-      <LinkComponent link="/" model="alternative">
+      <LinkComponent link="/list/non-alcoholic" model="alternative">
         Non Alcoholic
       </LinkComponent>
-      <LinkComponent link="/" model="alternative">
-        With Gin
-      </LinkComponent>
-      <LinkComponent link="/" model="alternative">
-        With Vodka
-      </LinkComponent>
-      <LinkComponent link="/" model="alternative">
-        With Bourbon
-      </LinkComponent>
-      <LinkComponent link="/" model="alternative">
-        With Champagne
-      </LinkComponent>
-      <LinkComponent link="/" model="alternative">
-        With Tequila
-      </LinkComponent>
-      <LinkComponent link="/" model="alternative">
-        With Rum
+      <LinkComponent link="/list/optional-alcohol" model="alternative">
+        Optional Alcohol
       </LinkComponent>
     </Styled.Menu>
   );

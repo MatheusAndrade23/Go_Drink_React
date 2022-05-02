@@ -4,20 +4,20 @@ const ButtonModel = {
   standard: (theme) => css`
     padding: ${theme.spacings.xsmall} ${theme.spacings.small};
     border-radius: ${theme.spacings.xsmall};
-    border: 1px solid ${theme.colors.thirdColor};
+    border: 2px solid ${theme.colors.thirdColor};
     color: ${theme.colors.thirdColor};
-    background-color: ${theme.colors.primaryColor};
+    background-color: transparent;
 
     &:hover {
-      color: ${theme.colors.fourthColor};
+      box-shadow: 1px 0px 8px 0px ${theme.colors.thirdColor};
     }
   `,
   icon: (theme) => css`
     height: 40px;
     width: 40px;
+    border: 2px solid ${theme.colors.thirdColor};
     color: ${theme.colors.thirdColor};
-    border: 1px solid ${theme.colors.thirdColor};
-    background-color: ${theme.colors.primaryColor};
+    background-color: transparent;
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -25,7 +25,7 @@ const ButtonModel = {
     margin-left: 10px;
 
     &:hover {
-      color: ${theme.colors.fourthColor};
+      box-shadow: 1px 0px 8px 0px ${theme.colors.thirdColor};
     }
   `,
 };
@@ -53,6 +53,7 @@ const TextWeight = (bold) => css`
 export const Button = styled.button`
   ${({ theme, uppercase, bold, size, model }) => css`
     cursor: pointer;
+    transition: 0.5s;
     ${TextCase(uppercase)};
     ${TextWeight(bold)};
     ${TextSize[size](theme)}
