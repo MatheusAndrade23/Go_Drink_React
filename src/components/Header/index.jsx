@@ -1,6 +1,8 @@
 import P from 'prop-types';
 import * as Styled from './styles';
 
+import { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 import { FaSearch } from 'react-icons/fa';
 
 import Config from '../../config';
@@ -13,12 +15,15 @@ import { HeaderMenu } from '../HeaderMenu';
 import { Logo } from '../Logo';
 
 export const Header = () => {
+  const { search } = useParams();
+  const [url, setUrl] = useState('');
+
   const SearchInput = (e) => {
-    console.log(e.target.value);
+    setUrl(e.target.value);
   };
 
   const SearchSubmit = () => {
-    console.log('Clicked');
+    window.location.href = `/search/${url}`;
   };
 
   return (
