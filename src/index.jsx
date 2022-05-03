@@ -10,8 +10,10 @@ import { createRoot } from 'react-dom/client';
 import { ThemeProvider } from './providers/ThemeProvider';
 import { AuthProvider } from './providers/AuthProvider';
 
-import { Home } from './templates/Home';
 import { Footer } from './components/Footer';
+
+import { Home } from './templates/Home';
+import { Drink } from './templates/Drink';
 
 const root = createRoot(document.getElementById('root'));
 root.render(
@@ -20,6 +22,11 @@ root.render(
       <ThemeProvider>
         <Router>
           <Switch>
+            <Route
+              path="/search/:search"
+              element={<Home page="search" index="s" />}
+            />
+            <Route path="/drink/:id" element={<Drink />} />
             <Route
               path="/list/non-alcoholic"
               element={<Home which="non_alcoholic" index="a" />}

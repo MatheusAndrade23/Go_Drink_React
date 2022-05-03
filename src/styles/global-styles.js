@@ -8,6 +8,10 @@ export const GlobalStyles = createGlobalStyle`
     font-family: ${({ theme }) => theme.fonts.family.default};
   }
 
+  html, body {
+    height: 100vh;
+  }
+
   a {
     text-decoration: none;
   }
