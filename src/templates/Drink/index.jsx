@@ -38,13 +38,13 @@ export const Drink = () => {
           setIngredients(ingredients);
           setDrink(drink);
           setLoadingControl(false);
-          document.title = `${config.siteName} | ${drink.strDrink}`;
+          document.title = `${drink.strDrink} | ${config.siteName}`;
         } catch (error) {
           setErrorControl({
             error: true,
             message: 'This drink does not exist!',
           });
-          document.title = `${config.siteName} | Error`;
+          document.title = `Error | ${config.siteName} `;
         }
       } catch (error) {
         setErrorControl({
@@ -52,7 +52,7 @@ export const Drink = () => {
           message: 'Something went wrong, try again later!',
           code: 500,
         });
-        document.title = `${config.siteName} | Server Error`;
+        document.title = `Server Error | ${config.siteName} `;
       }
     };
     loadData();
