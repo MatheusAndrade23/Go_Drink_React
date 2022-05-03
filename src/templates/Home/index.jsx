@@ -49,15 +49,15 @@ export const Home = ({ which = 'alcoholic', index = 'a', page = 'filter' }) => {
           setDrinks(drinks);
           setDrinksToShow(drinks.slice(0, DRINKS_PER_PAGE));
           setLoadingControl(false);
-          document.title = `${config.siteName} | ${`${which
-            .charAt(0)
-            .toUpperCase()}${which.slice(1)}`}`;
+          document.title = `${`${which.charAt(0).toUpperCase()}${which.slice(
+            1,
+          )}`} | ${config.siteName} `;
         } catch (error) {
           setErrorControl({
             error: true,
             message: 'No results for your search!',
           });
-          document.title = `${config.siteName} | Error`;
+          document.title = `Error | ${config.siteName} `;
         }
       } catch (err) {
         setErrorControl({
@@ -65,7 +65,7 @@ export const Home = ({ which = 'alcoholic', index = 'a', page = 'filter' }) => {
           message: 'Something went wrong, try again later!',
           code: 500,
         });
-        document.title = `${config.siteName} | Server Error`;
+        document.title = `Server Error | ${config.siteName} `;
       }
     };
     loadData();
@@ -74,7 +74,6 @@ export const Home = ({ which = 'alcoholic', index = 'a', page = 'filter' }) => {
   return (
     <>
       <Header />
-
       {!errorControl.error ? (
         <Styled.HomeContainer>
           {!loadingControl ? (
