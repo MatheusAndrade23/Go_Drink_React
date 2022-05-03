@@ -74,6 +74,7 @@ export const Home = ({ which = 'alcoholic', index = 'a', page = 'filter' }) => {
   return (
     <>
       <Header />
+
       {!errorControl.error ? (
         <Styled.HomeContainer>
           {!loadingControl ? (

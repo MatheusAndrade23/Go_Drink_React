@@ -89,8 +89,8 @@ export const Drink = () => {
                       <Heading size="small" as="h6">
                         Measures:
                       </Heading>
-                      {ingredients.measures.map((measure) => (
-                        <li key={measure}>{measure}</li>
+                      {ingredients.measures.map((measure, index) => (
+                        <li key={`${measure}-${index}`}>{measure}</li>
                       ))}
                     </>
                   </Styled.List>

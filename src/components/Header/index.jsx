@@ -11,20 +11,47 @@ import { InputComponent } from '../InputComponent';
 import { ButtonComponent } from '../ButtonComponent';
 import { SmallContainer } from '../SmallContainer';
 import { LinkComponent } from '../LinkComponent';
+import { MessageComponent } from '../MessageComponent';
 import { HeaderMenu } from '../HeaderMenu';
 import { Logo } from '../Logo';
 
 export const Header = () => {
   const { search } = useParams();
-  const [url, setUrl] = useState('');
+  const [url, setUrl] = useState(null);
+  const [message, setMessage] = useState(null);
 
   const SearchInput = (e) => {
     setUrl(e.target.value);
   };
 
   const SearchSubmit = () => {
-    window.location.href = `/search/${url}`;
+    if (url) {
+      window.location.href = `/search/${url}`;
+    } else {
+      setMessage('Please type something to search!');
+      setTimeout(() => {
+        setMessage(null);
+      }, 3000);
+    }
   };
+
+  useEffect(() => {
+    const enterPressed = (e) => {
+      if (e.key === 'Enter' && url) {
+        window.location.href = `/search/${url}`;
+      }
+    };
+
+    window.addEventListener('keydown', (e) => {
+      enterPressed(e);
+    });
+
+    return () => {
+      window.removeEventListener('keydown', (e) => {
+        enterPressed(e);
+      });
+    };
+  }, [search, url]);
 
   return (
     <>
@@ -46,6 +73,7 @@ export const Header = () => {
         </SmallContainer>
       </Styled.Header>
       <HeaderMenu />
+      {message && <MessageComponent message={message} />}
     </>
   );
 };
