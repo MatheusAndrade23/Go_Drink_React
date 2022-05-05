@@ -3,6 +3,8 @@ import * as Styled from './styles';
 
 import config from '../../config';
 
+import { IoIosArrowBack } from 'react-icons/io';
+
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { Header } from '../../components/Header';
@@ -11,6 +13,7 @@ import { Loading } from '../../components/Loading';
 import { TextComponent } from '../../components/TextComponent';
 import { SmallContainer } from '../../components/SmallContainer';
 import { ErrorComponent } from '../../components/ErrorComponent';
+import { LinkComponent } from '../../components/LinkComponent';
 
 import { IngredientsArray } from '../../utils/ingredients-array';
 
@@ -106,6 +109,9 @@ export const Drink = () => {
           ) : (
             <Loading />
           )}
+          <Styled.ReturnLink href="/" title="Return">
+            <IoIosArrowBack />
+          </Styled.ReturnLink>
         </Styled.Drink>
       ) : (
         <ErrorComponent
