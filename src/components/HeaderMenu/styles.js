@@ -7,6 +7,8 @@ export const Menu = styled.ul`
     background-color: ${theme.colors.secondaryColor};
     padding: ${theme.spacings.xsmall} ${theme.spacings.huge};
     display: flex;
+    flex-direction: row;
+    align-items: center;
     justify-content: space-around;
   `}
 `;

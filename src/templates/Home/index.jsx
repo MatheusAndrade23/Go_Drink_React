@@ -4,6 +4,8 @@ import * as Styled from './styles';
 import { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 
+import { IoIosArrowBack } from 'react-icons/io';
+
 import { Header } from '../../components/Header';
 import { DrinkComponent } from '../../components/DrinkComponent';
 import { ButtonComponent } from '../../components/ButtonComponent';
@@ -91,6 +93,11 @@ export const Home = ({ which = 'alcoholic', index = 'a', page = 'filter' }) => {
             <ButtonComponent handleSubmit={handleShowMoreDrinks} bold={false}>
               Load More
             </ButtonComponent>
+          )}
+          {search && (
+            <Styled.ReturnLink href="/" title="Return">
+              <IoIosArrowBack />
+            </Styled.ReturnLink>
           )}
         </Styled.HomeContainer>
       ) : (

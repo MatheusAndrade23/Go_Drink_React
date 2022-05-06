@@ -56,8 +56,10 @@ export const ReturnLink = styled.a`
   ${({ theme }) => css`
     position: absolute;
     color: ${theme.colors.thirdColor};
-    top: 0px;
+    top: 10px;
     left: 0px;
+    height: 50px;
+    width: 50px;
     font-size: ${theme.fonts.sizes.huge};
 
     &:hover {
@@ -71,7 +73,6 @@ export const Drink = styled.div`
     min-height: 100vh;
     background-color: ${theme.colors.fourthColor};
     padding: ${theme.spacings.huge};
-    position: relative;
     display: flex;
     flex-flow: row wrap;
     justify-content: space-between;
