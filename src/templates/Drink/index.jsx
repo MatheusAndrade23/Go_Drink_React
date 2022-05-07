@@ -1,4 +1,3 @@
-import P from 'prop-types';
 import * as Styled from './styles';
 
 import config from '../../config';
@@ -41,32 +40,41 @@ export const Drink = () => {
           setIngredients(ingredients);
           setDrink(drink);
           setLoadingControl(false);
-          document.title = `${drink.strDrink} | ${config.siteName}`;
         } catch (error) {
-          setErrorControl({
-            error: true,
-            message: 'This drink does not exist!',
-          });
-          document.title = `Error | ${config.siteName} `;
+          setDrink(null);
         }
       } catch (error) {
-        setErrorControl({
-          error: true,
-          message: 'Something went wrong, try again later!',
-          code: 500,
-        });
-        document.title = `Server Error | ${config.siteName} `;
+        setDrink(undefined);
       }
     };
     loadData();
   }, [id]);
+
+  useEffect(() => {
+    if (drink) {
+      document.title = `${drink.strDrink} | ${config.siteName}`;
+    } else if (drink === null) {
+      setErrorControl({
+        error: true,
+        message: 'This drink does not exist!',
+      });
+      document.title = `Error | ${config.siteName} `;
+    } else if (drink === undefined) {
+      setErrorControl({
+        error: true,
+        message: 'Something went wrong, try again later!',
+        code: 500,
+      });
+      document.title = `Server Error | ${config.siteName} `;
+    }
+  }, [drink]);
 
   return (
     <>
       <Header />
       {!errorControl.error ? (
         <Styled.Drink>
-          {!loadingControl ? (
+          {!loadingControl && drink ? (
             <>
               <Styled.DrinkImg src={drink.strDrinkThumb} />
               <Styled.Info>
@@ -109,16 +117,16 @@ export const Drink = () => {
           ) : (
             <Loading />
           )}
-          <Styled.ReturnLink href="/" title="Return">
-            <IoIosArrowBack />
-          </Styled.ReturnLink>
         </Styled.Drink>
       ) : (
         <ErrorComponent
           message={errorControl.message}
-          code={errorControl.code && errorControl.code}
+          code={errorControl.code}
         />
       )}
+      <Styled.ReturnLink href="/" title="Return">
+        <IoIosArrowBack />
+      </Styled.ReturnLink>
     </>
   );
 };

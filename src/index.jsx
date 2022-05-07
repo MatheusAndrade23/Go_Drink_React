@@ -14,6 +14,8 @@ import { Footer } from './components/Footer';
 
 import { Home } from './templates/Home';
 import { Drink } from './templates/Drink';
+import { Search } from './templates/Search';
+import { Lists } from './templates/Lists';
 
 const root = createRoot(document.getElementById('root'));
 root.render(
@@ -22,20 +24,9 @@ root.render(
       <ThemeProvider>
         <Router>
           <Switch>
-            <Route
-              path="/search/:search"
-              element={<Home page="search" index="s" />}
-            />
+            <Route path="/search/:search" element={<Search />} />
             <Route path="/drink/:id" element={<Drink />} />
-            <Route
-              path="/list/non-alcoholic"
-              element={<Home which="non_alcoholic" index="a" />}
-            />
-            <Route
-              path="/list/optional-alcohol"
-              element={<Home which="optional_alcohol" index="a" />}
-            />
-            <Route path="/list/alcoholic" element={<Home />} />
+            <Route path="/list/:index/:list" element={<Lists />} />
             <Route path="/" element={<Home />} />
           </Switch>
         </Router>
