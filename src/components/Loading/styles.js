@@ -16,7 +16,7 @@ export const Container = styled.div`
     left: 0;
     bottom: 0;
     right: 0;
-    z-index: 10;
+    z-index: 100;
     background-color: transparent;
     &:before,
     &:after {

@@ -2,7 +2,7 @@ import P from 'prop-types';
 import * as Styled from './styles';
 
 import { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import { FaSearch } from 'react-icons/fa';
 
 import Config from '../../config';
@@ -17,6 +17,8 @@ import { Logo } from '../Logo';
 
 export const Header = () => {
   const { search } = useParams();
+  const navigate = useNavigate();
+
   const [url, setUrl] = useState(null);
   const [message, setMessage] = useState(null);
 
@@ -26,7 +28,7 @@ export const Header = () => {
 
   const SearchSubmit = () => {
     if (url) {
-      window.location.href = `/search/${url}`;
+      navigate(`/search/${url}`);
     } else {
       setMessage('Please type something to search!');
       setTimeout(() => {
@@ -38,7 +40,7 @@ export const Header = () => {
   useEffect(() => {
     const enterPressed = (e) => {
       if (e.key === 'Enter' && url) {
-        window.location.href = `/search/${url}`;
+        navigate(`/search/${url}`);
       }
     };
 
@@ -51,7 +53,7 @@ export const Header = () => {
         enterPressed(e);
       });
     };
-  }, [search, url]);
+  }, [navigate, search, url]);
 
   return (
     <>
