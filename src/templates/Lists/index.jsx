@@ -10,6 +10,7 @@ import { DrinkComponent } from '../../components/DrinkComponent';
 import { ButtonComponent } from '../../components/ButtonComponent';
 import { Loading } from '../../components/Loading';
 import { ErrorComponent } from '../../components/ErrorComponent';
+import { Heading } from '../../components/Heading';
 
 import config from '../../config';
 
@@ -39,7 +40,7 @@ export const Lists = () => {
     const loadData = async () => {
       try {
         const resp = await fetch(
-          `https://www.thecocktaildb.com/api/json/v1/1/filter.php?a=${list}`,
+          `https://www.thecocktaildb.com/api/json/v1/1/filter.php?${index}=${list}`,
         );
         try {
           const data = await resp.json();
@@ -55,10 +56,10 @@ export const Lists = () => {
       }
     };
     loadData();
-  }, [list]);
+  }, [index, list]);
 
   useEffect(() => {
-    if (drinks.length > 0) {
+    if (drinks && drinks.length > 0) {
       document.title = `${`${list.charAt(0).toUpperCase()}${list
         .slice(1)
         .replace(/_/, ' ')}`} | ${config.siteName} `;
@@ -80,17 +81,24 @@ export const Lists = () => {
       {!errorControl.error ? (
         <Styled.Container>
           {!loadingControl ? (
-            <Styled.DrinksContainer>
-              {drinksToShow.map((drink) => (
-                <DrinkComponent drink={drink} key={drink.idDrink} />
-              ))}
-            </Styled.DrinksContainer>
+            <>
+              <Heading size="small" as="h4">
+                {`${list.charAt(0).toUpperCase()}${list
+                  .slice(1)
+                  .replace(/_/, ' ')}:`}
+              </Heading>
+              <Styled.DrinksContainer>
+                {drinksToShow.map((drink) => (
+                  <DrinkComponent drink={drink} key={drink.idDrink} />
+                ))}
+              </Styled.DrinksContainer>
+            </>
           ) : (
             <Styled.DrinksContainer>
               <Loading />
             </Styled.DrinksContainer>
           )}
-          {drinks.length > 0 && loadMoreControl < drinks.length && (
+          {drinks && loadMoreControl < drinks.length && (
             <ButtonComponent handleSubmit={handleShowMoreDrinks} bold={false}>
               Load More
             </ButtonComponent>

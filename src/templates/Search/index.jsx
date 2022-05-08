@@ -10,6 +10,7 @@ import { DrinkComponent } from '../../components/DrinkComponent';
 import { ButtonComponent } from '../../components/ButtonComponent';
 import { Loading } from '../../components/Loading';
 import { ErrorComponent } from '../../components/ErrorComponent';
+import { Heading } from '../../components/Heading';
 
 import config from '../../config';
 
@@ -81,6 +82,9 @@ export const Search = () => {
       <Header />
       {!errorControl.error ? (
         <Styled.Container>
+          <Heading size="small" as="h4">
+            {`Search: "${search}"`}
+          </Heading>
           {!loadingControl ? (
             <Styled.DrinksContainer>
               {drinksToShow.map((drink) => (

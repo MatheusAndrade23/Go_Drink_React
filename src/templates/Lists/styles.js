@@ -8,10 +8,15 @@ export const Container = styled.section`
     display: flex;
     flex-direction: column;
     align-items: center;
+    padding: 30px 0;
+
+    & h4 {
+      align-self: flex-start;
+      margin-left: 30px;
+    }
 
     & button {
       width: 150px;
-      margin-bottom: 20px;
     }
   `}
 `;
@@ -36,7 +41,6 @@ export const DrinksContainer = styled.div`
   ${({ theme }) => css`
     padding: ${theme.spacings.small};
     width: 100%;
-    position: relative;
     display: flex;
     flex-flow: row wrap;
     justify-content: space-evenly;
