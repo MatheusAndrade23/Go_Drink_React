@@ -16,13 +16,14 @@ import { ButtonComponent } from '../../components/ButtonComponent';
 import { ErrorComponent } from '../../components/ErrorComponent';
 import { useCallback } from 'react';
 
-export const Kind = () => {
+export const Kinds = () => {
   const { kind } = useParams();
   const KINDS_PER_PAGE = 8;
 
   const [loadMoreControl, setLoadMoreControl] = useState(KINDS_PER_PAGE);
   const [loadingControl, setLoadingControl] = useState(true);
   const [kindsToShow, setKindsToShow] = useState([]);
+  const [name, setName] = useState('');
   const [linksImg, setLinksImg] = useState(undefined);
   const [kinds, setKinds] = useState([]);
   const [type, setType] = useState('');
@@ -43,12 +44,11 @@ export const Kind = () => {
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
   const loadImgLinks = async () => {
+    document.title = `${name} | ${config.siteName}`;
     const images = await GetThumbImg(kind, kinds, type);
-
-    if (images.length > 0) {
+    if (images && images.length > 0) {
       setLinksImg(images);
       setLoadingControl(false);
-      console.log(images);
     } else if (images === undefined) {
       setKinds(undefined);
     }
@@ -69,6 +69,7 @@ export const Kind = () => {
           setKinds(null);
         }
       } catch (error) {
+        console.log(error);
         setKinds(undefined);
       }
     };
@@ -77,31 +78,31 @@ export const Kind = () => {
 
   useEffect(() => {
     const makePage = async () => {
-      let images = undefined;
       if (kinds.length > 0) {
         switch (kind) {
           case 'i':
             setType('strIngredient1');
             setLoadingControl(false);
+            setName('Ingredients');
             document.title = `Ingredients | ${config.siteName}`;
             break;
 
           case 'c':
             setType('strCategory');
+            setName('Categories');
             loadImgLinks();
-            document.title = `Categories | ${config.siteName}`;
             break;
 
           case 'g':
             setType('strGlass');
+            setName('Glasses');
             loadImgLinks();
-            document.title = `Glasses | ${config.siteName}`;
             break;
 
           case 'a':
             setType('strAlcoholic');
+            setName('Alcoholic');
             loadImgLinks();
-            document.title = `Alcoholic | ${config.siteName}`;
             break;
         }
       } else if (kinds === null) {
@@ -128,21 +129,33 @@ export const Kind = () => {
       {!errorControl.error ? (
         <Styled.KindsContainer>
           {!loadingControl ? (
-            <Styled.Container>
-              {kindsToShow.map((kinds, index) => (
-                <Styled.Kind key={kinds[type]}>
-                  {linksImg && <img src={linksImg[index]} />}
-                  {kind === 'i' && (
-                    <img
-                      src={`https://www.thecocktaildb.com/images/ingredients/${kinds[type]}.png`}
-                    />
-                  )}
-                  <Heading as="h6" size="small">
-                    {kinds[type]}
-                  </Heading>
-                </Styled.Kind>
-              ))}
-            </Styled.Container>
+            <>
+              <Heading size="small" as="h4">
+                {`All ${name}:`}
+              </Heading>
+              <Styled.Container>
+                {kindsToShow.map((kinds, index) => (
+                  <Styled.Kind
+                    key={kinds[type]}
+                    onClick={() =>
+                      (window.location.href = `/list/${kind}/${kinds[
+                        type
+                      ].replace(/ /, '_')}`)
+                    }
+                  >
+                    {linksImg && <img src={linksImg[index]} />}
+                    {kind === 'i' && (
+                      <img
+                        src={`https://www.thecocktaildb.com/images/ingredients/${kinds[type]}.png`}
+                      />
+                    )}
+                    <Heading as="h6" size="small">
+                      {kinds[type]}
+                    </Heading>
+                  </Styled.Kind>
+                ))}
+              </Styled.Container>
+            </>
           ) : (
             <Styled.Container>
               <Loading />

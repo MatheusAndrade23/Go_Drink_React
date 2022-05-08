@@ -25,9 +25,15 @@ export const KindsContainer = styled.section`
     flex-direction: column;
     align-items: center;
 
+    padding: 30px 0;
+
+    & h4 {
+      align-self: flex-start;
+      margin-left: 30px;
+    }
+
     & button {
       width: 150px;
-      margin-bottom: 20px;
     }
   `}
 `;
@@ -57,6 +63,7 @@ export const Kind = styled.div`
       margin-top: 20px;
       width: 260px;
       border: 2px solid ${theme.colors.primaryColor};
+      background-color: ${theme.colors.primaryColor};
     }
 
     &:hover {
@@ -69,7 +76,6 @@ export const Container = styled.div`
   ${({ theme }) => css`
     padding: ${theme.spacings.small};
     width: 100%;
-    position: relative;
     min-height: 100vh;
     display: flex;
     flex-flow: row wrap;
