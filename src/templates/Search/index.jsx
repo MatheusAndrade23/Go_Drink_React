@@ -56,7 +56,7 @@ export const Search = () => {
   }, [search]);
 
   useEffect(() => {
-    if (drinks) {
+    if (drinks.length > 0) {
       setDrinksToShow(drinks.slice(0, DRINKS_PER_PAGE));
       setLoadingControl(false);
       document.title = `Search: "${search}" | ${config.siteName} `;
@@ -92,7 +92,7 @@ export const Search = () => {
               <Loading />
             </Styled.DrinksContainer>
           )}
-          {drinks && loadMoreControl < drinks.length && (
+          {drinks.length > 0 && loadMoreControl < drinks.length && (
             <ButtonComponent handleSubmit={handleShowMoreDrinks} bold={false}>
               Load More
             </ButtonComponent>

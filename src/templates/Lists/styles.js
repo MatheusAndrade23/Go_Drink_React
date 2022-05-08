@@ -36,6 +36,7 @@ export const DrinksContainer = styled.div`
   ${({ theme }) => css`
     padding: ${theme.spacings.small};
     width: 100%;
+    position: relative;
     display: flex;
     flex-flow: row wrap;
     justify-content: space-evenly;

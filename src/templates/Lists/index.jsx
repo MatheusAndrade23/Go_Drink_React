@@ -1,7 +1,7 @@
 import * as Styled from './styles';
 
 import { useState, useEffect } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 
 import { IoIosArrowBack } from 'react-icons/io';
 
@@ -15,7 +15,6 @@ import config from '../../config';
 
 export const Lists = () => {
   const { index, list } = useParams();
-  const navigate = useNavigate();
   const DRINKS_PER_PAGE = 8;
 
   const [loadMoreControl, setLoadMoreControl] = useState(DRINKS_PER_PAGE);
@@ -59,12 +58,12 @@ export const Lists = () => {
   }, [list]);
 
   useEffect(() => {
-    if (drinks) {
-      document.title = `${`${list.charAt(0).toUpperCase()}${list.slice(
-        1,
-      )}`} | ${config.siteName} `;
+    if (drinks.length > 0) {
+      document.title = `${`${list.charAt(0).toUpperCase()}${list
+        .slice(1)
+        .replace(/_/, ' ')}`} | ${config.siteName} `;
     } else if (drinks === null) {
-      navigate('/not-found');
+      window.location.href = '/not-found';
     } else if (drinks === undefined) {
       setErrorControl({
         error: true,
@@ -73,7 +72,7 @@ export const Lists = () => {
       });
       document.title = `Server Error | ${config.siteName} `;
     }
-  }, [drinks, list, navigate]);
+  }, [drinks, list]);
 
   return (
     <>
@@ -91,7 +90,7 @@ export const Lists = () => {
               <Loading />
             </Styled.DrinksContainer>
           )}
-          {drinks && loadMoreControl < drinks.length && (
+          {drinks.length > 0 && loadMoreControl < drinks.length && (
             <ButtonComponent handleSubmit={handleShowMoreDrinks} bold={false}>
               Load More
             </ButtonComponent>

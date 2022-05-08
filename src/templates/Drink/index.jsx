@@ -6,6 +6,7 @@ import { IoIosArrowBack } from 'react-icons/io';
 
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
+
 import { Header } from '../../components/Header';
 import { Heading } from '../../components/Heading';
 import { Loading } from '../../components/Loading';
