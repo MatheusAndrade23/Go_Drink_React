@@ -9,5 +9,6 @@ export const Header = styled.header`
     padding: ${theme.spacings.small} ${theme.spacings.huge};
     background-color: ${theme.colors.secondaryColor};
     border-bottom: 1px solid ${theme.colors.thirdColor};
+    z-index: 200;
   `}
 `;

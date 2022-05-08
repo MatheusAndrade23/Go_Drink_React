@@ -9,7 +9,6 @@ export const Drink = styled.div`
     border: 2px solid ${theme.colors.secondaryColor};
     border-radius: 10px;
     transition: 0.5s;
-    position: relative;
     display: flex;
     flex-direction: column;
 

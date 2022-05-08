@@ -18,6 +18,15 @@ export const HeaderMenu = () => {
       <LinkComponent link="/list/a/optional_alcohol" model="alternative">
         Optional Alcohol
       </LinkComponent>
+      <LinkComponent link="/kind/i" model="alternative">
+        All Ingredients
+      </LinkComponent>
+      <LinkComponent link="/kind/c" model="alternative">
+        All Categories
+      </LinkComponent>
+      <LinkComponent link="/kind/g" model="alternative">
+        All Glasses
+      </LinkComponent>
     </Styled.Menu>
   );
 };

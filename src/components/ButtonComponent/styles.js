@@ -9,7 +9,7 @@ const ButtonModel = {
     background-color: transparent;
 
     &:hover {
-      box-shadow: 1px 0px 8px 0px ${theme.colors.thirdColor};
+      box-shadow: 0px 0px 8px 0px ${theme.colors.thirdColor};
     }
   `,
   icon: (theme) => css`
@@ -25,7 +25,7 @@ const ButtonModel = {
     margin-left: 10px;
 
     &:hover {
-      box-shadow: 1px 0px 8px 0px ${theme.colors.thirdColor};
+      box-shadow: 0px 0px 8px 0px ${theme.colors.thirdColor};
     }
   `,
 };
