@@ -18,6 +18,9 @@ export const HeaderMenu = () => {
       <LinkComponent link="/list/a/optional_alcohol" model="alternative">
         Optional Alcohol
       </LinkComponent>
+      <LinkComponent link="/" model="alternative">
+        All Drinks
+      </LinkComponent>
       <LinkComponent link="/kind/i" model="alternative">
         All Ingredients
       </LinkComponent>

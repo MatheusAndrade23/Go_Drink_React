@@ -22,7 +22,7 @@ export const Container = styled.div`
     &:after {
       content: '';
       position: absolute;
-      top: 30%;
+      top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
       border-width: 0.5rem;

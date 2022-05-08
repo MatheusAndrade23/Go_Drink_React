@@ -19,7 +19,7 @@ export const Header = () => {
   const { search } = useParams();
   const navigate = useNavigate();
 
-  const [url, setUrl] = useState(null);
+  const [url, setUrl] = useState('');
   const [message, setMessage] = useState(null);
 
   const SearchInput = (e) => {
@@ -39,8 +39,13 @@ export const Header = () => {
 
   useEffect(() => {
     const enterPressed = (e) => {
-      if (e.key === 'Enter' && url) {
+      if (e.key === 'Enter' && url.length > 0) {
         navigate(`/search/${url}`);
+      } else if (url.length < 0) {
+        setMessage('Please type something to search!');
+        setTimeout(() => {
+          setMessage(null);
+        }, 3000);
       }
     };
 
