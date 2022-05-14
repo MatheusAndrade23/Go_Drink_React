@@ -17,6 +17,7 @@ import { Kinds } from './templates/Kinds';
 import { Drink } from './templates/Drink';
 import { Search } from './templates/Search';
 import { Lists } from './templates/Lists';
+import { Login } from './templates/Login';
 
 const root = createRoot(document.getElementById('root'));
 root.render(
@@ -30,6 +31,7 @@ root.render(
             <Route path="/list/:index/:list" element={<Lists />} />
             <Route path="/kind/:kind" element={<Kinds />} />
             <Route path="/" element={<Home />} />
+            <Route path="/login/:action" element={<Login />} />
           </Switch>
         </Router>
         <Footer />
