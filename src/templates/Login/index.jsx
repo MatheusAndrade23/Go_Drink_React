@@ -24,10 +24,11 @@ export const Login = () => {
   };
 
   useEffect(() => {
-    if (action !== 'signIn' && action !== 'signUp') {
+    const login = action.toLowerCase();
+    if (login !== 'signin' && login !== 'signup') {
       navigate('/');
     } else {
-      setLoginControl(action);
+      setLoginControl(login);
     }
   }, [action, navigate]);
 
@@ -52,14 +53,14 @@ export const Login = () => {
           handleChange={handleLogin}
         />
         <ButtonComponent bold={false}>
-          {loginControl === 'signIn' ? 'Sign In' : 'Sign Up'}
+          {loginControl === 'signin' ? 'Sign In' : 'Sign Up'}
         </ButtonComponent>
         <SmallContainer disposition="row">
           <TextComponent>Not have an account yet?</TextComponent>
           <LinkComponent
-            link={loginControl !== 'signIn' ? '/login/signIn' : '/login/signUp'}
+            link={loginControl !== 'signin' ? '/login/signin' : '/login/signup'}
           >
-            {loginControl !== 'signIn' ? 'Sign In' : 'Sign Up'}
+            {loginControl !== 'signin' ? 'Sign In' : 'Sign Up'}
           </LinkComponent>
         </SmallContainer>
       </Styled.Login>

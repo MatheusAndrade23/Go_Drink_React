@@ -76,7 +76,7 @@ export const Header = () => {
           </ButtonComponent>
         </SmallContainer>
         <SmallContainer disposition="row">
-          <LinkComponent link="/login/signIn">Sign In</LinkComponent>
+          <LinkComponent link="/login/signin">Sign In</LinkComponent>
         </SmallContainer>
       </Styled.Header>
       <HeaderMenu />
