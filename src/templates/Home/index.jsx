@@ -26,14 +26,14 @@ export const Home = () => {
           An open source website with over 600 different cocktails recipes.
         </TextComponent>
         <Styled.RandomDrinks>
+          {/* <RandomDrinkComponent />
           <RandomDrinkComponent />
           <RandomDrinkComponent />
           <RandomDrinkComponent />
           <RandomDrinkComponent />
           <RandomDrinkComponent />
           <RandomDrinkComponent />
-          <RandomDrinkComponent />
-          <RandomDrinkComponent />
+          <RandomDrinkComponent /> */}
         </Styled.RandomDrinks>
       </Styled.HomeContainer>
     </>
