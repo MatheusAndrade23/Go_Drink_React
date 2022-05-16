@@ -14,5 +14,10 @@ export const Container = styled.button`
     height: 30px;
     width: 170px;
     border: none;
+    transition: 0.5s;
+
+    &:hover {
+      opacity: 0.7;
+    }
   `}
 `;
