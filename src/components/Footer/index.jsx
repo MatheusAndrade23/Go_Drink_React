@@ -3,10 +3,11 @@ import * as Styled from './styles';
 
 import Config from '../../config';
 
-import { LinkComponent } from '../LinkComponent';
 import { Heading } from '../Heading';
-import { SmallContainer } from '../SmallContainer';
+import { LinkComponent } from '../LinkComponent';
 import { TextComponent } from '../TextComponent';
+import { ThemeSwitcher } from '../ThemeSwitcher';
+import { SmallContainer } from '../SmallContainer';
 
 export const Footer = () => {
   return (
@@ -25,6 +26,7 @@ export const Footer = () => {
           </LinkComponent>
         </TextComponent>
       </SmallContainer>
+      <ThemeSwitcher />
     </Styled.Footer>
   );
 };

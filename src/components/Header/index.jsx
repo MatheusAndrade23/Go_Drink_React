@@ -1,21 +1,23 @@
-import P from 'prop-types';
 import * as Styled from './styles';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { FaSearch } from 'react-icons/fa';
 
+import { AuthContext } from '../../providers/AuthProvider/index';
+
 import Config from '../../config';
 
+import { Logo } from '../Logo';
+import { HeaderMenu } from '../HeaderMenu';
+import { LinkComponent } from '../LinkComponent';
+import { SmallContainer } from '../SmallContainer';
 import { InputComponent } from '../InputComponent';
 import { ButtonComponent } from '../ButtonComponent';
-import { SmallContainer } from '../SmallContainer';
-import { LinkComponent } from '../LinkComponent';
 import { MessageComponent } from '../MessageComponent';
-import { HeaderMenu } from '../HeaderMenu';
-import { Logo } from '../Logo';
 
 export const Header = () => {
+  const { user } = useContext(AuthContext);
   const { search } = useParams();
   const navigate = useNavigate();
 
@@ -76,7 +78,11 @@ export const Header = () => {
           </ButtonComponent>
         </SmallContainer>
         <SmallContainer disposition="row">
-          <LinkComponent link="/login/signin">Sign In</LinkComponent>
+          {user.isLogged ? (
+            <LinkComponent link="/login/signout">Sign Out</LinkComponent>
+          ) : (
+            <LinkComponent link="/login/signin">Sign In</LinkComponent>
+          )}
         </SmallContainer>
       </Styled.Header>
       <HeaderMenu />

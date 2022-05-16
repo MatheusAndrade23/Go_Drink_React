@@ -9,18 +9,19 @@ import { GlobalStyles } from '../../styles/global-styles';
 import { DarkTheme } from '../../styles/theme/DarkTheme.js';
 import { LightTheme } from '../../styles/theme/LightTheme.js';
 
+export const ThemeSwitcherContext = createContext(undefined);
+
 export const ThemeProvider = ({ children }) => {
   const [theme, setTheme] = useState('dark');
 
-  const ThemeSwitcherContext = createContext(undefined);
-
-  const ThemeSwitcher = () => {
+  const themeSwitcher = () => {
     setTheme((theme) => (theme === 'dark' ? 'light' : 'dark'));
+    console.log('Changed theme!');
   };
 
   return (
     <ThemeStyledProvider theme={theme === 'dark' ? DarkTheme : LightTheme}>
-      <ThemeSwitcherContext.Provider value={ThemeSwitcher} whichTheme={theme}>
+      <ThemeSwitcherContext.Provider value={{ themeSwitcher, theme }}>
         {children}
       </ThemeSwitcherContext.Provider>
       <GlobalStyles />
