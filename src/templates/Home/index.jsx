@@ -16,6 +16,7 @@ import { RandomDrinkComponent } from '../../components/RandomDrinkComponent';
 import config from '../../config';
 
 export const Home = () => {
+  document.title = `Home | ${config.siteName}`;
   return (
     <>
       <Header />

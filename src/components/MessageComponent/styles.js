@@ -10,7 +10,7 @@ export const MessageContainer = styled.div`
     border: 2px solid ${theme.colors.primaryColor};
     border-radius: 10px;
     top: 70px;
-    right: 20px;
+    right: 70px;
     box-shadow: 0px 0px 25px 0px rgba(0, 0, 0, 0.8);
 
     & p {

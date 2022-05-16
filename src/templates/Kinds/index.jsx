@@ -5,8 +5,9 @@ import { useParams } from 'react-router-dom';
 import { IoIosArrowBack } from 'react-icons/io';
 
 import { Header } from '../../components/Header';
-import { Heading } from '../../components/Heading';
 import { Loading } from '../../components/Loading';
+import { Heading } from '../../components/Heading';
+import { ReturnButton } from '../../components/ReturnButton';
 import { ErrorComponent } from '../../components/ErrorComponent';
 import { ButtonComponent } from '../../components/ButtonComponent';
 
@@ -170,9 +171,7 @@ export const Kinds = () => {
           code={errorControl.code && errorControl.code}
         />
       )}
-      <Styled.ReturnLink href="/" title="Return">
-        <IoIosArrowBack />
-      </Styled.ReturnLink>
+      <ReturnButton />
     </>
   );
 };

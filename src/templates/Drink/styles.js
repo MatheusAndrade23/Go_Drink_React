@@ -52,22 +52,6 @@ export const DrinkImg = styled.img`
   `}
 `;
 
-export const ReturnLink = styled.a`
-  ${({ theme }) => css`
-    position: absolute;
-    color: ${theme.colors.thirdColor};
-    top: 10px;
-    left: 0px;
-    height: 50px;
-    width: 50px;
-    font-size: ${theme.fonts.sizes.huge};
-
-    &:hover {
-      color: ${theme.colors.primaryColor};
-    }
-  `}
-`;
-
 export const Drink = styled.div`
   ${({ theme }) => css`
     min-height: 100vh;

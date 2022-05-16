@@ -7,6 +7,7 @@ import { IoIosArrowBack } from 'react-icons/io';
 import { Header } from '../../components/Header';
 import { Loading } from '../../components/Loading';
 import { Heading } from '../../components/Heading';
+import { ReturnButton } from '../../components/ReturnButton';
 import { ErrorComponent } from '../../components/ErrorComponent';
 import { DrinkComponent } from '../../components/DrinkComponent';
 import { ButtonComponent } from '../../components/ButtonComponent';
@@ -107,9 +108,7 @@ export const Search = () => {
           code={errorControl.code && errorControl.code}
         />
       )}
-      <Styled.ReturnLink href="/" title="Return">
-        <IoIosArrowBack />
-      </Styled.ReturnLink>
+      <ReturnButton />
     </>
   );
 };
