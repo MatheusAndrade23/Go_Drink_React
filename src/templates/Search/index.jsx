@@ -2,15 +2,14 @@ import * as Styled from '../Lists/styles';
 
 import { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-
 import { IoIosArrowBack } from 'react-icons/io';
 
 import { Header } from '../../components/Header';
+import { Loading } from '../../components/Loading';
+import { Heading } from '../../components/Heading';
+import { ErrorComponent } from '../../components/ErrorComponent';
 import { DrinkComponent } from '../../components/DrinkComponent';
 import { ButtonComponent } from '../../components/ButtonComponent';
-import { Loading } from '../../components/Loading';
-import { ErrorComponent } from '../../components/ErrorComponent';
-import { Heading } from '../../components/Heading';
 
 import config from '../../config';
 

@@ -2,10 +2,9 @@ import * as Styled from './styles';
 
 import config from '../../config';
 
-import { IoIosArrowBack } from 'react-icons/io';
-
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
+import { IoIosArrowBack } from 'react-icons/io';
 
 import { Header } from '../../components/Header';
 import { Heading } from '../../components/Heading';

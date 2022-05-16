@@ -1,20 +1,17 @@
 import * as Styled from './styles';
 
-import config from '../../config';
-
-import { GetThumbImg } from '../../utils/get-thumb-img';
-
-import { IoIosArrowBack } from 'react-icons/io';
-
-import { useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
+import { IoIosArrowBack } from 'react-icons/io';
 
 import { Header } from '../../components/Header';
 import { Heading } from '../../components/Heading';
 import { Loading } from '../../components/Loading';
-import { ButtonComponent } from '../../components/ButtonComponent';
 import { ErrorComponent } from '../../components/ErrorComponent';
-import { useCallback } from 'react';
+import { ButtonComponent } from '../../components/ButtonComponent';
+
+import { GetThumbImg } from '../../utils/get-thumb-img';
+import config from '../../config';
 
 export const Kinds = () => {
   const { kind } = useParams();
