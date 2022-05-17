@@ -6,8 +6,6 @@ import { FaSearch } from 'react-icons/fa';
 
 import { AuthContext } from '../../providers/AuthProvider/index';
 
-import Config from '../../config';
-
 import { Logo } from '../Logo';
 import { HeaderMenu } from '../HeaderMenu';
 import { LinkComponent } from '../LinkComponent';
@@ -77,13 +75,11 @@ export const Header = () => {
             <FaSearch />
           </ButtonComponent>
         </SmallContainer>
-        <SmallContainer disposition="row">
-          {user.isLogged ? (
-            <LinkComponent link="/login/signout">Sign Out</LinkComponent>
-          ) : (
-            <LinkComponent link="/login/signin">Sign In</LinkComponent>
-          )}
-        </SmallContainer>
+        {user.isLogged ? (
+          <LinkComponent link="/login/signout">Sign Out</LinkComponent>
+        ) : (
+          <LinkComponent link="/login/signin">Sign In</LinkComponent>
+        )}
       </Styled.Header>
       <HeaderMenu />
       {message && <MessageComponent message={message} />}

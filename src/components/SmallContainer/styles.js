@@ -6,7 +6,6 @@ const SetDisposition = {
   `,
   row: (theme) => css`
     flex-direction: row;
-    flex-wrap: wrap;
   `,
 };
 

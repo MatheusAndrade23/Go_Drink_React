@@ -33,7 +33,9 @@ export const RandomDrinkComponent = () => {
       {!loadingControl ? (
         <Styled.Drink
           key={drink.drinks[0].idDrink}
-          onClick={() => navigate(`/drink/${drink.drinks[0].idDrink}`)}
+          onClick={() =>
+            (window.location.href = `/drink/${drink.drinks[0].idDrink}`)
+          }
         >
           <img
             src={drink.drinks[0].strDrinkThumb}

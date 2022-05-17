@@ -1,9 +1,7 @@
-import P from 'prop-types';
 import * as Styled from './styles';
 
 import Config from '../../config';
 
-import { Heading } from '../Heading';
 import { LinkComponent } from '../LinkComponent';
 import { TextComponent } from '../TextComponent';
 import { ThemeSwitcher } from '../ThemeSwitcher';
