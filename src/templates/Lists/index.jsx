@@ -2,8 +2,6 @@ import * as Styled from './styles';
 
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import { IoIosArrowBack } from 'react-icons/io';
-
 import { Header } from '../../components/Header';
 import { Heading } from '../../components/Heading';
 import { Loading } from '../../components/Loading';
@@ -83,9 +81,14 @@ export const Lists = () => {
           {!loadingControl ? (
             <>
               <Heading size="small" as="h4">
+                {index === 'i' && 'Drinks that are made with'}{' '}
+                {index === 'c' && 'Drinks of the'}{' '}
+                {index === 'g' && 'Drinks of the'}{' '}
                 {`${list.charAt(0).toUpperCase()}${list
                   .slice(1)
-                  .replace(/_/, ' ')}:`}
+                  .replace(/_/, ' ')}`}
+                {index === 'i' && ':'}
+                {index === 'c' && ' category:'} {index === 'g' && ' glass:'}
               </Heading>
               <Styled.DrinksContainer>
                 {drinksToShow.map((drink) => (

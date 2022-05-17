@@ -26,9 +26,7 @@ export const Login = () => {
   const [userInfo, setUserInfo] = useState({});
 
   const handleLogin = (e) => {
-    setUserInfo((userInfo) =>
-      setUserInfo({ ...userInfo, [e.target.name]: e.target.value }),
-    );
+    setUserInfo({ ...userInfo, [e.target.name]: e.target.value });
   };
 
   const handleSubmitLogin = () => {};

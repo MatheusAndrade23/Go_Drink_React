@@ -2,7 +2,6 @@ import * as Styled from './styles';
 
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import { IoIosArrowBack } from 'react-icons/io';
 
 import { Header } from '../../components/Header';
 import { Loading } from '../../components/Loading';
@@ -26,7 +25,6 @@ export const Kinds = () => {
   const [kinds, setKinds] = useState([]);
   const [type, setType] = useState('');
   const [next, setNext] = useState(0);
-  const [ingredients, setIngredients] = useState({});
   const [errorControl, setErrorControl] = useState({
     error: false,
     message: '',
@@ -67,7 +65,6 @@ export const Kinds = () => {
           setKinds(null);
         }
       } catch (error) {
-        console.log(error);
         setKinds(undefined);
       }
     };
@@ -76,7 +73,7 @@ export const Kinds = () => {
 
   useEffect(() => {
     const makePage = async () => {
-      if (kinds.length > 0) {
+      if (kinds && kinds.length > 0) {
         switch (kind) {
           case 'i':
             setType('strIngredient1');

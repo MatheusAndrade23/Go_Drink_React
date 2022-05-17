@@ -1,8 +1,7 @@
 import * as Styled from '../Lists/styles';
 
 import { useState, useEffect } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
-import { IoIosArrowBack } from 'react-icons/io';
+import { useParams } from 'react-router-dom';
 
 import { Header } from '../../components/Header';
 import { Loading } from '../../components/Loading';

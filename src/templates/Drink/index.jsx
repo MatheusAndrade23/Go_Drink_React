@@ -2,7 +2,6 @@ import * as Styled from './styles';
 
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import { IoIosArrowBack } from 'react-icons/io';
 
 import { IngredientsArray } from '../../utils/ingredients-array';
 
@@ -10,10 +9,8 @@ import { Header } from '../../components/Header';
 import { Heading } from '../../components/Heading';
 import { Loading } from '../../components/Loading';
 import { ReturnButton } from '../../components/ReturnButton';
-import { TextComponent } from '../../components/TextComponent';
 import { SmallContainer } from '../../components/SmallContainer';
 import { ErrorComponent } from '../../components/ErrorComponent';
-import { LinkComponent } from '../../components/LinkComponent';
 
 import config from '../../config';
 
