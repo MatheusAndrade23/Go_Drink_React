@@ -11,5 +11,6 @@
     "xlarge",
     "xsmall",
     "xxlarge"
-  ]
+  ],
+  "prettier.configPath": "./.prettierrc.js"
 }
