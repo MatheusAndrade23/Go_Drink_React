@@ -16,7 +16,6 @@ export const ThemeProvider = ({ children }) => {
 
   const themeSwitcher = () => {
     setTheme((theme) => (theme === 'dark' ? 'light' : 'dark'));
-    console.log('Changed theme!');
   };
 
   return (
