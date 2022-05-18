@@ -1,0 +1,112 @@
+import * as Styled from '../Lists/styles';
+
+import { useState, useEffect } from 'react';
+
+import { Header } from '../../components/Header';
+import { Loading } from '../../components/Loading';
+import { Heading } from '../../components/Heading';
+import { ReturnButton } from '../../components/ReturnButton';
+import { ErrorComponent } from '../../components/ErrorComponent';
+import { DrinkComponent } from '../../components/DrinkComponent';
+import { ButtonComponent } from '../../components/ButtonComponent';
+
+import config from '../../config';
+
+export const AllDrinks = () => {
+  const DRINKS_PER_PAGE = 8;
+
+  const [loadMoreControl, setLoadMoreControl] = useState(DRINKS_PER_PAGE);
+  const [drinksToShow, setDrinksToShow] = useState([]);
+  const [next, setNext] = useState(0);
+  const [drinks, setDrinks] = useState([]);
+  const [loadingControl, setLoadingControl] = useState(true);
+  const [errorControl, setErrorControl] = useState({
+    error: false,
+    message: '',
+  });
+
+  const handleShowMoreDrinks = () => {
+    const nextPage = next + DRINKS_PER_PAGE;
+    const nextDrinks = drinks.slice(nextPage, nextPage + DRINKS_PER_PAGE);
+    setDrinksToShow([...drinksToShow, ...nextDrinks]);
+    setNext(nextPage);
+    setLoadMoreControl((loaded) => loaded + DRINKS_PER_PAGE);
+  };
+
+  useEffect(() => {
+    const loadData = async () => {
+      try {
+        const resp = await fetch(
+          'https://www.thecocktaildb.com/api/json/v1/1/filter.php?a=alcoholic',
+        );
+        const resp2 = await fetch(
+          'https://www.thecocktaildb.com/api/json/v1/1/filter.php?a=non_alcoholic',
+        );
+        const resp3 = await fetch(
+          'https://www.thecocktaildb.com/api/json/v1/1/filter.php?a=optional_alcohol',
+        );
+        const data = await resp.json();
+        const data2 = await resp2.json();
+        const data3 = await resp3.json();
+        setDrinks([
+          ...data.drinks.reverse(),
+          ...data2.drinks.reverse(),
+          ...data3.drinks.reverse(),
+        ]);
+      } catch (err) {
+        setDrinks(undefined);
+      }
+    };
+    loadData();
+  }, []);
+
+  useEffect(() => {
+    if (drinks && drinks.length > 0) {
+      setDrinksToShow(drinks.slice(0, DRINKS_PER_PAGE));
+      setLoadingControl(false);
+      document.title = `All Drinks | ${config.siteName} `;
+    } else if (drinks === undefined) {
+      setErrorControl({
+        error: true,
+        message: 'Something went wrong, try again later!',
+        code: 500,
+      });
+      document.title = `Server Error | ${config.siteName} `;
+    }
+  }, [drinks]);
+
+  return (
+    <>
+      <Header />
+      {!errorControl.error ? (
+        <Styled.Container>
+          <Heading size="small" as="h4">
+            All Drinks:
+          </Heading>
+          {!loadingControl ? (
+            <Styled.DrinksContainer>
+              {drinksToShow.map((drink) => (
+                <DrinkComponent drink={drink} key={drink.idDrink} />
+              ))}
+            </Styled.DrinksContainer>
+          ) : (
+            <Styled.DrinksContainer>
+              <Loading />
+            </Styled.DrinksContainer>
+          )}
+          {drinks && drinks.length > 0 && loadMoreControl < drinks.length && (
+            <ButtonComponent handleSubmit={handleShowMoreDrinks} bold={false}>
+              Load More
+            </ButtonComponent>
+          )}
+        </Styled.Container>
+      ) : (
+        <ErrorComponent
+          message={errorControl.message}
+          code={errorControl.code && errorControl.code}
+        />
+      )}
+      <ReturnButton />
+    </>
+  );
+};
