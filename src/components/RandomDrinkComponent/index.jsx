@@ -8,7 +8,9 @@ import { Loading } from '../Loading';
 
 export const RandomDrinkComponent = () => {
   const navigate = useNavigate();
+
   const [drink, setDrink] = useState([]);
+  const [error, setError] = useState(false);
   const [loadingControl, setLoadingControl] = useState(true);
 
   useEffect(() => {
@@ -18,10 +20,11 @@ export const RandomDrinkComponent = () => {
           'https://www.thecocktaildb.com/api/json/v1/1/random.php',
         );
         const drink = await resp.json();
-        setDrink(drink);
+        setDrink(drink.drinks[0]);
         setLoadingControl(false);
       } catch (err) {
-        console.log(err);
+        setError(true);
+        setLoadingControl(false);
       }
     };
 
@@ -30,26 +33,27 @@ export const RandomDrinkComponent = () => {
 
   return (
     <>
-      {!loadingControl ? (
+      {!error && !loadingControl ? (
         <Styled.Drink
-          key={drink.drinks[0].idDrink}
-          onClick={() =>
-            (window.location.href = `/drink/${drink.drinks[0].idDrink}`)
-          }
+          key={drink.idDrink}
+          onClick={() => (window.location.href = `/drink/${drink.idDrink}`)}
         >
-          <img
-            src={drink.drinks[0].strDrinkThumb}
-            alt={drink.drinks[0].strDrink}
-          />
+          <img src={drink.strDrinkThumb} alt={drink.strDrink} loading="lazy" />
           <Heading as="h6" size="small">
-            {drink.drinks[0].strDrink.length > 17
-              ? `${drink.drinks[0].strDrink.slice(0, 15)}...`
-              : drink.drinks[0].strDrink}
+            {drink.strDrink.length > 17
+              ? `${drink.strDrink.slice(0, 15)}...`
+              : drink.strDrink}
           </Heading>
+        </Styled.Drink>
+      ) : loadingControl ? (
+        <Styled.Drink>
+          <Loading />
         </Styled.Drink>
       ) : (
         <Styled.Drink>
-          <Loading />
+          <Heading as="h5" size="small">
+            Something went wrong, try again later!
+          </Heading>
         </Styled.Drink>
       )}
     </>

@@ -12,6 +12,11 @@ export const Drink = styled.div`
     position: relative;
     display: flex;
     flex-direction: column;
+    text-align: center;
+
+    & h5{
+      margin-top: 40%;
+    }
 
     & h6 {
       height: 35px;
