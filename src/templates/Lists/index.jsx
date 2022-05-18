@@ -87,7 +87,7 @@ export const Lists = () => {
                 {`${list.charAt(0).toUpperCase()}${list
                   .slice(1)
                   .replace(/_/, ' ')}`}
-                {index === 'i' && ':'}
+                {index !== 'c' && index !== 'g' && ':'}
                 {index === 'c' && ' category:'} {index === 'g' && ' glass:'}
               </Heading>
               <Styled.DrinksContainer>

@@ -8,6 +8,7 @@ export const HomeContainer = styled.section`
     display: flex;
     flex-direction: column;
     align-items: center;
+    padding-bottom: 40px;
   `}
 `;
 
@@ -18,8 +19,7 @@ export const Info = styled.div`
     flex-flow: row wrap;
     align-items: center;
     justify-content: space-evenly;
-    margin: 10px;
-    color: ${theme.colors.thirdColor};
+    color: ${theme.colors.primaryColor};
 
     p {
       margin-left: 5px;
@@ -33,6 +33,10 @@ export const Info = styled.div`
 
 export const Init = styled.div`
   ${({ theme }) => css`
+    /* background-image: url('https://images.pexels.com/photos/1010139/pexels-photo-1010139.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover; */
     min-height: 72vh;
     width: 100%;
     display: flex;

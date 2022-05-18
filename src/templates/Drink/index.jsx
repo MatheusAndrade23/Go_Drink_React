@@ -17,9 +17,9 @@ import config from '../../config';
 export const Drink = () => {
   const { id } = useParams();
 
-  const [drink, setDrink] = useState([]);
   const [loadingControl, setLoadingControl] = useState(true);
   const [ingredients, setIngredients] = useState({});
+  const [drink, setDrink] = useState('');
   const [errorControl, setErrorControl] = useState({
     error: false,
     message: '',

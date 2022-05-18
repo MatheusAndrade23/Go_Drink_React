@@ -25,7 +25,6 @@ export const Home = () => {
       <Header />
       <Styled.HomeContainer>
         <Styled.Init>
-          <RandomDrinkComponent />
           <SmallContainer>
             <Styled.Title>Welcome to GoDrink</Styled.Title>
             <TextComponent size="medium">
@@ -44,7 +43,6 @@ export const Home = () => {
               </SmallContainer>
             </Styled.Info>
           </SmallContainer>
-          <RandomDrinkComponent />
         </Styled.Init>
         <Styled.SecTitle>Popular Drinks:</Styled.SecTitle>
         <Styled.RandomDrinks>
