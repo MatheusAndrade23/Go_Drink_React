@@ -1,9 +1,13 @@
 import * as Styled from './styles';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import { useParams } from 'react-router-dom';
 
+import { AiFillStar } from 'react-icons/ai';
+
 import { IngredientsArray } from '../../utils/ingredients-array';
+
+import { AuthContext } from '../../providers/AuthProvider/index';
 
 import { Header } from '../../components/Header';
 import { Heading } from '../../components/Heading';
@@ -11,19 +15,33 @@ import { Loading } from '../../components/Loading';
 import { ReturnButton } from '../../components/ReturnButton';
 import { SmallContainer } from '../../components/SmallContainer';
 import { ErrorComponent } from '../../components/ErrorComponent';
+import { MessageComponent } from '../../components/MessageComponent';
 
 import config from '../../config';
 
 export const Drink = () => {
   const { id } = useParams();
+  const { user, setUser } = useContext(AuthContext);
 
-  const [loadingControl, setLoadingControl] = useState(true);
-  const [ingredients, setIngredients] = useState({});
   const [drink, setDrink] = useState('');
+  const [message, setMessage] = useState(undefined);
+  const [ingredients, setIngredients] = useState({});
+  const [loadingControl, setLoadingControl] = useState(true);
   const [errorControl, setErrorControl] = useState({
     error: false,
     message: '',
   });
+
+  const handleFavorite = () => {
+    if (user.isLogged) {
+      console.log('Uau');
+    } else {
+      setMessage('Please log in before putting the drink in favorites!');
+      setTimeout(() => {
+        setMessage(undefined);
+      }, 3000);
+    }
+  };
 
   useEffect(() => {
     const loadData = async () => {
@@ -76,6 +94,9 @@ export const Drink = () => {
             <>
               <Styled.DrinkImg src={drink.strDrinkThumb} />
               <Styled.Info>
+                <Styled.Favorite onClick={handleFavorite}>
+                  <AiFillStar />
+                </Styled.Favorite>
                 <Heading>{drink.strDrink}</Heading>
                 <SmallContainer disposition="row">
                   <span>{drink.strCategory}</span>
@@ -88,8 +109,8 @@ export const Drink = () => {
                       <Heading size="small" as="h6">
                         Ingredients:
                       </Heading>
-                      {ingredients.ingredients.map((ingredient) => (
-                        <li key={ingredient}>{ingredient}</li>
+                      {ingredients.ingredients.map((ingredient, index) => (
+                        <li key={`${ingredient}-${index}`}>{ingredient}</li>
                       ))}
                     </>
                   </Styled.List>
@@ -122,6 +143,7 @@ export const Drink = () => {
           code={errorControl.code}
         />
       )}
+      {message && <MessageComponent message={message} />}
       <ReturnButton />
     </>
   );

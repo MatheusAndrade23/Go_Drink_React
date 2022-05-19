@@ -27,6 +27,7 @@ export const Info = styled.div`
     width: 50%;
     display: flex;
     flex-direction: column;
+    position: relative;
 
     & span {
       font-weight: bold;
@@ -41,6 +42,24 @@ export const Info = styled.div`
     & h6 {
       margin-bottom: 10px;
     }
+  `}
+`;
+
+export const Favorite = styled.button`
+  ${({ theme }) => css`
+      position: absolute;
+      background-color: transparent;
+      border: none;
+      color: #EEAD2D;
+      font-size: 35px;
+      right: 10px;
+      cursor: pointer;
+      transition: 0.5s;
+
+      &:hover{
+        transform: scale(1.1);
+        color: yellow;
+      }
   `}
 `;
 
