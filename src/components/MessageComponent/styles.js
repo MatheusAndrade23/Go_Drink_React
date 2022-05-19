@@ -6,12 +6,13 @@ export const MessageContainer = styled.div`
     background-color: ${theme.colors.fourthColor};
     padding: 40px;
     width: max-content;
-    z-index: 10;
+    max-width: 350px;
+    text-align: justify;
+    z-index: 300;
     border: 2px solid ${theme.colors.primaryColor};
     border-radius: 10px;
     top: 70px;
     right: 70px;
-    box-shadow: 0px 0px 25px 0px rgba(0, 0, 0, 0.8);
 
     & p {
       color: ${theme.colors.thirdColor};
