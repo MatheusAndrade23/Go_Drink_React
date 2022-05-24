@@ -1,12 +1,12 @@
 import P from 'prop-types';
 
-import { createContext, useState } from 'react';
+import { createContext, useEffect, useState } from 'react';
 
 export const AuthContext = createContext({});
 
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState({
-    name: '',
+    email: '',
     password: '',
     isLogged: false,
   });

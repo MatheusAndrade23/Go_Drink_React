@@ -25,11 +25,35 @@ export const Login = () => {
   const [message, setMessage] = useState(undefined);
   const [userInfo, setUserInfo] = useState({});
 
-  const handleLogin = (e) => {
+  const handleGetInfo = (e) => {
     setUserInfo({ ...userInfo, [e.target.name]: e.target.value });
   };
 
-  const handleSubmitLogin = () => {};
+  const handleSubmitLogin = async () => {
+    fetch(`${config.api2Url}/login/${loginControl}`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(userInfo),
+    })
+      .then((resp) => resp.json())
+      .then((data) => {
+        if (data.error) {
+          setMessage(data.message);
+          setTimeout(() => {
+            setMessage(undefined);
+          }, 3000);
+        } else {
+          setUser({ ...userInfo, isLogged: true });
+          setMessage(data.message);
+          setTimeout(() => {
+            setMessage(undefined);
+            navigate('/');
+          }, 3000);
+        }
+      });
+  };
 
   useEffect(() => {
     const login = action.toLowerCase();
@@ -72,14 +96,14 @@ export const Login = () => {
           placeholder="Type your email here..."
           name="email"
           type="email"
-          handleChange={handleLogin}
+          handleChange={handleGetInfo}
         />
         <InputComponent
           text="Password:"
           placeholder="Type your password here..."
           name="password"
           type="password"
-          handleChange={handleLogin}
+          handleChange={handleGetInfo}
         />
         <ButtonComponent bold={false} handleSubmit={handleSubmitLogin}>
           {loginControl === 'signin' ? 'Sign In' : 'Sign Up'}
