@@ -19,6 +19,7 @@ import { Search } from './templates/Search';
 import { Lists } from './templates/Lists';
 import { Login } from './templates/Login';
 import { AllDrinks } from './templates/AllDrinks';
+import { Favorites } from './templates/Favorites';
 
 const root = createRoot(document.getElementById('root'));
 root.render(
@@ -34,6 +35,7 @@ root.render(
             <Route path="/" element={<Home />} />
             <Route path="/login/:action" element={<Login />} />
             <Route path="/all-drinks" element={<AllDrinks />} />
+            <Route path="/favorites" element={<Favorites />} />
           </Switch>
         </Router>
         <Footer />
