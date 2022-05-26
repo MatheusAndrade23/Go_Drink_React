@@ -32,9 +32,21 @@ export const Drink = () => {
     message: '',
   });
 
-  const handleFavorite = () => {
+  const handleFavorite = async () => {
     if (user.isLogged) {
-      console.log('Uau');
+      try {
+        const userInfo = await fetch(`${config.api2Url}/drink/favorites`, {
+          method: 'PATCH',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ ...user, drinkId: id }),
+        });
+        const json = await userInfo.json();
+        console.log(json.user);
+      } catch (err) {
+        setDrink(undefined);
+      }
     } else {
       setMessage('Please log in before putting the drink in favorites!');
       setTimeout(() => {
