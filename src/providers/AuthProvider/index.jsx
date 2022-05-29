@@ -8,7 +8,7 @@ export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState({
     email: '',
     password: '',
-    isLogged: false,
+    isLogged: true,
   });
 
   return (
