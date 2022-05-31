@@ -10,6 +10,7 @@ export const GlobalStyles = createGlobalStyle`
 
   html, body {
     height: 100vh;
+    background-color:  ${({ theme }) => theme.colors.fourthColor};
   }
 
   a {
