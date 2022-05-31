@@ -3,6 +3,8 @@ import * as Styled from './styles';
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
+import { db } from '../../services/api';
+
 import { Heading } from '../Heading';
 import { Loading } from '../Loading';
 
@@ -14,21 +16,17 @@ export const RandomDrinkComponent = () => {
   const [loadingControl, setLoadingControl] = useState(true);
 
   useEffect(() => {
-    const GetData = async () => {
+    (async () => {
       try {
-        const resp = await fetch(
-          'https://www.thecocktaildb.com/api/json/v1/1/random.php',
-        );
-        const drink = await resp.json();
-        setDrink(drink.drinks[0]);
+        const resp = await db.get('/api/json/v1/1/random.php');
+        setDrink(resp.data.drinks[0]);
         setLoadingControl(false);
-      } catch (err) {
+      } catch (error) {
+        console.log(error);
         setError(true);
         setLoadingControl(false);
       }
-    };
-
-    GetData();
+    })();
   }, []);
 
   return (

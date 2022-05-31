@@ -11,7 +11,7 @@ export const Footer = () => {
   return (
     <Styled.Footer>
       {/* <TextComponent size="small">- MIT License</TextComponent> */}
-      <SmallContainer disposition="row">
+      {/* <SmallContainer disposition="row">
         <LinkComponent link={Config.gitHubUrl} size="small">
           Click here to see the source code!
         </LinkComponent>
@@ -23,7 +23,7 @@ export const Footer = () => {
             Cocktail DB.
           </LinkComponent>
         </TextComponent>
-      </SmallContainer>
+      </SmallContainer> */}
       <ThemeSwitcher />
     </Styled.Footer>
   );

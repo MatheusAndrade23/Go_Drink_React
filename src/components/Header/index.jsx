@@ -75,7 +75,7 @@ export const Header = () => {
             <FaSearch />
           </ButtonComponent>
         </SmallContainer>
-        {user.isLogged ? (
+        {user.authenticated ? (
           <LinkComponent link="/login/signout">Sign Out</LinkComponent>
         ) : (
           <LinkComponent link="/login/signin">Sign In</LinkComponent>
