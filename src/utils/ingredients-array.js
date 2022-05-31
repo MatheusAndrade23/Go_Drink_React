@@ -3,7 +3,7 @@ export const IngredientsArray = (drink) => {
   const measures = [];
 
   for (let i = 1; i < 16; i++) {
-    let ingredient = 'strIngredient' + i.toString();
+    let ingredient = `strIngredient${i}`;
 
     if (drink[ingredient]) {
       ingredients.push(drink[ingredient]);
@@ -11,7 +11,7 @@ export const IngredientsArray = (drink) => {
   }
 
   for (let i = 1; i < 16; i++) {
-    let measure = 'strMeasure' + i.toString();
+    let measure = `strMeasure${i}`;
 
     if (drink[measure]) {
       measures.push(drink[measure]);

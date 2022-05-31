@@ -3,6 +3,8 @@ import * as Styled from './styles';
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 
+import { db } from '../../services/api';
+
 import { Header } from '../../components/Header';
 import { Loading } from '../../components/Loading';
 import { Heading } from '../../components/Heading';
@@ -51,14 +53,11 @@ export const Kinds = () => {
   };
 
   useEffect(() => {
-    const loadData = async () => {
+    (async () => {
       try {
-        const resp = await fetch(
-          `https://www.thecocktaildb.com/api/json/v1/1/list.php?${kind}=list`,
-        );
+        const resp = await db.get(`/api/json/v1/1/list.php?${kind}=list`);
         try {
-          const data = await resp.json();
-          const kinds = data.drinks;
+          const kinds = resp.data.drinks;
           setKinds(kinds);
           setKindsToShow(kinds.slice(0, KINDS_PER_PAGE));
         } catch (error) {
@@ -67,55 +66,51 @@ export const Kinds = () => {
       } catch (error) {
         setKinds(undefined);
       }
-    };
-    loadData();
+    })();
   }, [kind]);
 
   useEffect(() => {
-    const makePage = async () => {
-      if (kinds && kinds.length > 0) {
-        switch (kind) {
-          case 'i':
-            setType('strIngredient1');
-            setLoadingControl(false);
-            setName('Ingredients');
-            document.title = `Ingredients | ${config.siteName}`;
-            break;
+    if (kinds && kinds.length > 0) {
+      switch (kind) {
+        case 'i':
+          setType('strIngredient1');
+          setLoadingControl(false);
+          setName('Ingredients');
+          document.title = `Ingredients | ${config.siteName}`;
+          break;
 
-          case 'c':
-            setType('strCategory');
-            setName('Categories');
-            loadImgLinks();
-            break;
+        case 'c':
+          setType('strCategory');
+          setName('Categories');
+          loadImgLinks();
+          break;
 
-          case 'g':
-            setType('strGlass');
-            setName('Glasses');
-            loadImgLinks();
-            break;
+        case 'g':
+          setType('strGlass');
+          setName('Glasses');
+          loadImgLinks();
+          break;
 
-          case 'a':
-            setType('strAlcoholic');
-            setName('Alcoholic');
-            loadImgLinks();
-            break;
-        }
-      } else if (kinds === null) {
-        setErrorControl({
-          error: true,
-          message: 'This kind does not exist!',
-        });
-        document.title = `Error | ${config.siteName} `;
-      } else if (kinds === undefined) {
-        setErrorControl({
-          error: true,
-          message: 'Something went wrong, try again later!',
-          code: 500,
-        });
-        document.title = `Server Error | ${config.siteName} `;
+        case 'a':
+          setType('strAlcoholic');
+          setName('Alcoholic');
+          loadImgLinks();
+          break;
       }
-    };
-    makePage();
+    } else if (kinds === null) {
+      setErrorControl({
+        error: true,
+        message: 'This kind does not exist!',
+      });
+      document.title = `Error | ${config.siteName} `;
+    } else if (kinds === undefined) {
+      setErrorControl({
+        error: true,
+        message: 'Something went wrong, try again later!',
+        code: 500,
+      });
+      document.title = `Server Error | ${config.siteName} `;
+    }
   }, [kind, kinds, loadImgLinks]);
 
   return (

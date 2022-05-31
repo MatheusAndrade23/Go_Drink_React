@@ -2,6 +2,9 @@ import * as Styled from './styles';
 
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
+
+import { db } from '../../services/api';
+
 import { Header } from '../../components/Header';
 import { Heading } from '../../components/Heading';
 import { Loading } from '../../components/Loading';
@@ -35,14 +38,11 @@ export const Lists = () => {
   };
 
   useEffect(() => {
-    const loadData = async () => {
+    (async () => {
       try {
-        const resp = await fetch(
-          `https://www.thecocktaildb.com/api/json/v1/1/filter.php?${index}=${list}`,
-        );
+        const resp = await db.get(`/api/json/v1/1/filter.php?${index}=${list}`);
         try {
-          const data = await resp.json();
-          const drinks = data.drinks.reverse();
+          const drinks = resp.data.drinks.reverse();
           setDrinks(drinks);
           setLoadingControl(false);
           setDrinksToShow(drinks.slice(0, DRINKS_PER_PAGE));
@@ -52,8 +52,7 @@ export const Lists = () => {
       } catch (err) {
         setDrinks(undefined);
       }
-    };
-    loadData();
+    })();
   }, [index, list]);
 
   useEffect(() => {

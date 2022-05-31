@@ -1,6 +1,7 @@
 import * as Styled from '../Lists/styles';
 
 import { useState, useEffect, useContext } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 import { GetFavorites } from '../../utils/get-favorites';
 import { AuthContext } from '../../providers/AuthProvider/index';
@@ -17,6 +18,7 @@ import config from '../../config';
 
 export const Favorites = () => {
   const { user } = useContext(AuthContext);
+  const navigate = useNavigate();
   const DRINKS_PER_PAGE = 8;
 
   const [loadMoreControl, setLoadMoreControl] = useState(DRINKS_PER_PAGE);
@@ -38,8 +40,8 @@ export const Favorites = () => {
   };
 
   useEffect(() => {
-    const loadData = async () => {
-      if (user.isLogged === true) {
+    (async () => {
+      if (user.authenticated === true) {
         try {
           const userInfo = await fetch(`${config.api2Url}/drink/favorites`, {
             method: 'POST',
@@ -57,12 +59,12 @@ export const Favorites = () => {
       } else {
         setErrorControl({
           error: true,
-          message: 'Please log in before having a list of favorite drinks!',
+          message:
+            'Please create an account or log in before having a list of favorite drinks!',
         });
       }
-    };
-    loadData();
-  }, [user]);
+    })();
+  }, [navigate, user]);
 
   useEffect(() => {
     if (drinks && drinks.length > 0) {

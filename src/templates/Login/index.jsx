@@ -17,7 +17,7 @@ import { MessageComponent } from '../../components/MessageComponent';
 import config from '../../config';
 
 export const Login = () => {
-  const { user, setUser } = useContext(AuthContext);
+  const { user, login, logout } = useContext(AuthContext);
   const { action } = useParams();
   const navigate = useNavigate();
 
@@ -30,35 +30,8 @@ export const Login = () => {
   };
 
   const handleSubmitLogin = async () => {
-    try {
-      const req = await fetch(`${config.api2Url}/login/${loginControl}`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(userInfo),
-      });
-      const data = await req.json();
-
-      if (data.error) {
-        setMessage(data.message);
-        setTimeout(() => {
-          setMessage(undefined);
-        }, 3000);
-      } else {
-        setUser({ ...userInfo, isLogged: true });
-        setMessage(data.message);
-        setTimeout(() => {
-          setMessage(undefined);
-          navigate('/');
-        }, 3000);
-      }
-    } catch (err) {
-      setMessage('Something went wrong, try again later!');
-      setTimeout(() => {
-        setMessage(undefined);
-      }, 3000);
-    }
+    const { email, password } = userInfo;
+    login(email, password, loginControl);
   };
 
   useEffect(() => {
@@ -75,21 +48,14 @@ export const Login = () => {
         break;
 
       case 'signout':
-        setLoginControl('signin');
-        document.title = `Sign Out | ${config.siteName}`;
-        setUser({ ...user, isLogged: false });
-        setMessage('You left successfully');
-        navigate('/login/signin');
-        setTimeout(() => {
-          setMessage(undefined);
-        }, 3000);
+        logout();
         break;
 
       default:
         navigate('/');
         break;
     }
-  }, [action, navigate, setUser, user]);
+  }, [action, logout, navigate]);
 
   return (
     <Styled.Container>

@@ -3,6 +3,8 @@ import * as Styled from '../Lists/styles';
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 
+import { db } from '../../services/api';
+
 import { Header } from '../../components/Header';
 import { Loading } from '../../components/Loading';
 import { Heading } from '../../components/Heading';
@@ -36,14 +38,11 @@ export const Search = () => {
   };
 
   useEffect(() => {
-    const loadData = async () => {
+    (async () => {
       try {
-        const resp = await fetch(
-          `https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${search}`,
-        );
+        const resp = await db.get(`/api/json/v1/1/search.php?s=${search}`);
         try {
-          const data = await resp.json();
-          const drinks = data.drinks.reverse();
+          const drinks = resp.data.drinks.reverse();
           setDrinks(drinks);
         } catch (error) {
           setDrinks(null);
@@ -51,8 +50,7 @@ export const Search = () => {
       } catch (err) {
         setDrinks(undefined);
       }
-    };
-    loadData();
+    })();
   }, [search]);
 
   useEffect(() => {

@@ -3,6 +3,8 @@ import * as Styled from './styles';
 import { useState, useEffect, useContext } from 'react';
 import { useParams } from 'react-router-dom';
 
+import { db } from '../../services/api';
+
 import { AiFillStar } from 'react-icons/ai';
 
 import { IngredientsArray } from '../../utils/ingredients-array';
@@ -56,14 +58,11 @@ export const Drink = () => {
   };
 
   useEffect(() => {
-    const loadData = async () => {
+    (async () => {
       try {
-        const resp = await fetch(
-          `https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${id}`,
-        );
+        const resp = await db.get(`/api/json/v1/1/lookup.php?i=${id}`);
         try {
-          const data = await resp.json();
-          const drink = data.drinks[0];
+          const drink = resp.data.drinks[0];
           const ingredients = IngredientsArray(drink);
           setIngredients(ingredients);
           setDrink(drink);
@@ -74,8 +73,7 @@ export const Drink = () => {
       } catch (error) {
         setDrink(undefined);
       }
-    };
-    loadData();
+    })();
   }, [id]);
 
   useEffect(() => {

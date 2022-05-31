@@ -1,3 +1,5 @@
+import { db } from '../services/api';
+
 export const GetFavorites = async (ids = []) => {
   let drinksInfo = [];
   if (ids.length === 0) {
@@ -5,11 +7,8 @@ export const GetFavorites = async (ids = []) => {
   } else {
     ids.map(async (id) => {
       try {
-        const resp = await fetch(
-          `https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${id}`,
-        );
-        const data = await resp.json();
-        const drink = data.drinks[0];
+        const resp = await db.get(`api/json/v1/1/lookup.php?i=${id}`);
+        const drink = resp.data.drinks[0];
         drinksInfo.push(drink);
       } catch (err) {
         return undefined;
