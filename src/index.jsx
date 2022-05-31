@@ -28,14 +28,14 @@ root.render(
       <ThemeProvider>
         <Router>
           <Switch>
-            <Route path="/search/:search" element={<Search />} />
-            <Route path="/drink/:id" element={<Drink />} />
             <Route path="/list/:index/:list" element={<Lists />} />
-            <Route path="/kind/:kind" element={<Kinds />} />
-            <Route path="/" element={<Home />} />
+            <Route path="/search/:search" element={<Search />} />
             <Route path="/login/:action" element={<Login />} />
+            <Route path="/kind/:kind" element={<Kinds />} />
+            <Route path="/drink/:id" element={<Drink />} />
             <Route path="/all-drinks" element={<AllDrinks />} />
             <Route path="/favorites" element={<Favorites />} />
+            <Route exact path="/" element={<Home />} />
           </Switch>
         </Router>
         <Footer />
