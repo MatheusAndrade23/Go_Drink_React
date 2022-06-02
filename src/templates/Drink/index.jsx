@@ -3,9 +3,9 @@ import * as Styled from './styles';
 import { useState, useEffect, useContext } from 'react';
 import { useParams } from 'react-router-dom';
 
-import { db } from '../../services/api';
+import { db, api } from '../../services/api';
 
-import { AiFillStar } from 'react-icons/ai';
+import { AiFillStar, AiOutlineStar } from 'react-icons/ai';
 
 import { IngredientsArray } from '../../utils/ingredients-array';
 
@@ -23,10 +23,11 @@ import config from '../../config';
 
 export const Drink = () => {
   const { id } = useParams();
-  const { user, setUser } = useContext(AuthContext);
+  const { user, updateFavorites } = useContext(AuthContext);
 
   const [drink, setDrink] = useState('');
   const [message, setMessage] = useState(undefined);
+  const [isFavorite, setIsFavorite] = useState(false);
   const [ingredients, setIngredients] = useState({});
   const [loadingControl, setLoadingControl] = useState(true);
   const [errorControl, setErrorControl] = useState({
@@ -35,25 +36,22 @@ export const Drink = () => {
   });
 
   const handleFavorite = async () => {
-    if (user.isLogged) {
-      try {
-        const userInfo = await fetch(`${config.api2Url}/drink/favorites`, {
-          method: 'PATCH',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({ ...user, drinkId: id }),
-        });
-        const json = await userInfo.json();
-        console.log(json.user);
-      } catch (err) {
-        setDrink(undefined);
-      }
-    } else {
+    if (!user.authenticated) {
       setMessage('Please log in before putting the drink in favorites!');
       setTimeout(() => {
         setMessage(undefined);
       }, 3000);
+      return;
+    }
+    setLoadingControl(true);
+    try {
+      const response = await api.patch(`/drink/favorites/${user._id}`, {
+        drinkId: id,
+      });
+      await updateFavorites();
+      setLoadingControl(false);
+    } catch (err) {
+      setDrink(undefined);
     }
   };
 
@@ -95,6 +93,18 @@ export const Drink = () => {
     }
   }, [drink]);
 
+  useEffect(() => {
+    const { favorites, authenticated } = user;
+    if (!authenticated) {
+      return;
+    }
+    if (favorites.includes(id)) {
+      setIsFavorite(true);
+    } else {
+      setIsFavorite(false);
+    }
+  }, [id, user]);
+
   return (
     <>
       <Header />
@@ -105,7 +115,7 @@ export const Drink = () => {
               <Styled.DrinkImg src={drink.strDrinkThumb} />
               <Styled.Info>
                 <Styled.Favorite onClick={handleFavorite}>
-                  <AiFillStar />
+                  {isFavorite ? <AiFillStar /> : <AiOutlineStar />}
                 </Styled.Favorite>
                 <Heading>{drink.strDrink}</Heading>
                 <SmallContainer disposition="row">

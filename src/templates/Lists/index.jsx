@@ -87,7 +87,10 @@ export const Lists = () => {
                   .slice(1)
                   .replace(/_/, ' ')}`}
                 {index !== 'c' && index !== 'g' && ':'}
-                {index === 'c' && ' category:'} {index === 'g' && ' glass:'}
+                {index === 'c' && ' category:'}{' '}
+                {index === 'g' && list.includes('lass')
+                  ? ':'
+                  : index === 'g' && 'glass:'}
               </Heading>
               <Styled.DrinksContainer>
                 {drinksToShow.map((drink) => (

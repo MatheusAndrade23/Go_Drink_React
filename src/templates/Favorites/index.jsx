@@ -3,6 +3,8 @@ import * as Styled from '../Lists/styles';
 import { useState, useEffect, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 
+import { api } from '../../services/api';
+
 import { GetFavorites } from '../../utils/get-favorites';
 import { AuthContext } from '../../providers/AuthProvider/index';
 
@@ -17,7 +19,7 @@ import { ButtonComponent } from '../../components/ButtonComponent';
 import config from '../../config';
 
 export const Favorites = () => {
-  const { user } = useContext(AuthContext);
+  const { user, updateFavorites } = useContext(AuthContext);
   const navigate = useNavigate();
   const DRINKS_PER_PAGE = 8;
 
@@ -41,35 +43,30 @@ export const Favorites = () => {
 
   useEffect(() => {
     (async () => {
-      if (user.authenticated === true) {
-        try {
-          const userInfo = await fetch(`${config.api2Url}/drink/favorites`, {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(user),
-          });
-          const json = await userInfo.json();
-          const favorites = await GetFavorites(json.user.favorites);
-          setDrinks(favorites);
-        } catch (err) {
-          setDrinks(undefined);
-        }
-      } else {
+      if (!user.authenticated) {
         setErrorControl({
           error: true,
           message:
             'Please create an account or log in before having a list of favorite drinks!',
         });
+        return;
       }
+      const favorites = await GetFavorites(user.favorites);
+      setDrinks(favorites);
     })();
-  }, [navigate, user]);
+  }, [navigate, updateFavorites, user]);
 
   useEffect(() => {
     if (drinks && drinks.length > 0) {
       setDrinksToShow(drinks.slice(0, DRINKS_PER_PAGE));
       setLoadingControl(false);
+      document.title = `Favorites | ${config.siteName} `;
+    } else if (drinks === null) {
+      setLoadingControl(false);
+      setErrorControl({
+        error: true,
+        message: 'You do not have any favorite drink!',
+      });
       document.title = `Favorites | ${config.siteName} `;
     } else if (drinks === undefined) {
       setErrorControl({
@@ -78,12 +75,6 @@ export const Favorites = () => {
         code: 500,
       });
       document.title = `Server Error | ${config.siteName} `;
-    } else if (drinks === null) {
-      setLoadingControl(false);
-      setErrorControl({
-        message: 'You do not have any favorite drink!',
-      });
-      document.title = `Favorites | ${config.siteName} `;
     }
   }, [drinks]);
 
@@ -115,7 +106,7 @@ export const Favorites = () => {
       ) : (
         <ErrorComponent
           message={errorControl.message}
-          code={errorControl.code && errorControl.code}
+          code={errorControl.code}
         />
       )}
       <ReturnButton />

@@ -17,7 +17,7 @@ import { MessageComponent } from '../../components/MessageComponent';
 import config from '../../config';
 
 export const Login = () => {
-  const { user, login, logout } = useContext(AuthContext);
+  const { user, login, logout, register } = useContext(AuthContext);
   const { action } = useParams();
   const navigate = useNavigate();
 
@@ -31,8 +31,19 @@ export const Login = () => {
 
   const handleSubmitLogin = async () => {
     const { email, password } = userInfo;
-    login(email, password, loginControl);
+
+    if (loginControl === 'signin') {
+      login(email, password);
+    } else {
+      register(email, password);
+    }
   };
+
+  useEffect(() => {
+    if (user.authenticated && action.toLocaleLowerCase() !== 'signout') {
+      navigate('/');
+    }
+  }, [action, navigate, user]);
 
   useEffect(() => {
     const login = action.toLowerCase();
@@ -81,7 +92,11 @@ export const Login = () => {
           {loginControl === 'signin' ? 'Sign In' : 'Sign Up'}
         </ButtonComponent>
         <SmallContainer disposition="row">
-          <TextComponent>Not have an account yet?</TextComponent>
+          <TextComponent>
+            {loginControl !== 'signin'
+              ? 'Not have an account yet?'
+              : 'Already have an account?'}
+          </TextComponent>
           <LinkComponent
             link={loginControl !== 'signin' ? '/login/signin' : '/login/signup'}
           >
