@@ -3,7 +3,7 @@ import axios from 'axios';
 import config from '../config';
 
 export const api = axios.create({
-  baseURL: config.baseURL,
+  baseURL: config.apiUrl,
 });
 
 export const db = axios.create({
@@ -11,5 +11,5 @@ export const db = axios.create({
 });
 
 export const createSession = async (email, password) => {
-  return api.post('/sessions', { email, password });
+  return api.post('/login/signin', { email, password });
 };
