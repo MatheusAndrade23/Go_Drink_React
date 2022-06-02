@@ -1,6 +1,6 @@
 import P from 'prop-types';
 
-import { createContext, useState } from 'react';
+import { createContext, useEffect, useState } from 'react';
 
 import { ThemeProvider as ThemeStyledProvider } from 'styled-components';
 
@@ -14,8 +14,18 @@ export const ThemeSwitcherContext = createContext(undefined);
 export const ThemeProvider = ({ children }) => {
   const [theme, setTheme] = useState('dark');
 
+  useEffect(() => {
+    const recoveredTheme = localStorage.getItem('theme');
+
+    if (recoveredTheme) {
+      setTheme(recoveredTheme);
+    }
+  }, []);
+
   const themeSwitcher = () => {
-    setTheme((theme) => (theme === 'dark' ? 'light' : 'dark'));
+    const newTheme = theme === 'dark' ? 'light' : 'dark';
+    setTheme(newTheme);
+    localStorage.setItem('theme', newTheme);
   };
 
   return (
