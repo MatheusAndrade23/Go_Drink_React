@@ -24,10 +24,10 @@ export const Routes = () => {
       <ThemeProvider>
         <AuthProvider>
           <Switch>
-            <Route path="/list/:index/:list" element={<Lists />} />
+            <Route path="/kind/:index/:kind" element={<Kinds />} />
             <Route path="/search/:search" element={<Search />} />
             <Route path="/login/:action" element={<Login />} />
-            <Route path="/kind/:kind" element={<Kinds />} />
+            <Route path="/list/:list" element={<Lists />} />
             <Route path="/drink/:id" element={<Drink />} />
             <Route path="/all-drinks" element={<AllDrinks />} />
             <Route path="/favorites" element={<Favorites />} />
