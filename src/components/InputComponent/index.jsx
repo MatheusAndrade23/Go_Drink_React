@@ -16,6 +16,7 @@ export const InputComponent = ({
         name={name}
         type={type}
         placeholder={placeholder}
+        title={`Type your ${name} here`}
       />
     </>
   );

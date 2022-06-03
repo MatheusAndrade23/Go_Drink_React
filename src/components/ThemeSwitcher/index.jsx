@@ -6,10 +6,11 @@ import { ThemeSwitcherContext } from '../../providers/ThemeProvider/index';
 
 export const ThemeSwitcher = () => {
   const { themeSwitcher, theme } = useContext(ThemeSwitcherContext);
+  const text = `Switch to ${theme === 'dark' ? 'light' : 'dark'} theme`;
 
   return (
-    <Styled.Container onClick={themeSwitcher}>
-      {theme === 'dark' ? 'Switch to light theme' : 'Switch to dark theme'}
+    <Styled.Container onClick={themeSwitcher} title={text}>
+      {text}
     </Styled.Container>
   );
 };

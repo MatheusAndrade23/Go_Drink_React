@@ -34,7 +34,7 @@ export const Drink = styled.div`
     }
 
     &:hover {
-      box-shadow: 1px 0px 12px 0px rgba(255, 255, 255, 0.64);
+      box-shadow: 1px 0px 12px 0px ${theme.colors.shadow};
     }
   `}
 `;

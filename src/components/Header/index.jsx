@@ -54,9 +54,7 @@ export const Header = () => {
     });
 
     return () => {
-      window.removeEventListener('keydown', (e) => {
-        enterPressed(e);
-      });
+      window.removeEventListener('keydown', () => {});
     };
   }, [navigate, search, url]);
 
@@ -71,7 +69,11 @@ export const Header = () => {
             placeholder="Type here..."
             name="search"
           />
-          <ButtonComponent handleSubmit={SearchSubmit} model="icon">
+          <ButtonComponent
+            handleSubmit={SearchSubmit}
+            model="icon"
+            name="Click to Search"
+          >
             <FaSearch />
           </ButtonComponent>
         </SmallContainer>

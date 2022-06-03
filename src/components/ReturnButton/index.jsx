@@ -4,7 +4,7 @@ import { IoIosArrowBack } from 'react-icons/io';
 
 export const ReturnButton = () => {
   return (
-    <Styled.ReturnLink href="/">
+    <Styled.ReturnLink href="/" title="Return Home">
       <IoIosArrowBack />
     </Styled.ReturnLink>
   );

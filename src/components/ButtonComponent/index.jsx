@@ -8,6 +8,7 @@ export const ButtonComponent = ({
   uppercase = false,
   size = 'small',
   model = 'standard',
+  name = '',
 }) => {
   return (
     <Styled.Button
@@ -16,6 +17,7 @@ export const ButtonComponent = ({
       bold={bold}
       size={size}
       model={model}
+      title={model === 'icon' ? name : `${children} Button`}
     >
       {children}
     </Styled.Button>
@@ -25,6 +27,7 @@ export const ButtonComponent = ({
 ButtonComponent.propTypes = {
   children: P.node.isRequired,
   handleSubmit: P.func.isRequired,
+  name: P.string,
   uppercase: P.bool,
   bold: P.bool,
   size: P.oneOf(['xsmall', 'small', 'medium']),
