@@ -1,4 +1,4 @@
-import * as Styled from '../Lists/styles';
+import * as Styled from '../Kinds/styles';
 
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
@@ -42,7 +42,7 @@ export const Search = () => {
       try {
         const resp = await db.get(`/api/json/v1/1/search.php?s=${search}`);
         try {
-          const drinks = resp.data.drinks.reverse();
+          const drinks = resp.data.drinks;
           setDrinks(drinks);
         } catch (error) {
           setDrinks(null);
@@ -95,7 +95,7 @@ export const Search = () => {
           )}
           {drinks && drinks.length > 0 && loadMoreControl < drinks.length && (
             <ButtonComponent handleSubmit={handleShowMoreDrinks} bold={false}>
-              Load More
+              Load More Drinks
             </ButtonComponent>
           )}
         </Styled.Container>

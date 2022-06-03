@@ -1,4 +1,4 @@
-import * as Styled from '../Lists/styles';
+import * as Styled from '../Kinds/styles';
 
 import { useState, useEffect } from 'react';
 
@@ -89,7 +89,7 @@ export const AllDrinks = () => {
           )}
           {drinks && drinks.length > 0 && loadMoreControl < drinks.length && (
             <ButtonComponent handleSubmit={handleShowMoreDrinks} bold={false}>
-              Load More
+              Load More Drinks
             </ButtonComponent>
           )}
         </Styled.Container>

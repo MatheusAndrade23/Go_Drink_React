@@ -6,63 +6,105 @@ import { useParams } from 'react-router-dom';
 import { db } from '../../services/api';
 
 import { Header } from '../../components/Header';
-import { Heading } from '../../components/Heading';
 import { Loading } from '../../components/Loading';
+import { Heading } from '../../components/Heading';
 import { ReturnButton } from '../../components/ReturnButton';
-import { DrinkComponent } from '../../components/DrinkComponent';
 import { ErrorComponent } from '../../components/ErrorComponent';
 import { ButtonComponent } from '../../components/ButtonComponent';
 
+import { GetThumbImg } from '../../utils/get-thumb-img';
 import config from '../../config';
 
 export const Lists = () => {
-  const { index, list } = useParams();
-  const DRINKS_PER_PAGE = 8;
+  const { list } = useParams();
+  const kind = list.charAt(0);
+  const KINDS_PER_PAGE = 8;
 
-  const [loadMoreControl, setLoadMoreControl] = useState(DRINKS_PER_PAGE);
-  const [drinksToShow, setDrinksToShow] = useState([]);
-  const [next, setNext] = useState(0);
-  const [drinks, setDrinks] = useState([]);
+  const [loadMoreControl, setLoadMoreControl] = useState(KINDS_PER_PAGE);
   const [loadingControl, setLoadingControl] = useState(true);
+  const [kindsToShow, setKindsToShow] = useState([]);
+  const [name, setName] = useState('');
+  const [linksImg, setLinksImg] = useState(undefined);
+  const [kinds, setKinds] = useState([]);
+  const [type, setType] = useState('');
+  const [next, setNext] = useState(0);
   const [errorControl, setErrorControl] = useState({
     error: false,
     message: '',
   });
 
-  const handleShowMoreDrinks = () => {
-    const nextPage = next + DRINKS_PER_PAGE;
-    const nextDrinks = drinks.slice(nextPage, nextPage + DRINKS_PER_PAGE);
-    setDrinksToShow([...drinksToShow, ...nextDrinks]);
+  const handleShowMoreKinds = () => {
+    const nextPage = next + KINDS_PER_PAGE;
+    const nextKinds = kinds.slice(nextPage, nextPage + KINDS_PER_PAGE);
+    setKindsToShow([...kindsToShow, ...nextKinds]);
     setNext(nextPage);
-    setLoadMoreControl((loaded) => loaded + DRINKS_PER_PAGE);
+    setLoadMoreControl((loaded) => loaded + KINDS_PER_PAGE);
+  };
+
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  const loadImgLinks = async () => {
+    document.title = `${name} | ${config.siteName}`;
+    const images = await GetThumbImg(kind, kinds, type);
+    if (images && images.length > 0) {
+      setLinksImg(images);
+      setLoadingControl(false);
+    } else if (images === undefined) {
+      setKinds(undefined);
+    }
   };
 
   useEffect(() => {
     (async () => {
       try {
-        const resp = await db.get(`/api/json/v1/1/filter.php?${index}=${list}`);
+        const resp = await db.get(`/api/json/v1/1/list.php?${kind}=list`);
         try {
-          const drinks = resp.data.drinks.reverse();
-          setDrinks(drinks);
-          setLoadingControl(false);
-          setDrinksToShow(drinks.slice(0, DRINKS_PER_PAGE));
+          const kinds = resp.data.drinks;
+          setKinds(kinds);
+          setKindsToShow(kinds.slice(0, KINDS_PER_PAGE));
         } catch (error) {
-          setDrinks(null);
+          setKinds(null);
         }
-      } catch (err) {
-        setDrinks(undefined);
+      } catch (error) {
+        setKinds(undefined);
       }
     })();
-  }, [index, list]);
+  }, [kind]);
 
   useEffect(() => {
-    if (drinks && drinks.length > 0) {
-      document.title = `${`${list.charAt(0).toUpperCase()}${list
-        .slice(1)
-        .replace(/_/, ' ')}`} | ${config.siteName} `;
-    } else if (drinks === null) {
-      window.location.href = '/not-found';
-    } else if (drinks === undefined) {
+    if (kinds && kinds.length > 0) {
+      switch (kind) {
+        case 'i':
+          setType('strIngredient1');
+          setLoadingControl(false);
+          setName('Ingredients');
+          document.title = `Ingredients | ${config.siteName}`;
+          break;
+
+        case 'c':
+          setType('strCategory');
+          setName('Categories');
+          loadImgLinks();
+          break;
+
+        case 'g':
+          setType('strGlass');
+          setName('Glasses');
+          loadImgLinks();
+          break;
+
+        case 'a':
+          setType('strAlcoholic');
+          setName('Alcoholic');
+          loadImgLinks();
+          break;
+      }
+    } else if (kinds === null) {
+      setErrorControl({
+        error: true,
+        message: 'This kind does not exist!',
+      });
+      document.title = `Error | ${config.siteName} `;
+    } else if (kinds === undefined) {
       setErrorControl({
         error: true,
         message: 'Something went wrong, try again later!',
@@ -70,45 +112,52 @@ export const Lists = () => {
       });
       document.title = `Server Error | ${config.siteName} `;
     }
-  }, [drinks, list]);
+  }, [kind, kinds, loadImgLinks]);
 
   return (
     <>
       <Header />
       {!errorControl.error ? (
-        <Styled.Container>
+        <Styled.KindsContainer>
           {!loadingControl ? (
             <>
               <Heading size="small" as="h4">
-                {index === 'i' && 'Drinks that are made with'}{' '}
-                {index === 'c' && 'Drinks of the'}{' '}
-                {index === 'g' && 'Drinks of the'}{' '}
-                {`${list.charAt(0).toUpperCase()}${list
-                  .slice(1)
-                  .replace(/_/, ' ')}`}
-                {index !== 'c' && index !== 'g' && ':'}
-                {index === 'c' && ' category:'}{' '}
-                {index === 'g' && list.includes('lass')
-                  ? ':'
-                  : index === 'g' && 'glass:'}
+                {`All ${name}:`}
               </Heading>
-              <Styled.DrinksContainer>
-                {drinksToShow.map((drink) => (
-                  <DrinkComponent drink={drink} key={drink.idDrink} />
+              <Styled.Container>
+                {kindsToShow.map((kinds, index) => (
+                  <Styled.Kind
+                    key={kinds[type]}
+                    onClick={() =>
+                      (window.location.href = `/kind/${kind}/${kinds[
+                        type
+                      ].replace(/ /, '_')}`)
+                    }
+                  >
+                    {linksImg && <img src={linksImg[index]} />}
+                    {kind === 'i' && (
+                      <img
+                        src={`https://www.thecocktaildb.com/images/ingredients/${kinds[type]}.png`}
+                      />
+                    )}
+                    <Heading as="h6" size="small">
+                      {kinds[type]}
+                    </Heading>
+                  </Styled.Kind>
                 ))}
-              </Styled.DrinksContainer>
+              </Styled.Container>
             </>
           ) : (
-            <Styled.DrinksContainer>
+            <Styled.Container>
               <Loading />
-            </Styled.DrinksContainer>
+            </Styled.Container>
           )}
-          {drinks && loadMoreControl < drinks.length && (
-            <ButtonComponent handleSubmit={handleShowMoreDrinks} bold={false}>
-              Load More
+          {kinds && loadMoreControl < kinds.length && (
+            <ButtonComponent handleSubmit={handleShowMoreKinds} bold={false}>
+              Load More Drinks
             </ButtonComponent>
           )}
-        </Styled.Container>
+        </Styled.KindsContainer>
       ) : (
         <ErrorComponent
           message={errorControl.message}

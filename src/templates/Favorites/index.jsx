@@ -1,11 +1,10 @@
-import * as Styled from '../Lists/styles';
+import * as Styled from '../Kinds/styles';
 
 import { useState, useEffect, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import { api } from '../../services/api';
+import { db } from '../../services/api';
 
-import { GetFavorites } from '../../utils/get-favorites';
 import { AuthContext } from '../../providers/AuthProvider/index';
 
 import { Header } from '../../components/Header';
@@ -23,11 +22,11 @@ export const Favorites = () => {
   const navigate = useNavigate();
   const DRINKS_PER_PAGE = 8;
 
-  const [loadMoreControl, setLoadMoreControl] = useState(DRINKS_PER_PAGE);
-  const [drinksToShow, setDrinksToShow] = useState([]);
   const [next, setNext] = useState(0);
   const [drinks, setDrinks] = useState([]);
+  const [drinksToShow, setDrinksToShow] = useState([]);
   const [loadingControl, setLoadingControl] = useState(true);
+  const [loadMoreControl, setLoadMoreControl] = useState(DRINKS_PER_PAGE);
   const [errorControl, setErrorControl] = useState({
     error: false,
     message: '',
@@ -41,25 +40,37 @@ export const Favorites = () => {
     setLoadMoreControl((loaded) => loaded + DRINKS_PER_PAGE);
   };
 
+  const getFavorites = async () => {};
+
   useEffect(() => {
-    (async () => {
-      if (!user.authenticated) {
-        setErrorControl({
-          error: true,
-          message:
-            'Please create an account or log in before having a list of favorite drinks!',
-        });
-        return;
+    const { authenticated, favorites } = user;
+    if (!authenticated) {
+      setErrorControl({
+        error: true,
+        message:
+          'Please create an account or log in before having a list of favorite drinks!',
+      });
+      return;
+    }
+    if (favorites.length === 0) {
+      setDrinks(null);
+      return;
+    }
+    favorites.map(async (id) => {
+      try {
+        const resp = await db.get(`api/json/v1/1/lookup.php?i=${id}`);
+        const drink = resp.data.drinks[0];
+        setDrinks((drinks) => [...drinks, drink]);
+      } catch (err) {
+        setDrinks(undefined);
       }
-      const favorites = await GetFavorites(user.favorites);
-      setDrinks(favorites);
-    })();
-  }, [navigate, updateFavorites, user]);
+    });
+  }, [user]);
 
   useEffect(() => {
     if (drinks && drinks.length > 0) {
-      setDrinksToShow(drinks.slice(0, DRINKS_PER_PAGE));
       setLoadingControl(false);
+      setDrinksToShow(drinks.slice(0, DRINKS_PER_PAGE));
       document.title = `Favorites | ${config.siteName} `;
     } else if (drinks === null) {
       setLoadingControl(false);
@@ -88,8 +99,11 @@ export const Favorites = () => {
           </Heading>
           {!loadingControl ? (
             <Styled.DrinksContainer>
-              {drinksToShow.map((drink) => (
-                <DrinkComponent drink={drink} key={drink.idDrink} />
+              {drinksToShow.map((drink, index) => (
+                <DrinkComponent
+                  drink={drink}
+                  key={`${drink.idDrink} + ${index}`}
+                />
               ))}
             </Styled.DrinksContainer>
           ) : (
@@ -99,7 +113,7 @@ export const Favorites = () => {
           )}
           {drinks && drinks.length > 0 && loadMoreControl < drinks.length && (
             <ButtonComponent handleSubmit={handleShowMoreDrinks} bold={false}>
-              Load More
+              Load More Drinks
             </ButtonComponent>
           )}
         </Styled.Container>

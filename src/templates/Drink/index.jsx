@@ -112,10 +112,14 @@ export const Drink = () => {
         <Styled.Drink>
           {!loadingControl && drink ? (
             <>
-              <Styled.DrinkImg src={drink.strDrinkThumb} />
+              <Styled.DrinkImg src={drink.strDrinkThumb} alt={drink.strDrink} />
               <Styled.Info>
                 <Styled.Favorite onClick={handleFavorite}>
-                  {isFavorite ? <AiFillStar /> : <AiOutlineStar />}
+                  {isFavorite ? (
+                    <AiFillStar title="Remove from favorites" />
+                  ) : (
+                    <AiOutlineStar title="Add to favorites" />
+                  )}
                 </Styled.Favorite>
                 <Heading>{drink.strDrink}</Heading>
                 <SmallContainer disposition="row">
