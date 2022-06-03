@@ -19,11 +19,11 @@ export const IngredientsArray = (drink) => {
   }
 
   if (ingredients.length == measures.length) {
-    return { ingredients: ingredients, measures: measures };
+    return { ingredients, measures };
   } else if (ingredients.length > measures.length) {
     for (let i = 0; i < ingredients.length - measures.length; i++) {
-      measures.push('lots');
+      measures.push('cubes');
     }
-    return { ingredients: ingredients, measures: measures };
+    return { ingredients, measures };
   }
 };
