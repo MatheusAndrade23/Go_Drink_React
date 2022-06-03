@@ -1,9 +1,9 @@
 export const LightTheme = {
   colors: {
     primaryColor: '#222831',
-    secondaryColor: '#393E46',
+    secondaryColor: '#EEEEEE',
     thirdColor: '#00ADB5',
-    fourthColor: '#EEEEEE',
+    fourthColor: '#FFFF',
   },
   fonts: {
     family: {
