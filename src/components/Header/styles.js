@@ -10,7 +10,6 @@ export const Header = styled.header`
     background-color: ${theme.colors.secondaryColor};
     border-bottom: 1px solid ${theme.colors.thirdColor};
     z-index: 200;
-
     /* a {
       min-width: 20%;
       text-align: center;

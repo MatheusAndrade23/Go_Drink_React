@@ -8,7 +8,7 @@ export const DrinkComponent = ({ drink }) => {
   return (
     <Styled.Drink
       onClick={() => (window.location.href = `/drink/${idDrink}`)}
-      title="Drink Details"
+      title={`${strDrink} details`}
     >
       <img src={strDrinkThumb} alt={strDrink} loading="lazy" />
       <Heading as="h6" size="small">

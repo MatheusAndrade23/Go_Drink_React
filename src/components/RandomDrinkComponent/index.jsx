@@ -35,7 +35,7 @@ export const RandomDrinkComponent = () => {
         <Styled.Drink
           key={drink.idDrink}
           onClick={() => (window.location.href = `/drink/${drink.idDrink}`)}
-          title="Drink Details"
+          title={`${drink.strDrink} details`}
         >
           <img src={drink.strDrinkThumb} alt={drink.strDrink} loading="lazy" />
           <Heading as="h6" size="small">

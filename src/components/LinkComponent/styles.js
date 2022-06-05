@@ -39,5 +39,6 @@ export const Link = styled.a`
     ${LinkCase(uppercase)};
     ${LinkSize[size](theme)};
     ${LinkModel[model](theme)};
+    text-align: center;
   `}
 `;
