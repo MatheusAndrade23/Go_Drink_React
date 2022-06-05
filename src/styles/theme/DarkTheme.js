@@ -23,6 +23,7 @@ export const DarkTheme = {
     },
   },
   media: {
+    mediumScreen: '(max-width: 1140px)',
     lteMedium: '(max-width: 768px)',
     smallScreen: '(max-width: 458px)',
   },
