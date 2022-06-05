@@ -127,6 +127,17 @@ export const Lists = () => {
               <Styled.Container>
                 {kindsToShow.map((kinds, index) => (
                   <Styled.Kind
+                    title={
+                      kind === 'i'
+                        ? `Drinks that are made with ${kinds[type]}`
+                        : kind === 'g'
+                        ? `Drinks of ${kinds[type]} ${
+                            kinds[type].includes('lass') ? '' : 'glass'
+                          }`
+                        : kind === 'c'
+                        ? `Drinks of the ${kinds[type]} category`
+                        : ''
+                    }
                     key={kinds[type]}
                     onClick={() =>
                       (window.location.href = `/kind/${kind}/${kinds[
@@ -138,6 +149,7 @@ export const Lists = () => {
                     {kind === 'i' && (
                       <img
                         src={`https://www.thecocktaildb.com/images/ingredients/${kinds[type]}.png`}
+                        alt={kinds[type]}
                       />
                     )}
                     <Heading as="h6" size="small">
@@ -154,7 +166,7 @@ export const Lists = () => {
           )}
           {kinds && loadMoreControl < kinds.length && (
             <ButtonComponent handleSubmit={handleShowMoreKinds} bold={false}>
-              Load More Drinks
+              Load More
             </ButtonComponent>
           )}
         </Styled.KindsContainer>

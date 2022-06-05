@@ -113,7 +113,7 @@ export const Favorites = () => {
           )}
           {drinks && drinks.length > 0 && loadMoreControl < drinks.length && (
             <ButtonComponent handleSubmit={handleShowMoreDrinks} bold={false}>
-              Load More Drinks
+              Load More
             </ButtonComponent>
           )}
         </Styled.Container>
