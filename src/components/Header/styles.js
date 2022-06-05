@@ -10,9 +10,43 @@ export const Header = styled.header`
     background-color: ${theme.colors.secondaryColor};
     border-bottom: 1px solid ${theme.colors.thirdColor};
     z-index: 200;
-    /* a {
-      min-width: 20%;
-      text-align: center;
-    } */
+
+    @media ${theme.media.smallScreen} {
+      & input{
+        width: 80%;
+      }
+    }
+
+    @media ${theme.media.xsmallScreen} {
+      flex-direction: column;
+      align-items: flex-start;
+
+      & > a{
+        position: absolute;
+        right: 10px;
+        top: 5px;
+      }
+
+      & div:first-child{
+        align-self: flex-start;
+        width: max-content;
+      }
+
+      & div{
+        align-self: flex-start;
+        width: 100%;
+
+      }
+    }
+
+    @media ${theme.media.xxsmallScreen} {
+      & div:first-child{
+
+        & p{
+          font-size: ${theme.fonts.sizes.medium};
+        }
+      }
+
+    }
   `}
 `;

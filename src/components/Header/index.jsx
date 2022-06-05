@@ -61,7 +61,10 @@ export const Header = () => {
   return (
     <>
       <Styled.Header>
-        <Logo text="GODRINK" />
+        <SmallContainer>
+          <Logo text="GODRINK" smallText="GD" />
+        </SmallContainer>
+
         <SmallContainer disposition="row">
           <InputComponent
             type="text"

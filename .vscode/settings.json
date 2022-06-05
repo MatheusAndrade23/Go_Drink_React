@@ -1,6 +1,7 @@
 {
   "cSpell.words": [
     "browserslist",
+    "GDRK",
     "godrink",
     "linkedin",
     "Linkedin",
@@ -10,7 +11,8 @@
     "thecocktaildb",
     "xlarge",
     "xsmall",
-    "xxlarge"
+    "xxlarge",
+    "xxsmall"
   ],
   "prettier.configPath": "./.prettierrc.js"
 }

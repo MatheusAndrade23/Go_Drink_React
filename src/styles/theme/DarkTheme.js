@@ -25,7 +25,9 @@ export const DarkTheme = {
   media: {
     mediumScreen: '(max-width: 1140px)',
     lteMedium: '(max-width: 768px)',
-    smallScreen: '(max-width: 458px)',
+    smallScreen: '(max-width: 560px)',
+    xsmallScreen: '(max-width: 420px)',
+    xxsmallScreen: '(max-width: 270px)',
   },
   spacings: {
     xsmall: '8px',
