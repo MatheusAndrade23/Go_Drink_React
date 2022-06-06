@@ -24,29 +24,36 @@ export const Header = styled.header`
       & > a{
         position: absolute;
         right: 10px;
-        top: 5px;
+        top: 2px;
       }
 
       & div:first-child{
-        align-self: flex-start;
+        width: 100%;
         width: max-content;
+        margin-bottom: 5px;
       }
 
       & div{
         align-self: flex-start;
         width: 100%;
-
       }
     }
 
     @media ${theme.media.xxsmallScreen} {
       & div:first-child{
-
         & p{
           font-size: ${theme.fonts.sizes.medium};
         }
       }
 
+      & button{
+        height: 35px;
+        width: 35px;
+      }
+
+      & input{
+        padding: 5px;
+      }
     }
   `}
 `;

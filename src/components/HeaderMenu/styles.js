@@ -13,6 +13,10 @@ export const Menu = styled.ul`
     & div.rec-carousel-wrapper{
       padding: ${theme.spacings.small};
       align-items: center;
+
+      @media ${theme.media.xsmallScreen} {
+        padding: 10px;
+      }
     }
 
     & button.rec-arrow {
@@ -35,7 +39,6 @@ export const Menu = styled.ul`
     }
 
     & button.rec-dot {
-
       &.rec-dot_active {
         background-color: ${theme.colors.thirdColor} !important;
         box-shadow: 0 0 1px 3px ${theme.colors.thirdColor} !important;

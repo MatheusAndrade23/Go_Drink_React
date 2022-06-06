@@ -10,7 +10,7 @@ export const InputComponent = ({
 }) => {
   return (
     <>
-      <Styled.Label htmlFor={name}>{text}</Styled.Label>
+      {text && <Styled.Label htmlFor={name}>{text}</Styled.Label>}
       <Styled.Input
         onChange={(e) => handleChange(e)}
         name={name}

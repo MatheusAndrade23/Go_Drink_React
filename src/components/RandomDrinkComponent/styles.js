@@ -12,11 +12,6 @@ export const Drink = styled.div`
     position: relative;
     display: flex;
     flex-direction: column;
-    text-align: center;
-
-    & h5{
-      margin-top: 40%;
-    }
 
     & h6 {
       height: 35px;
@@ -35,6 +30,28 @@ export const Drink = styled.div`
 
     &:hover {
       box-shadow: 1px 0px 12px 0px ${theme.colors.shadow};
+    }
+
+    @media ${theme.media.xsmallScreen} {
+      height: 290px;
+      width: 250px;
+
+      & img {
+        width: 210px;
+      }
+
+      & h6 {
+      width: 210px;
+      }
+    }
+
+    @media ${theme.media.xxsmallScreen} {
+      height: 260px;
+      width: 230px;
+
+      & img {
+        width: 180px;
+      }
     }
   `}
 `;

@@ -13,5 +13,9 @@ export const ReturnLink = styled.a`
     &:hover {
       color: ${theme.colors.primaryColor};
     }
+
+    @media ${theme.media.xsmallScreen} {
+      display: none;
+    }
   `}
 `;

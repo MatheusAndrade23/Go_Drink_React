@@ -3,13 +3,17 @@ import styled, { css } from 'styled-components';
 export const Logo = styled.a`
   ${({ theme }) => css`
     color: ${theme.colors.thirdColor};
-    font-family: ${theme.fonts.family.secondary};
     font-weight: bold;
     text-align: center;
     font-size: ${theme.fonts.sizes.large};
 
+    & p{
+      font-family: ${theme.fonts.family.secondary};
+    }
+
     @media ${theme.media.lteMedium} {
       & p{
+
         display: none;
       }
     }
@@ -23,6 +27,7 @@ export const Logo = styled.a`
 
 export const SmallText = styled.span`
   ${({ theme }) => css`
+    font-family: ${theme.fonts.family.secondary};
     display: none;
     @media ${theme.media.lteMedium} {
       display: block

@@ -69,7 +69,7 @@ export const Header = () => {
           <InputComponent
             type="text"
             handleChange={SearchInput}
-            placeholder="Type something to search..."
+            placeholder="Type here to search..."
             name="search"
           />
           <ButtonComponent
