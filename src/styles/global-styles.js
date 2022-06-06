@@ -6,6 +6,7 @@ export const GlobalStyles = createGlobalStyle`
     padding: 0;
     box-sizing: border-box;
     font-family: ${({ theme }) => theme.fonts.family.default};
+    scroll-behavior: smooth;
   }
 
   html, body {
