@@ -16,7 +16,7 @@ export const Container = styled.section`
     }
 
     & button {
-      width: 200px;
+      width: 160px;
     }
   `}
 `;

@@ -2,7 +2,7 @@ import * as Styled from './styles';
 
 import { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { BiDrink } from 'react-icons/bi';
+import { FaCocktail } from 'react-icons/fa';
 import { GiFruitBowl } from 'react-icons/gi';
 
 import { Header } from '../../components/Header';
@@ -25,8 +25,12 @@ export const Home = () => {
       <Header />
       <Styled.HomeContainer>
         <Styled.Init>
+          <img
+            src="https://images.pexels.com/photos/338713/pexels-photo-338713.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+            alt="Drink image"
+          />
           <SmallContainer>
-            <Styled.Title>Welcome to GoDrink</Styled.Title>
+            <Styled.Title>Welcome to GODRINK</Styled.Title>
             <TextComponent size="medium">
               An open source website with over 600 different cocktails recipes
               <br />
@@ -34,7 +38,7 @@ export const Home = () => {
             </TextComponent>
             <Styled.Info>
               <SmallContainer disposition="row">
-                <BiDrink />
+                <FaCocktail />
                 <p>Total Cocktails: 635</p>
               </SmallContainer>
               <SmallContainer disposition="row">
@@ -43,6 +47,10 @@ export const Home = () => {
               </SmallContainer>
             </Styled.Info>
           </SmallContainer>
+          <img
+            src="https://images.pexels.com/photos/2480828/pexels-photo-2480828.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+            alt="Drink image"
+          />
         </Styled.Init>
         <Styled.SecTitle>Popular Drinks:</Styled.SecTitle>
         <Styled.RandomDrinks>

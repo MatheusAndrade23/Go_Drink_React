@@ -33,10 +33,6 @@ export const Info = styled.div`
 
 export const Init = styled.div`
   ${({ theme }) => css`
-    /* background-image: url('https://images.pexels.com/photos/1010139/pexels-photo-1010139.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500');
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover; */
     min-height: 72vh;
     width: 100%;
     display: flex;
@@ -50,6 +46,11 @@ export const Init = styled.div`
       font-size: ${theme.fonts.sizes.small};
       font-style: ${theme.fonts.family.secondary};
       text-align: center;
+    }
+
+    img {
+      width: 18%;
+      border: 2px solid ${theme.colors.primaryColor};
     }
   `}
 `;

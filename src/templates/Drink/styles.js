@@ -28,6 +28,8 @@ export const Info = styled.div`
     display: flex;
     flex-direction: column;
     position: relative;
+    margin: 20px;
+    min-width: 450px;
 
     & span {
       font-weight: bold;
@@ -41,6 +43,23 @@ export const Info = styled.div`
 
     & h6 {
       margin-bottom: 10px;
+    }
+
+    & > div{
+      width: 100%;
+      flex-wrap: wrap;
+      justify-content: flex-start;
+    }
+
+    @media ${theme.media.lteMedium} {
+      width: 100%;
+      min-width: 100px;
+    }
+
+    @media ${theme.media.xxsmallScreen} {
+      & h1{
+        font-size: ${theme.fonts.sizes.large}
+      }
     }
   `}
 `;
@@ -66,8 +85,14 @@ export const Favorite = styled.button`
 export const DrinkImg = styled.img`
   ${({ theme }) => css`
     border: 2px solid ${theme.colors.primaryColor};
-    height: 400px;
     width: 400px;
+    margin: 20px;
+
+    @media ${theme.media.lteMedium} {
+      max-height: 600px;
+      max-width: 600px;
+      width: 100%;
+    }
   `}
 `;
 
@@ -75,9 +100,14 @@ export const Drink = styled.div`
   ${({ theme }) => css`
     min-height: 100vh;
     background-color: ${theme.colors.fourthColor};
-    padding: ${theme.spacings.huge};
+    padding: ${theme.spacings.large} ${theme.spacings.huge};
     display: flex;
-    flex-flow: row wrap;
+    flex-flow: row wrap-reverse;
     justify-content: space-between;
+    align-items: flex-end;
+
+    @media ${theme.media.smallScreen} {
+      padding: ${theme.spacings.xsmall};
+    }
   `}
 `;

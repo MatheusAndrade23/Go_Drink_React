@@ -17,7 +17,7 @@ export const KindsContainer = styled.section`
     }
 
     & button {
-      width: 200px;
+      width: 160px;
     }
   `}
 `;

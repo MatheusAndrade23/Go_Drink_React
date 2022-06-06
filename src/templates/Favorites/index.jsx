@@ -60,6 +60,7 @@ export const Favorites = () => {
       try {
         const resp = await db.get(`api/json/v1/1/lookup.php?i=${id}`);
         const drink = resp.data.drinks[0];
+
         setDrinks((drinks) => [...drinks, drink]);
       } catch (err) {
         setDrinks(undefined);
