@@ -49,8 +49,13 @@ export const Init = styled.div`
     }
 
     img {
+      min-width: 170px;
       width: 18%;
       border: 2px solid ${theme.colors.primaryColor};
+
+      @media ${theme.media.lteMedium} {
+        display: none;
+      }
     }
   `}
 `;
@@ -72,6 +77,8 @@ export const Title = styled.h1`
     font-size: ${theme.fonts.sizes.xlarge};
     font-family: ${theme.fonts.family.secondary};
     margin-top: ${theme.spacings.small};
+    width: 100%;
+    text-align: center;
   `}
 `;
 

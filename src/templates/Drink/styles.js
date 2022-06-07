@@ -91,7 +91,7 @@ export const DrinkImg = styled.img`
     @media ${theme.media.lteMedium} {
       max-height: 600px;
       max-width: 600px;
-      width: 100%;
+      width: 85%;
     }
   `}
 `;
@@ -105,9 +105,12 @@ export const Drink = styled.div`
     flex-flow: row wrap-reverse;
     justify-content: space-between;
     align-items: flex-end;
+    width: 100%;
 
     @media ${theme.media.smallScreen} {
       padding: ${theme.spacings.xsmall};
+      align-items: center;
+      justify-content: center;
     }
   `}
 `;

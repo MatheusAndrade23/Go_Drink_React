@@ -46,6 +46,11 @@ export const Home = () => {
                 <p>Total Ingredients: 488</p>
               </SmallContainer>
             </Styled.Info>
+            <TextComponent size="medium">
+              You can also add your favorite recipes to a favorites list, but
+              <br />
+              for that you need to create an account before.
+            </TextComponent>
           </SmallContainer>
           <img
             src="https://images.pexels.com/photos/2480828/pexels-photo-2480828.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
