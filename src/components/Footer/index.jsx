@@ -30,7 +30,6 @@ export const Footer = () => {
           GitHub.
         </LinkComponent>
       </TextComponent>
-      <Styled.FooterLogo>GODRINK ©</Styled.FooterLogo>
       <SmallContainer disposition="row">
         <Styled.SocialMedia href={config.linkedin} title="Linkedin">
           <AiOutlineLinkedin />
@@ -45,6 +44,7 @@ export const Footer = () => {
           <TbApi />
         </Styled.SocialMedia>
       </SmallContainer>
+      <Styled.FooterLogo>GODRINK ©</Styled.FooterLogo>
       <Styled.GoTop href="#" title="Go top">
         <BsFillArrowUpSquareFill />
       </Styled.GoTop>
