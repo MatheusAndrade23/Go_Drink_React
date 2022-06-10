@@ -1,6 +1,7 @@
 import * as Styled from '../Kinds/styles';
 
 import { useState, useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 
 import { db } from '../../services/api';
 
@@ -15,6 +16,7 @@ import { ButtonComponent } from '../../components/ButtonComponent';
 import config from '../../config';
 
 export const AllDrinks = () => {
+  const { t } = useTranslation();
   const DRINKS_PER_PAGE = 8;
 
   const [loadMoreControl, setLoadMoreControl] = useState(DRINKS_PER_PAGE);
@@ -57,16 +59,16 @@ export const AllDrinks = () => {
     if (drinks && drinks.length > 0) {
       setDrinksToShow(drinks.slice(0, DRINKS_PER_PAGE));
       setLoadingControl(false);
-      document.title = `All Drinks | ${config.siteName} `;
+      document.title = `${t('headerLinkADrinks')} | ${config.siteName} `;
     } else if (drinks === undefined) {
       setErrorControl({
         error: true,
-        message: 'Something went wrong, try again later!',
+        message: t('error500message'),
         code: 500,
       });
-      document.title = `Server Error | ${config.siteName} `;
+      document.title = `${t('serverErrorTitle')} | ${config.siteName} `;
     }
-  }, [drinks]);
+  }, [drinks, t]);
 
   return (
     <>
@@ -74,7 +76,7 @@ export const AllDrinks = () => {
       {!errorControl.error ? (
         <Styled.Container>
           <Heading size="small" as="h4">
-            All Drinks:
+            {`${t('headerLinkADrinks')}:`}
           </Heading>
           {!loadingControl ? (
             <Styled.DrinksContainer>
@@ -89,7 +91,7 @@ export const AllDrinks = () => {
           )}
           {drinks && drinks.length > 0 && loadMoreControl < drinks.length && (
             <ButtonComponent handleSubmit={handleShowMoreDrinks} bold={false}>
-              Load More
+              {t('loadMoreButton')}
             </ButtonComponent>
           )}
         </Styled.Container>

@@ -1,5 +1,6 @@
 import * as Styled from '../Kinds/styles';
 
+import { useTranslation } from 'react-i18next';
 import { useState, useEffect, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 
@@ -20,6 +21,7 @@ import config from '../../config';
 export const Favorites = () => {
   const { user, updateFavorites } = useContext(AuthContext);
   const navigate = useNavigate();
+  const { t } = useTranslation();
   const DRINKS_PER_PAGE = 8;
 
   const [next, setNext] = useState(0);
@@ -48,8 +50,7 @@ export const Favorites = () => {
     if (!authenticated) {
       setErrorControl({
         error: true,
-        message:
-          'Please create an account or log in before having a list of favorite drinks!',
+        message: t('withOutFavorites'),
       });
       return;
     }
@@ -70,29 +71,29 @@ export const Favorites = () => {
         setDrinks(undefined);
       }
     });
-  }, [user]);
+  }, [t, user]);
 
   useEffect(() => {
     if (drinks && drinks.length > 0) {
       setLoadingControl(false);
       setDrinksToShow(drinks.slice(0, DRINKS_PER_PAGE));
-      document.title = `Favorites | ${config.siteName} `;
+      document.title = `${t('headerLinkFavorites')} | ${config.siteName} `;
     } else if (drinks === null) {
       setLoadingControl(false);
       setErrorControl({
         error: true,
-        message: 'You do not have any favorite drink!',
+        message: t('withOutFavorites'),
       });
-      document.title = `Favorites | ${config.siteName} `;
+      document.title = `${t('headerLinkFavorites')} | ${config.siteName} `;
     } else if (drinks === undefined) {
       setErrorControl({
         error: true,
-        message: 'Something went wrong, try again later!',
+        message: t('error500message'),
         code: 500,
       });
-      document.title = `Server Error | ${config.siteName} `;
+      document.title = `${t('serverErrorTitle')} | ${config.siteName} `;
     }
-  }, [drinks]);
+  }, [drinks, t]);
 
   return (
     <>
@@ -100,7 +101,7 @@ export const Favorites = () => {
       {!errorControl.error ? (
         <Styled.Container>
           <Heading size="small" as="h4">
-            Favorite Drinks:
+            {`${t('headerLinkFavorites')} ${t('drinks')}:`}
           </Heading>
           {!loadingControl ? (
             <Styled.DrinksContainer>
@@ -118,7 +119,7 @@ export const Favorites = () => {
           )}
           {drinks && drinks.length > 0 && loadMoreControl < drinks.length && (
             <ButtonComponent handleSubmit={handleShowMoreDrinks} bold={false}>
-              Load More
+              {t('loadMoreButton')}
             </ButtonComponent>
           )}
         </Styled.Container>

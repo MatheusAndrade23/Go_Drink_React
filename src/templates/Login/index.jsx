@@ -1,5 +1,6 @@
 import * as Styled from './styles';
 
+import { useTranslation } from 'react-i18next';
 import { useState, useEffect, useContext } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 
@@ -18,6 +19,7 @@ import config from '../../config';
 
 export const Login = () => {
   const { user, login, logout, register } = useContext(AuthContext);
+  const { t } = useTranslation();
   const { action } = useParams();
   const navigate = useNavigate();
 
@@ -50,12 +52,12 @@ export const Login = () => {
     switch (login) {
       case 'signin':
         setLoginControl('signin');
-        document.title = `Sign In | ${config.siteName}`;
+        document.title = `${t('loginSingIn')} | ${config.siteName}`;
         break;
 
       case 'signup':
         setLoginControl('signup');
-        document.title = `Sign Up | ${config.siteName}`;
+        document.title = `${t('loginSingUp')} | ${config.siteName}`;
         break;
 
       case 'signout':
@@ -66,7 +68,7 @@ export const Login = () => {
         navigate('/');
         break;
     }
-  }, [action, logout, navigate]);
+  }, [action, logout, navigate, t]);
 
   return (
     <Styled.Container>
@@ -75,32 +77,32 @@ export const Login = () => {
           GODRINK
         </Heading>
         <InputComponent
-          text="Email:"
-          placeholder="Type your email here..."
+          text={`${t('email')}:`}
+          placeholder={t('typeEmail')}
           name="email"
           type="email"
           handleChange={handleGetInfo}
         />
         <InputComponent
-          text="Password:"
-          placeholder="Type your password here..."
+          text={`${t('password')}:`}
+          placeholder={t('typePassword')}
           name="password"
           type="password"
           handleChange={handleGetInfo}
         />
         <ButtonComponent bold={false} handleSubmit={handleSubmitLogin}>
-          {loginControl === 'signin' ? 'Sign In' : 'Sign Up'}
+          {loginControl === 'signin' ? t('loginSingIn') : t('loginSingUp')}
         </ButtonComponent>
         <SmallContainer disposition="row">
           <TextComponent>
-            {loginControl !== 'signin'
-              ? 'Not have an account yet?'
-              : 'Already have an account?'}
+            {loginControl == 'signin'
+              ? t('doNotHaveAccount')
+              : t('haveAccount')}
           </TextComponent>
           <LinkComponent
             link={loginControl !== 'signin' ? '/login/signin' : '/login/signup'}
           >
-            {loginControl !== 'signin' ? 'Sign In' : 'Sign Up'}
+            {loginControl !== 'signin' ? t('loginSingIn') : t('loginSingUp')}
           </LinkComponent>
         </SmallContainer>
       </Styled.Login>

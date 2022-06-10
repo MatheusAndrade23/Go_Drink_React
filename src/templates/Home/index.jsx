@@ -2,23 +2,28 @@ import * as Styled from './styles';
 
 import { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
+
 import { FaCocktail } from 'react-icons/fa';
 import { GiFruitBowl } from 'react-icons/gi';
 
 import { Header } from '../../components/Header';
 import { Loading } from '../../components/Loading';
+
 import { TextComponent } from '../../components/TextComponent';
 import { LinkComponent } from '../../components/LinkComponent';
 import { ErrorComponent } from '../../components/ErrorComponent';
 import { SmallContainer } from '../../components/SmallContainer';
 import { DrinkComponent } from '../../components/DrinkComponent';
 import { ButtonComponent } from '../../components/ButtonComponent';
+import { LanguageSwitcher } from '../../components/LanguageSwitcher';
 import { RandomDrinkComponent } from '../../components/RandomDrinkComponent';
 
 import config from '../../config';
 import popularDrinks from './popular-drinks.js';
 
 export const Home = () => {
+  const { t } = useTranslation();
   document.title = `Home | ${config.siteName}`;
   return (
     <>
@@ -30,40 +35,33 @@ export const Home = () => {
             alt="Drink image"
           />
           <SmallContainer>
-            <Styled.Title>Welcome to GODRINK</Styled.Title>
-            <TextComponent size="medium">
-              An open source website with over 600 different cocktails recipes
-              <br />
-              from around the world.
-            </TextComponent>
+            <Styled.Title>{t('welcome')}</Styled.Title>
+            <TextComponent size="medium">{t('description')}</TextComponent>
             <Styled.Info>
               <SmallContainer disposition="row">
                 <FaCocktail />
-                <p>Total Cocktails: 635</p>
+                <p>{t('tCocktails')}</p>
               </SmallContainer>
               <SmallContainer disposition="row">
                 <GiFruitBowl />
-                <p>Total Ingredients: 488</p>
+                <p>{t('tIngredients')}</p>
               </SmallContainer>
             </Styled.Info>
-            <TextComponent size="medium">
-              You can also add your favorite recipes to a favorites list, but
-              <br />
-              for that you need to create an account before.
-            </TextComponent>
+            <TextComponent size="medium">{t('feature')}</TextComponent>
+            <LanguageSwitcher />
           </SmallContainer>
           <img
             src="https://images.pexels.com/photos/2480828/pexels-photo-2480828.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
             alt="Drink image"
           />
         </Styled.Init>
-        <Styled.SecTitle>Popular Drinks:</Styled.SecTitle>
+        <Styled.SecTitle>{t('popularTitle')}</Styled.SecTitle>
         <Styled.RandomDrinks>
           {popularDrinks.drinks.map((drink) => (
             <DrinkComponent drink={drink} key={drink.idDrink} />
           ))}
         </Styled.RandomDrinks>
-        <Styled.SecTitle>Random Drinks:</Styled.SecTitle>
+        <Styled.SecTitle>{t('randomTitle')}</Styled.SecTitle>
         <Styled.RandomDrinks>
           <RandomDrinkComponent />
           <RandomDrinkComponent />

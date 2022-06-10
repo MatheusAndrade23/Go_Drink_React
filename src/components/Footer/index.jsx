@@ -1,5 +1,7 @@
 import * as Styled from './styles';
 
+import { useTranslation } from 'react-i18next';
+
 import { BiDrink } from 'react-icons/bi';
 import { TbApi } from 'react-icons/tb';
 import { RiAwardFill } from 'react-icons/ri';
@@ -12,20 +14,22 @@ import { LinkComponent } from '../LinkComponent';
 import { TextComponent } from '../TextComponent';
 import { ThemeSwitcher } from '../ThemeSwitcher';
 import { SmallContainer } from '../SmallContainer';
+import { LanguageSwitcher } from '../../components/LanguageSwitcher';
 
 import config from '../../config';
 
 export const Footer = () => {
+  const { t } = useTranslation();
   return (
     <Styled.Footer>
       <TextComponent>
-        This website uses{' '}
+        {`${t('cocktailDbCredits')} ${''}`}
         <LinkComponent link="https://www.thecocktaildb.com/">
           TheCocktailDB.
         </LinkComponent>
       </TextComponent>
       <TextComponent>
-        If you like the site, please consider giving a star on{' '}
+        {`${t('githubInvite')} ${''}`}
         <LinkComponent link="https://www.thecocktaildb.com/">
           GitHub.
         </LinkComponent>
@@ -45,9 +49,10 @@ export const Footer = () => {
         </Styled.SocialMedia>
       </SmallContainer>
       <Styled.FooterLogo>GODRINK ©</Styled.FooterLogo>
-      <Styled.GoTop href="#" title="Go top">
+      <Styled.GoTop href="#" title={t('goTopTitle')}>
         <BsFillArrowUpSquareFill />
       </Styled.GoTop>
+      <LanguageSwitcher />
       <ThemeSwitcher />
     </Styled.Footer>
   );

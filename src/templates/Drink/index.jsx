@@ -1,9 +1,10 @@
 import * as Styled from './styles';
 
+import { useTranslation } from 'react-i18next';
 import { useState, useEffect, useContext } from 'react';
 import { useParams } from 'react-router-dom';
 
-import { db, api } from '../../services/api';
+import { db, api, translate } from '../../services/api';
 
 import { AiFillStar, AiOutlineStar } from 'react-icons/ai';
 
@@ -22,8 +23,9 @@ import { MessageComponent } from '../../components/MessageComponent';
 import config from '../../config';
 
 export const Drink = () => {
-  const { id } = useParams();
   const { user, updateFavorites } = useContext(AuthContext);
+  const { t } = useTranslation();
+  const { id } = useParams();
 
   const [drink, setDrink] = useState('');
   const [message, setMessage] = useState(undefined);
@@ -37,7 +39,7 @@ export const Drink = () => {
 
   const handleFavorite = async () => {
     if (!user.authenticated) {
-      setMessage('Please log in before putting the drink in favorites!');
+      setMessage(t('notAuthenticated'));
       setTimeout(() => {
         setMessage(undefined);
       }, 3000);
@@ -78,20 +80,16 @@ export const Drink = () => {
     if (drink) {
       document.title = `${drink.strDrink} | ${config.siteName}`;
     } else if (drink === null) {
-      setErrorControl({
-        error: true,
-        message: 'This drink does not exist!',
-      });
-      document.title = `Error | ${config.siteName} `;
+      window.location.href = '/not-found';
     } else if (drink === undefined) {
       setErrorControl({
         error: true,
-        message: 'Something went wrong, try again later!',
+        message: t('error500message'),
         code: 500,
       });
-      document.title = `Server Error | ${config.siteName} `;
+      document.title = `${t('serverErrorTitle')} | ${config.siteName} `;
     }
-  }, [drink]);
+  }, [drink, t]);
 
   useEffect(() => {
     const { favorites, authenticated } = user;
@@ -116,9 +114,9 @@ export const Drink = () => {
               <Styled.Info>
                 <Styled.Favorite onClick={handleFavorite}>
                   {isFavorite ? (
-                    <AiFillStar title="Remove from favorites" />
+                    <AiFillStar title={t('removeFavorites')} />
                   ) : (
-                    <AiOutlineStar title="Add to favorites" />
+                    <AiOutlineStar title={t('addFavorite')} />
                   )}
                 </Styled.Favorite>
                 <Heading>{drink.strDrink}</Heading>
@@ -131,7 +129,7 @@ export const Drink = () => {
                   <Styled.List>
                     <>
                       <Heading size="small" as="h6">
-                        Ingredients:
+                        {`${t('drinkIngredients')}:`}
                       </Heading>
                       {ingredients.ingredients.map((ingredient, index) => (
                         <li key={`${ingredient}-${index}`}>{ingredient}</li>
@@ -141,7 +139,7 @@ export const Drink = () => {
                   <Styled.List>
                     <>
                       <Heading size="small" as="h6">
-                        Measures:
+                        {`${t('drinkMeasures')}:`}
                       </Heading>
                       {ingredients.measures.map((measure, index) => (
                         <li key={`${measure}-${index}`}>{measure}</li>

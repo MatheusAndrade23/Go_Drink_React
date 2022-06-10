@@ -12,7 +12,7 @@ export const Container = styled.button`
     cursor: pointer;
     font-weight: bold;
     height: 30px;
-    width: 170px;
+    width: 200px;
     border: none;
     transition: 0.5s;
   `}

@@ -1,5 +1,6 @@
 import * as Styled from '../Kinds/styles';
 
+import { useTranslation } from 'react-i18next';
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 
@@ -16,6 +17,7 @@ import { ButtonComponent } from '../../components/ButtonComponent';
 import config from '../../config';
 
 export const Search = () => {
+  const { t } = useTranslation();
   const { search } = useParams();
   const DRINKS_PER_PAGE = 8;
 
@@ -57,22 +59,22 @@ export const Search = () => {
     if (drinks && drinks.length > 0) {
       setDrinksToShow(drinks.slice(0, DRINKS_PER_PAGE));
       setLoadingControl(false);
-      document.title = `Search: "${search}" | ${config.siteName} `;
+      document.title = `${t('searchTitle')}: "${search}" | ${config.siteName} `;
     } else if (drinks === null) {
       setErrorControl({
         error: true,
-        message: `No results for your search: "${search}"`,
+        message: `${t('noResultsSearch')}: "${search}"`,
       });
-      document.title = `Search: "${search}" | ${config.siteName} `;
+      document.title = `${t('searchTitle')}: "${search}" | ${config.siteName} `;
     } else if (drinks === undefined) {
       setErrorControl({
         error: true,
-        message: 'Something went wrong, try again later!',
+        message: t('error500message'),
         code: 500,
       });
-      document.title = `Server Error | ${config.siteName} `;
+      document.title = `${t('serverErrorTitle')} | ${config.siteName} `;
     }
-  }, [drinks, search]);
+  }, [drinks, search, t]);
 
   return (
     <>
@@ -80,7 +82,7 @@ export const Search = () => {
       {!errorControl.error ? (
         <Styled.Container>
           <Heading size="small" as="h4">
-            {`Search: "${search}"`}
+            {`${t('searchTitle')}: "${search}"`}
           </Heading>
           {!loadingControl ? (
             <Styled.DrinksContainer>
@@ -95,7 +97,7 @@ export const Search = () => {
           )}
           {drinks && drinks.length > 0 && loadMoreControl < drinks.length && (
             <ButtonComponent handleSubmit={handleShowMoreDrinks} bold={false}>
-              Load More
+              {t('loadMoreButton')}
             </ButtonComponent>
           )}
         </Styled.Container>

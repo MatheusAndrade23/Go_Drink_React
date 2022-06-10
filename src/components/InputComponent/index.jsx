@@ -1,4 +1,5 @@
 import P from 'prop-types';
+import { useTranslation } from 'react-i18next';
 import * as Styled from './styles';
 
 export const InputComponent = ({
@@ -8,6 +9,7 @@ export const InputComponent = ({
   text = '',
   placeholder,
 }) => {
+  const { t } = useTranslation();
   return (
     <>
       {text && <Styled.Label htmlFor={name}>{text}</Styled.Label>}
@@ -16,7 +18,7 @@ export const InputComponent = ({
         name={name}
         type={type}
         placeholder={placeholder}
-        title={`Type your ${name} here`}
+        title={placeholder}
       />
     </>
   );

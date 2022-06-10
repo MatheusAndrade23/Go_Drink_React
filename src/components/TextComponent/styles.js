@@ -21,6 +21,7 @@ export const Text = styled.p`
     color: ${theme.colors.primaryColor};
     font-size: ${theme.fonts.sizes.medium};
     margin: ${theme.spacings.small} 0;
+    max-width: 500px;
     ${TextCase(uppercase)};
     ${TextSize[size](theme)};
   `}

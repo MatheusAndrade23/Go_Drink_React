@@ -9,13 +9,7 @@ export const LinkComponent = ({
   model = 'standard',
 }) => {
   return (
-    <Styled.Link
-      href={link}
-      uppercase={uppercase}
-      size={size}
-      model={model}
-      title={children}
-    >
+    <Styled.Link href={link} uppercase={uppercase} size={size} model={model}>
       {children}
     </Styled.Link>
   );

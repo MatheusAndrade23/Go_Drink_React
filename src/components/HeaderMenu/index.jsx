@@ -1,10 +1,13 @@
 import * as Styled from './styles';
 
+import { useTranslation } from 'react-i18next';
+
 import Carousel from 'react-elastic-carousel';
 
 import { LinkComponent } from '../LinkComponent';
 
 export const HeaderMenu = () => {
+  const { t } = useTranslation();
   const breakPoints = [
     { width: 1, itemsToShow: 1, pagination: false },
     { width: 300, itemsToShow: 2, pagination: false },
@@ -20,28 +23,28 @@ export const HeaderMenu = () => {
     <Styled.Menu>
       <Carousel breakPoints={breakPoints}>
         <LinkComponent link="/favorites" model="alternative">
-          My Favorites
+          {t('headerLinkFavorites')}
         </LinkComponent>
         <LinkComponent link="/kind/a/alcoholic" model="alternative">
-          Alcoholic
+          {t('headerLinkAlcoholic')}
         </LinkComponent>
         <LinkComponent link="/kind/a/non_alcoholic" model="alternative">
-          Non Alcoholic
+          {t('headerLinkNAlcoholic')}
         </LinkComponent>
         <LinkComponent link="/kind/a/optional_alcohol" model="alternative">
-          Optional Alcohol
+          {t('headerLinkOAlcoholic')}
         </LinkComponent>
         <LinkComponent link="/all-drinks" model="alternative">
-          All Drinks
+          {t('headerLinkADrinks')}
         </LinkComponent>
         <LinkComponent link="/list/ingredients" model="alternative">
-          All Ingredients
+          {t('headerLinkAIngredients')}
         </LinkComponent>
         <LinkComponent link="/list/categories" model="alternative">
-          All Categories
+          {t('headerLinkACategories')}
         </LinkComponent>
         <LinkComponent link="/list/glasses" model="alternative">
-          All Glasses
+          {t('headerLinkAGlasses')}
         </LinkComponent>
       </Carousel>
     </Styled.Menu>

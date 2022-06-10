@@ -1,5 +1,6 @@
 import * as Styled from './styles';
 
+import { useTranslation } from 'react-i18next';
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
@@ -9,6 +10,7 @@ import { Heading } from '../Heading';
 import { Loading } from '../Loading';
 
 export const RandomDrinkComponent = () => {
+  const { t } = useTranslation();
   const navigate = useNavigate();
 
   const [drink, setDrink] = useState([]);
@@ -35,7 +37,7 @@ export const RandomDrinkComponent = () => {
         <Styled.Drink
           key={drink.idDrink}
           onClick={() => (window.location.href = `/drink/${drink.idDrink}`)}
-          title={`${drink.strDrink} details`}
+          title={`${drink.strDrink} ${t('details')}`}
         >
           <img src={drink.strDrinkThumb} alt={drink.strDrink} loading="lazy" />
           <Heading as="h6" size="small">
@@ -51,7 +53,7 @@ export const RandomDrinkComponent = () => {
       ) : (
         <Styled.Drink>
           <Heading as="h5" size="small">
-            Something went wrong, try again later!
+            {t('error500message')}
           </Heading>
         </Styled.Drink>
       )}

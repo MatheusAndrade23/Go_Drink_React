@@ -1,7 +1,8 @@
 import * as Styled from './styles';
 
+import { useTranslation } from 'react-i18next';
 import { useState, useEffect, useContext } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { FaSearch } from 'react-icons/fa';
 
 import { AuthContext } from '../../providers/AuthProvider/index';
@@ -16,8 +17,8 @@ import { MessageComponent } from '../MessageComponent';
 
 export const Header = () => {
   const { user } = useContext(AuthContext);
+  const { t } = useTranslation();
   const { search } = useParams();
-  const navigate = useNavigate();
 
   const [url, setUrl] = useState('');
   const [message, setMessage] = useState(null);
@@ -28,9 +29,9 @@ export const Header = () => {
 
   const SearchSubmit = () => {
     if (url) {
-      navigate(`/search/${url}`);
+      window.location.href = `/search/${url}`;
     } else {
-      setMessage('Please type something to search!');
+      setMessage(t('emptySearchMessage'));
       setTimeout(() => {
         setMessage(null);
       }, 3000);
@@ -40,9 +41,9 @@ export const Header = () => {
   useEffect(() => {
     const enterPressed = (e) => {
       if (e.key === 'Enter' && url.length > 0) {
-        navigate(`/search/${url}`);
+        window.location.href = `/search/${url}`;
       } else if (url.length < 0) {
-        setMessage('Please type something to search!');
+        setMessage(t('emptySearchMessage'));
         setTimeout(() => {
           setMessage(null);
         }, 3000);
@@ -56,7 +57,7 @@ export const Header = () => {
     return () => {
       window.removeEventListener('keydown', () => {});
     };
-  }, [navigate, search, url]);
+  }, [search, t, url]);
 
   return (
     <>
@@ -64,26 +65,27 @@ export const Header = () => {
         <SmallContainer>
           <Logo text="GODRINK" smallText="GD" />
         </SmallContainer>
-
         <SmallContainer disposition="row">
           <InputComponent
             type="text"
             handleChange={SearchInput}
-            placeholder="Type here to search..."
+            placeholder={t('searchPlaceholder')}
             name="search"
           />
           <ButtonComponent
             handleSubmit={SearchSubmit}
             model="icon"
-            name="Click to Search"
+            name={t('searchButton')}
           >
             <FaSearch />
           </ButtonComponent>
         </SmallContainer>
         {user.authenticated ? (
-          <LinkComponent link="/login/signout">Sign Out</LinkComponent>
+          <LinkComponent link="/login/signout">
+            {t('loginSingOut')}
+          </LinkComponent>
         ) : (
-          <LinkComponent link="/login/signin">Sign In</LinkComponent>
+          <LinkComponent link="/login/signin">{t('loginSingIn')}</LinkComponent>
         )}
       </Styled.Header>
       <HeaderMenu />

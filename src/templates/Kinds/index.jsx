@@ -1,5 +1,6 @@
 import * as Styled from './styles';
 
+import { useTranslation } from 'react-i18next';
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 
@@ -17,6 +18,7 @@ import config from '../../config';
 
 export const Kinds = () => {
   const { index, kind } = useParams();
+  const { t } = useTranslation();
   const DRINKS_PER_PAGE = 8;
 
   const [loadMoreControl, setLoadMoreControl] = useState(DRINKS_PER_PAGE);
@@ -65,12 +67,12 @@ export const Kinds = () => {
     } else if (drinks === undefined) {
       setErrorControl({
         error: true,
-        message: 'Something went wrong, try again later!',
+        message: t('error500message'),
         code: 500,
       });
-      document.title = `Server Error | ${config.siteName} `;
+      document.title = `${t('serverErrorTitle')} | ${config.siteName} `;
     }
-  }, [drinks, kind]);
+  }, [drinks, kind, t]);
 
   return (
     <>
@@ -105,7 +107,7 @@ export const Kinds = () => {
           )}
           {drinks && loadMoreControl < drinks.length && (
             <ButtonComponent handleSubmit={handleShowMoreDrinks} bold={false}>
-              Load More
+              {t('loadMoreButton')}
             </ButtonComponent>
           )}
         </Styled.Container>

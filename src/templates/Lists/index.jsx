@@ -1,5 +1,6 @@
 import * as Styled from './styles';
 
+import { useTranslation } from 'react-i18next';
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 
@@ -16,6 +17,7 @@ import { GetThumbImg } from '../../utils/get-thumb-img';
 import config from '../../config';
 
 export const Lists = () => {
+  const { t } = useTranslation();
   const { list } = useParams();
   const kind = list.charAt(0);
   const KINDS_PER_PAGE = 8;
@@ -99,20 +101,16 @@ export const Lists = () => {
           break;
       }
     } else if (kinds === null) {
-      setErrorControl({
-        error: true,
-        message: 'This kind does not exist!',
-      });
-      document.title = `Error | ${config.siteName} `;
+      window.location.href = '/not-found';
     } else if (kinds === undefined) {
       setErrorControl({
         error: true,
-        message: 'Something went wrong, try again later!',
+        message: t('error500message'),
         code: 500,
       });
-      document.title = `Server Error | ${config.siteName} `;
+      document.title = `${t('serverErrorTitle')} | ${config.siteName} `;
     }
-  }, [kind, kinds, loadImgLinks]);
+  }, [kind, kinds, loadImgLinks, t]);
 
   return (
     <>
@@ -166,7 +164,7 @@ export const Lists = () => {
           )}
           {kinds && loadMoreControl < kinds.length && (
             <ButtonComponent handleSubmit={handleShowMoreKinds} bold={false}>
-              Load More
+              {t('loadMoreButton')}
             </ButtonComponent>
           )}
         </Styled.KindsContainer>

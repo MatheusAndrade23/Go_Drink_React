@@ -10,6 +10,10 @@ export const db = axios.create({
   baseURL: config.dbUrl,
 });
 
+export const translate = axios.create({
+  baseURL: config.translateApiUrl,
+});
+
 export const createSession = async (email, password) => {
   return api.post('/login/signin', { email, password });
 };
