@@ -46,10 +46,12 @@ export const AuthProvider = ({ children }) => {
       setUser({ ...loggedUser, authenticated: true });
       navigate('/');
     } catch (error) {
-      setMessage(error.response.data.message);
-      setTimeout(() => {
-        setMessage(null);
-      }, 3000);
+      if (error.response.data.message) {
+        setMessage(error.response.data.message);
+        setTimeout(() => {
+          setMessage(null);
+        }, 3000);
+      }
     }
   };
 
@@ -58,10 +60,12 @@ export const AuthProvider = ({ children }) => {
       const response = await api.post('/login/signup', { email, password });
       login(email, password);
     } catch (error) {
-      setMessage(error.response.data.message);
-      setTimeout(() => {
-        setMessage(null);
-      }, 3000);
+      if (error.response.data.message) {
+        setMessage(error.response.data.message);
+        setTimeout(() => {
+          setMessage(null);
+        }, 3000);
+      }
     }
   };
 

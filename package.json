@@ -48,5 +48,18 @@
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-prettier": "^4.0.0",
     "eslint-plugin-react": "^7.29.4"
+  },
+  "jest": {
+    "collectCoverageFrom": [
+      "src/**/*.{js,jsx,ts,tsx}",
+      "!<rootDir>/src/*.{js,jsx,ts,tsx}",
+      "!<rootDir>/src/styles/*.{js,jsx,ts,tsx}",
+      "!<rootDir>/src/templates/**/*.{js,jsx,ts,tsx}",
+      "!<rootDir>/src/providers/**/*.{js,jsx,ts,tsx}",
+      "!<rootDir>/src/services/*.{js,jsx,ts,tsx}",
+      "!<rootDir>/src/i18n/*.{js,jsx,ts,tsx}",
+      "!<rootDir>/src/utils/*.{js,jsx,ts,tsx}",
+      "!<rootDir>/node_modules/"
+    ]
   }
 }

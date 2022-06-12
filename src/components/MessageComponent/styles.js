@@ -7,7 +7,7 @@ export const MessageContainer = styled.div`
     padding: 40px;
     width: max-content;
     max-width: 350px;
-    text-align: justify;
+    text-align: center;
     z-index: 300;
     border: 2px solid ${theme.colors.primaryColor};
     border-radius: 10px;

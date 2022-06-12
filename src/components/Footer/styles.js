@@ -13,18 +13,12 @@ export const Footer = styled.footer`
     align-items: center;
     text-align: center;
 
-    & a {
+    a {
       margin: 0;
     }
 
-    & p {
+    p {
       margin: ${theme.spacings.xsmall} ${theme.spacings.small};
-    }
-
-    & div{
-      flex-wrap: wrap;
-      justify-content: space-evenly;
-      width: 200px;
     }
   `}
 `;
@@ -36,6 +30,15 @@ export const GoTop = styled.a`
     right: 30px;
     top: -12px;
     font-size: 40px;
+  `}
+`;
+
+export const Icons = styled.div`
+  ${({ theme }) => css`
+      display: flex;
+      flex-flow: row wrap;
+      justify-content: space-evenly;
+      width: 170px;
   `}
 `;
 

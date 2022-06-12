@@ -52,6 +52,13 @@
     "typeEmail": "Digite seu email aqui...",
     "typePassword": "Digite sua senha aqui...",
     "email": "Email",
-    "password": "Senha"
+    "password": "Senha",
+    "ingredientTitle": "Bebidas que são feitas com",
+    "drinksKindGlass": "Bebidas do copo",
+    "drinksKindCategory": "Bebidas da categoria",
+    "glass": "",
+    "category": "",
+    "instructions": "Instruções:",
+    "language": "Idioma:"
   }
 }

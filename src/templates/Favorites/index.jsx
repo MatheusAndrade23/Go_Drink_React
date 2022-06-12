@@ -50,7 +50,7 @@ export const Favorites = () => {
     if (!authenticated) {
       setErrorControl({
         error: true,
-        message: t('withOutFavorites'),
+        message: t('createAFavorites'),
       });
       return;
     }

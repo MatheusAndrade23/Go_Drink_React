@@ -2,6 +2,7 @@ import * as Styled from './styles';
 
 import { useTranslation } from 'react-i18next';
 
+import flags from 'flag-icons';
 import { BiDrink } from 'react-icons/bi';
 import { TbApi } from 'react-icons/tb';
 import { RiAwardFill } from 'react-icons/ri';
@@ -34,7 +35,7 @@ export const Footer = () => {
           GitHub.
         </LinkComponent>
       </TextComponent>
-      <SmallContainer disposition="row">
+      <Styled.Icons disposition="row">
         <Styled.SocialMedia href={config.linkedin} title="Linkedin">
           <AiOutlineLinkedin />
         </Styled.SocialMedia>
@@ -47,8 +48,10 @@ export const Footer = () => {
         <Styled.SocialMedia href={config.apiUrl} title="Api">
           <TbApi />
         </Styled.SocialMedia>
-      </SmallContainer>
-      <Styled.FooterLogo>GODRINK ©</Styled.FooterLogo>
+      </Styled.Icons>
+      <Styled.FooterLogo>
+        GODRINK © <span className="fi fi-br fis"></span>
+      </Styled.FooterLogo>
       <Styled.GoTop href="#" title={t('goTopTitle')}>
         <BsFillArrowUpSquareFill />
       </Styled.GoTop>

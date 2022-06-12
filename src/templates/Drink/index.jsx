@@ -4,7 +4,7 @@ import { useTranslation } from 'react-i18next';
 import { useState, useEffect, useContext } from 'react';
 import { useParams } from 'react-router-dom';
 
-import { db, api, translate } from '../../services/api';
+import { db, api } from '../../services/api';
 
 import { AiFillStar, AiOutlineStar } from 'react-icons/ai';
 
@@ -148,7 +148,7 @@ export const Drink = () => {
                   </Styled.List>
                 </SmallContainer>
                 <Heading as="h6" size="small">
-                  Instructions:
+                  {t('instructions')}
                 </Heading>
                 <Styled.Instructions>
                   {drink.strInstructions}

@@ -51,6 +51,13 @@
     "typeEmail": "Type your email here...",
     "typePassword": "Type your email here...",
     "email": "Email",
-    "password": "Password"
+    "password": "Password",
+    "ingredientTitle": "Drinks that are made with",
+    "drinksKindGlass": "Drinks of the",
+    "drinksKindCategory": "Drinks of the",
+    "glass": "glass",
+    "category": "category",
+    "instructions": "Instructions:",
+    "language": "Language:"
   }
 }

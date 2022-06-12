@@ -39,6 +39,33 @@ export const Kinds = () => {
     setLoadMoreControl((loaded) => loaded + DRINKS_PER_PAGE);
   };
 
+  const getTemplateTitle = (index, word) => {
+    const wordFormatted = `${word.charAt(0).toUpperCase()}${word
+      .slice(1)
+      .replace(/_/, ' ')}`;
+    switch (index) {
+      case 'i':
+        return `${t('ingredientTitle')} ${wordFormatted}:`;
+
+      case 'c':
+        return `${t('drinksKindCategory')} ${wordFormatted} ${t('category')}:`;
+
+      case 'g':
+        return `${t('drinksKindGlass')} ${wordFormatted} ${
+          word.includes('lass') ? ':' : index === 'g' && `${t('glass')}:`
+        }`;
+
+      case 'a':
+        if (wordFormatted.charAt(0) === 'A') {
+          return `${t('headerLinkAlcoholic')}:`;
+        } else if (wordFormatted.charAt(0) === 'N') {
+          return `${t('headerLinkNAlcoholic')}:`;
+        } else {
+          return `${t('headerLinkOAlcoholic')}:`;
+        }
+    }
+  };
+
   useEffect(() => {
     (async () => {
       try {
@@ -82,17 +109,7 @@ export const Kinds = () => {
           {!loadingControl ? (
             <>
               <Heading size="small" as="h4">
-                {index === 'i' && 'Drinks that are made with'}{' '}
-                {index === 'c' && 'Drinks of the'}{' '}
-                {index === 'g' && 'Drinks of the'}{' '}
-                {`${kind.charAt(0).toUpperCase()}${kind
-                  .slice(1)
-                  .replace(/_/, ' ')}`}
-                {index !== 'c' && index !== 'g' && ':'}
-                {index === 'c' && ' category:'}{' '}
-                {index === 'g' && kind.includes('lass')
-                  ? ':'
-                  : index === 'g' && 'glass:'}
+                {getTemplateTitle(index, kind)}
               </Heading>
               <Styled.DrinksContainer>
                 {drinksToShow.map((drink) => (

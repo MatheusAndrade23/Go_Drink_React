@@ -43,6 +43,33 @@ export const Lists = () => {
     setLoadMoreControl((loaded) => loaded + KINDS_PER_PAGE);
   };
 
+  const getTemplateTitle = (index, word) => {
+    const wordFormatted = `${word.charAt(0).toUpperCase()}${word
+      .slice(1)
+      .replace(/_/, ' ')}`;
+    switch (index) {
+      case 'i':
+        return `${t('ingredientTitle')} ${wordFormatted}:`;
+
+      case 'c':
+        return `${t('drinksKindCategory')} ${wordFormatted} ${t('category')}:`;
+
+      case 'g':
+        return `${t('drinksKindGlass')} ${wordFormatted} ${
+          word.includes('lass') ? ':' : index === 'g' && `${t('glass')}:`
+        }`;
+
+      case 'a':
+        if (wordFormatted.charAt(0) === 'A') {
+          return `${t('headerLinkAlcoholic')}:`;
+        } else if (wordFormatted.charAt(0) === 'N') {
+          return `${t('headerLinkNAlcoholic')}:`;
+        } else {
+          return `${t('headerLinkOAlcoholic')}:`;
+        }
+    }
+  };
+
   // eslint-disable-next-line react-hooks/exhaustive-deps
   const loadImgLinks = async () => {
     document.title = `${name} | ${config.siteName}`;
@@ -125,17 +152,7 @@ export const Lists = () => {
               <Styled.Container>
                 {kindsToShow.map((kinds, index) => (
                   <Styled.Kind
-                    title={
-                      kind === 'i'
-                        ? `Drinks that are made with ${kinds[type]}`
-                        : kind === 'g'
-                        ? `Drinks of ${kinds[type]} ${
-                            kinds[type].includes('lass') ? '' : 'glass'
-                          }`
-                        : kind === 'c'
-                        ? `Drinks of the ${kinds[type]} category`
-                        : ''
-                    }
+                    title={getTemplateTitle(kind, kinds[type])}
                     key={kinds[type]}
                     onClick={() =>
                       (window.location.href = `/kind/${kind}/${kinds[
