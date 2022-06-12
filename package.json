@@ -57,6 +57,7 @@
       "!<rootDir>/src/templates/**/*.{js,jsx,ts,tsx}",
       "!<rootDir>/src/providers/**/*.{js,jsx,ts,tsx}",
       "!<rootDir>/src/services/*.{js,jsx,ts,tsx}",
+      "!<rootDir>/src/config/*.{js,jsx,ts,tsx}",
       "!<rootDir>/src/i18n/*.{js,jsx,ts,tsx}",
       "!<rootDir>/src/utils/*.{js,jsx,ts,tsx}",
       "!<rootDir>/node_modules/"
