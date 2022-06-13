@@ -164,7 +164,7 @@ exports[`<Footer /> should render 1`] = `
       cocktailDbCredits 
       <a
         class="c2"
-        href="https://www.thecocktaildb.com/"
+        href="https://www.thecocktaildb.com"
       >
         TheCocktailDB.
       </a>
@@ -175,7 +175,7 @@ exports[`<Footer /> should render 1`] = `
       githubInvite 
       <a
         class="c2"
-        href="https://www.thecocktaildb.com/"
+        href="https://github.com/MatheusAndrade23/Go_Drink"
       >
         GitHub.
       </a>

@@ -1,7 +1,7 @@
 import { screen } from '@testing-library/react';
 import { ThemeProvider } from 'styled-components';
 import { Heading } from '.';
-import { renderTheme } from '../../styles/render-theme';
+import { renderTheme } from '../../tests/render-base.js';
 import { DarkTheme as theme } from '../../styles/theme/DarkTheme';
 
 describe('<Heading />', () => {

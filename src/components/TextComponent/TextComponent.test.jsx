@@ -1,57 +1,57 @@
 import { screen } from '@testing-library/react';
 import { ThemeProvider } from 'styled-components';
 import { TextComponent } from '.';
-import { renderTheme } from '../../styles/render-theme';
+import { renderTheme } from '../../tests/render-base.js';
 import { DarkTheme as theme } from '../../styles/theme/DarkTheme';
 
 describe('<TextComponent />', () => {
   it('should render with default values', () => {
-    renderTheme(<TextComponent>Texto</TextComponent>);
-    const TextComponent = screen.getByRole('TextComponent', { name: 'Texto' });
+    renderTheme(<TextComponent>Text</TextComponent>);
+    const textComponent = screen.getByText('Text');
 
-    expect(TextComponent).toHaveStyle({
-      color: theme.colors.thirdColor,
-      'font-size': theme.fonts.sizes.xlarge,
+    expect(textComponent).toHaveStyle({
+      color: theme.colors.primaryColor,
+      'font-size': theme.fonts.sizes.small,
       'text-transform': 'none',
     });
   });
 
   it('should render correct TextComponent sizes', () => {
     const { rerender } = renderTheme(
-      <TextComponent size="small">Texto</TextComponent>,
+      <TextComponent size="small">Text</TextComponent>,
     );
-    const TextComponent = screen.getByRole('TextComponent', { name: 'Texto' });
+    const textComponent = screen.getByText('Text');
 
-    expect(TextComponent).toHaveStyle({
+    expect(textComponent).toHaveStyle({
       'font-size': theme.fonts.sizes.small,
     });
 
     rerender(
       <ThemeProvider theme={theme}>
-        <TextComponent size="medium">Texto</TextComponent>
+        <TextComponent size="medium">Text</TextComponent>
       </ThemeProvider>,
     );
 
-    expect(screen.getByRole('TextComponent', { name: 'Texto' })).toHaveStyle({
+    expect(screen.getByText('Text')).toHaveStyle({
       'font-size': theme.fonts.sizes.medium,
     });
 
     rerender(
       <ThemeProvider theme={theme}>
-        <TextComponent size="xsmall">Texto</TextComponent>
+        <TextComponent size="xsmall">Text</TextComponent>
       </ThemeProvider>,
     );
 
-    expect(screen.getByRole('TextComponent', { name: 'Texto' })).toHaveStyle({
+    expect(screen.getByText('Text')).toHaveStyle({
       'font-size': theme.fonts.sizes.xsmall,
     });
   });
 
   it('should render with uppercase letters', () => {
-    renderTheme(<TextComponent uppercase={true}>Texto</TextComponent>);
-    const TextComponent = screen.getByRole('TextComponent', { name: 'Texto' });
+    renderTheme(<TextComponent uppercase={true}>Text</TextComponent>);
+    const textComponent = screen.getByText('Text');
 
-    expect(TextComponent).toHaveStyle({
+    expect(textComponent).toHaveStyle({
       'text-transform': 'uppercase',
     });
   });

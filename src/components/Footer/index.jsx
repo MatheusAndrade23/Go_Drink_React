@@ -25,15 +25,11 @@ export const Footer = () => {
     <Styled.Footer>
       <TextComponent>
         {`${t('cocktailDbCredits')} ${''}`}
-        <LinkComponent link="https://www.thecocktaildb.com/">
-          TheCocktailDB.
-        </LinkComponent>
+        <LinkComponent link={config.dbUrl}>TheCocktailDB.</LinkComponent>
       </TextComponent>
       <TextComponent>
         {`${t('githubInvite')} ${''}`}
-        <LinkComponent link="https://www.thecocktaildb.com/">
-          GitHub.
-        </LinkComponent>
+        <LinkComponent link={config.repository}>GitHub.</LinkComponent>
       </TextComponent>
       <Styled.Icons disposition="row">
         <Styled.SocialMedia href={config.linkedin} title="Linkedin">
