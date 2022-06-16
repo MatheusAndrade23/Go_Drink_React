@@ -59,6 +59,8 @@
     "glass": "",
     "category": "",
     "instructions": "Instruções:",
-    "language": "Idioma:"
+    "language": "Idioma:",
+    "pageNotFoundError": "Erro 404",
+    "pageNotFound": "Essa página não existe!"
   }
 }
