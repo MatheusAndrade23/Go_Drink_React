@@ -46,8 +46,13 @@ export const AuthProvider = ({ children }) => {
       setUser({ ...loggedUser, authenticated: true });
       navigate('/');
     } catch (error) {
-      if (error.response.data.message) {
+      if (error.response.data) {
         setMessage(error.response.data.message);
+        setTimeout(() => {
+          setMessage(null);
+        }, 3000);
+      } else {
+        setMessage('Internal server error! Try again later!');
         setTimeout(() => {
           setMessage(null);
         }, 3000);
@@ -60,8 +65,13 @@ export const AuthProvider = ({ children }) => {
       const response = await api.post('/login/signup', { email, password });
       login(email, password);
     } catch (error) {
-      if (error.response.data.message) {
+      if (error.response.data) {
         setMessage(error.response.data.message);
+        setTimeout(() => {
+          setMessage(null);
+        }, 3000);
+      } else {
+        setMessage('Internal server error! Try again later!');
         setTimeout(() => {
           setMessage(null);
         }, 3000);
@@ -81,14 +91,22 @@ export const AuthProvider = ({ children }) => {
     if (!user.authenticated) {
       return;
     }
-    const response = await api.get(`/drink/favorites/${user._id}`);
-    const newFavorites = response.data.user.favorites;
 
-    localStorage.setItem(
-      'user',
-      JSON.stringify({ ...user, favorites: newFavorites }),
-    );
-    setUser({ ...user, favorites: newFavorites });
+    try {
+      const response = await api.get(`/drink/favorites/${user._id}`);
+      const newFavorites = response.data.user.favorites;
+
+      localStorage.setItem(
+        'user',
+        JSON.stringify({ ...user, favorites: newFavorites }),
+      );
+      setUser({ ...user, favorites: newFavorites });
+    } catch (error) {
+      setMessage('Internal server error! Try again later!');
+      setTimeout(() => {
+        setMessage(null);
+      }, 3000);
+    }
   };
 
   return (
