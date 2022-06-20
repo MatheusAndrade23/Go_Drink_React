@@ -63,9 +63,7 @@ export const Favorites = () => {
         const resp = await db.get(`api/json/v1/1/lookup.php?i=${id}`);
         const drink = resp.data.drinks[0];
         favoritesInfo.push(drink);
-        const favoritesFiltered = favoritesInfo.filter((drink, index) => {
-          return favoritesInfo.indexOf(drink) === index;
-        });
+        const favoritesFiltered = [...new Set(favoritesInfo)];
         setDrinks(favoritesFiltered);
       } catch (err) {
         setDrinks(undefined);
