@@ -1,17 +1,17 @@
-<h1 align="center" id="introducao">🍹 Go Drink 🍸</h1>
+<h1 align="center">🍹 Go Drink 🍸</h1>
 
 <div align="center">
- <img src="https://img.freepik.com/fotos-gratis/aproxime-se-com-bebidas-deliciosas_23-2149132215.jpg?size=626&ext=jpg" width="400px" alt="Freepick Image"/>
+ <img src="https://img.freepik.com/fotos-gratis/aproxime-se-com-bebidas-deliciosas_23-2149132215.jpg?size=626&ext=jpg" width="400px" alt="Freepick Drinks Image"/>
 </div>
 
-<h3 align="center">É um site que fornece mais de 600 receitas de coquetéis do mundo todo, utilizando <a href="https://www.thecocktaildb.com/api.php">The CocktailDB</a>. Possui tema dark, todos os textos estáticos estão disponíveis em português e inglês e você ainda pode listar suas bebidas favoritas.</h3>
-
 <p align="center">
- <a href="#introducao">Introdução</a> •
  <a href="#demo">Demonstração</a> •
  <a href="#tecnologias">Tecnologias</a> •
- <a href="#footer">Rodapé</a>
+ <a href="#detalhes">Detalhes</a> •
+ <a href="#footer">Rodapé</a> 
 </p>
+
+<h3 align="center">É um site que fornece mais de 600 receitas de coquetéis do mundo todo, utilizando <a href="https://www.thecocktaildb.com/api.php">The CocktailDB API</a>. Possui tema dark, todos os textos estáticos estão disponíveis em português e inglês e você ainda pode listar suas bebidas favoritas.</h3>
 
 ---
 
@@ -30,7 +30,7 @@ _<h3 id="trocando">Adicionando aos favoritos! ⭐</h3>_
 
 ---
 
-<h2 id="tecnologias">Tecnologias Utilizadas ⚙️</h2>
+<h2 id="tecnologias">Tecnologias Utilizadas 🛠</h2>
 
 #### FrontEnd: `ReactJS!`
 
@@ -73,6 +73,26 @@ _<h3 id="trocando">Adicionando aos favoritos! ⭐</h3>_
  </div>
 
  <br>
+ 
+ ---
+
+<h2 id="detalhes">Alguns Detalhes do Funcionamento do Projeto 🔎</h2>
+
+_<h3>Autenticação 👤</h3>_
+
+#### A autenticação do usuário é baseada em tokens, utilizando <a href="https://www.npmjs.com/package/jsonwebtoken">Json Web Token</a> para gerar e verificar a validade de um token através de um middleware no backend. Além disso, existe um provider dedicado à essa funcionalidade no frontend, que contém todos os métodos (Conectar, Registrar e Sair) e armazena o token e os dados do usuário no local storage.
+
+##
+
+_<h3>Mudança de Tema 🎨</h3>_
+
+#### A aplicação conta com dois temas (claro e escuro), e um botão para a mudança fixo na tela. O tema escuro é renderizado por padrão, mas o tema escolhido pelo usuário fica salvo no local storage sem a necessidade de criar uma conta.
+
+##
+
+_<h3>Mudança de Língua 🌎</h3>_
+
+#### A biblioteca <a href="https://www.npmjs.com/package/react-i18next">React I18Next</a> permite a utilização de diferentes líguas no projeto. Como a API <a href="https://www.thecocktaildb.com/api.php">The CocktailDB</a> responde em inglês, este idioma se torna praticamente obrigatório. Para o o português, não encotrei uma maneira viável de traduzir os textos vindos da API, então essa funcionalidade ainda não está finalizada. A língua escolhida pelo usuário fica salva no local storage e independe de autenticação, assim como o tema.
 
 ---
 
