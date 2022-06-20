@@ -1,70 +1,98 @@
-# Getting Started with Create React App
+<h1 align="center" id="introducao">Landing Pages Generator</h1>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<div align="center">
+ <img src="" width="500px"/>
+</div>
 
-## Available Scripts
+<h3 align="center">É um gerador de landing pages que monta uma página à escolha do usuário.</h3>
 
-In the project directory, you can run:
+#### O projeto é constituído por duas partes: O gerador (o repositório em que você está) e a página <a href="https://github.com/MatheusAndrade23/Landing_Pages">(clique para ver o código)</a>. O gerador (NodeJS) envia um arquivo JSON que contem todas as informações da tela a ser montada para o Front-End (ReactJS), que, por sua vez, as interpreta e faz a renderização.
 
-### `npm start`
+<br>
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+---
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+<br>
 
-### `npm test`
+<h2>Menu de Navegação</h2>
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- <a href="#introducao">Introdução</a>
+- <a href="#funcionamento">Como Funciona?</a>
+- <a href="#demo">Demonstração</a>
+  - <a href="#tour">Um pequeno tour pelo Projeto</a>
+- <a href="#tecnologias">Tecnologias Utilizadas</a>
+- <a href="#footer">Rodapé</a>
 
-### `npm run build`
+<br>
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+---
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+<h2 id="funcionamento">Como Funciona? ❓</h2>
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+<h3>O usuário escolhe a página que será gerada no gerador, que fica salva no banco de dados. Depois, abre o FrontEnd e faz o login com seu usuário e, como uma truque de mágica, a página escolhida é renderizada. Veja melhor no próximo tópico!</h3>
 
-### `npm run eject`
+<br>
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+---
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+<h2 id="demo">Demonstração 🎥</h2>
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+_<h3 id="tour">Um pequeno tour pelo Projeto! 🚀</h3>_
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+<img src="">
 
-## Learn More
+_<h3 id="trocando">Trocando Páginas! 🚀</h3>_
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+<img src="">
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+_<h3 id="mensagens">Mensagens! 🚀</h3>_
 
-### Code Splitting
+<img src="">
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+<br>
 
-### Analyzing the Bundle Size
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+<h2 id="tecnologias">Tecnologias Utilizadas ⚙️</h2>
 
-### Making a Progressive Web App
+#### FrontEnd: `ReactJS!`
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+- React-Dom
+- React-Router-Dom
+- Styled Components
+- Jest Styled Components
+- Proptypes
+- Storybook
+- React Hooks
 
-### Advanced Configuration
+#### BackEnd: `NodeJS!`
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+- Express
+- Express-Handlebars
+- Express-Session
+- Mongoose
+- Nodemon
+- DotEnv
+- Cors
 
-### Deployment
+#### Banco de Dados: `MongoDB-Atlas!`
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+ <div style="display: inline_block"><br>
+  <img align="center" alt="HTML" height="35" width="45" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/html5/html5-original.svg">
+  <img align="center" alt="CSS" height="35" width="45" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/css3/css3-original.svg">
+  <img align="center" alt="Sass" height="35" width="45" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/sass/sass-original.svg">
+  <img align="center" alt="Js" height="35" width="45" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/javascript/javascript-plain.svg">
+  <img align="center" alt="MongoDB" height="35" width="45" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-plain.svg">
+  <img align="center" alt="ReactJS" height="35" width="45" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg">
+  <img align="center" alt="Jest" height="35" width="45" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jest/jest-plain.svg">
+  <img align="center" alt="NodeJS" height="35" width="45" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/nodejs/nodejs-plain.svg">
+  <img align="center" alt="Express" height="35" width="45" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg">
+  <img align="center" alt="Handlebars" height="35" width="45" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/handlebars/handlebars-original.svg">
+ </div>
 
-### `npm run build` fails to minify
+ <br>
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+---
+
+<div id="footer" align="center"><a href="https://www.linkedin.com/in/matheus-andrade23/" target="_blank"><img src="https://img.shields.io/badge/-LinkedIn-%230077B5?style=for-the-badge&logo=linkedin&logoColor=white" target="_blank"></a>
+<a href = "mailto:matheusandrade.ma2003@gmail.com"><img src="https://img.shields.io/badge/-Gmail-%23333?style=for-the-badge&logo=gmail&logoColor=white" target="_blank"></a></div>
