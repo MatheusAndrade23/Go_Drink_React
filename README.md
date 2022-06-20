@@ -8,12 +8,12 @@
  <a href="#demo">Demonstração</a> •
  <a href="#tecnologias">Tecnologias</a> •
  <a href="#detalhes">Detalhes</a> •
- <a href="#footer">Rodapé</a> 
+ <a href="#footer">Rodapé</a>
 </p>
 
 <h3 align="center">É um site que fornece mais de 600 receitas de coquetéis do mundo todo, utilizando <a href="https://www.thecocktaildb.com/api.php">The CocktailDB API</a>. Possui tema dark, todos os textos estáticos estão disponíveis em português e inglês e você ainda pode listar suas bebidas favoritas.</h3>
 
-<p align="center"> 
+<p align="center">
   <h4><a href="https://go-drink.vercel.app">Clique para visitar o site!</a></h4>
   <h4><a href="https://github.com/MatheusAndrade23/GoDrink_Backend">Clique para ver o Backend!</a></h4>
 </p>
@@ -24,12 +24,11 @@
 
 _<h3 id="tour">Um pequeno tour pelo Projeto! 🚀</h3>_
 
-<img src="" alt="GIF Tour pelo projeto">
+<img src="./github/tour.gif" alt="GIF Tour pelo projeto">
 
 _<h3 id="trocando">Adicionando aos favoritos! ⭐</h3>_
 
-<img src="" alt="GIF Adicionando aos favoritos">
-
+<img src="./github/favoritos.gif" alt="GIF Adicionando aos favoritos">
 
 <br>
 
@@ -78,8 +77,8 @@ _<h3 id="trocando">Adicionando aos favoritos! ⭐</h3>_
  </div>
 
  <br>
- 
- ---
+
+---
 
 <h2 id="detalhes">Alguns Detalhes do Funcionamento do Projeto 🔎</h2>
 
