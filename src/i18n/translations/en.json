@@ -60,6 +60,7 @@
     "instructions": "Instructions:",
     "language": "Language:",
     "pageNotFoundError": "Error 404",
-    "pageNotFound": "This page does not exist!"
+    "pageNotFound": "This page does not exist!",
+    "favorites": "My favorite drinks"
   }
 }

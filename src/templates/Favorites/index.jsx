@@ -101,7 +101,7 @@ export const Favorites = () => {
       {!errorControl.error ? (
         <Styled.Container>
           <Heading size="small" as="h4">
-            {`${t('headerLinkFavorites')} ${t('drinks')}:`}
+            {`${t('favorites')}:`}
           </Heading>
           {!loadingControl ? (
             <Styled.DrinksContainer>
