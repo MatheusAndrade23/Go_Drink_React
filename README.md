@@ -1,37 +1,17 @@
-<h1 align="center" id="introducao">Landing Pages Generator</h1>
+<h1 align="center" id="introducao">🍹 Go Drink 🍸</h1>
 
 <div align="center">
- <img src="" width="500px"/>
+ <img src="https://img.freepik.com/fotos-gratis/aproxime-se-com-bebidas-deliciosas_23-2149132215.jpg?size=626&ext=jpg" width="400px" alt="Freepick Image"/>
 </div>
 
-<h3 align="center">É um gerador de landing pages que monta uma página à escolha do usuário.</h3>
+<h3 align="center">É um site que fornece mais de 600 receitas de coquetéis do mundo todo, utilizando <a href="https://www.thecocktaildb.com/api.php">The CocktailDB</a>. Possui tema dark, todos os textos estáticos estão disponíveis em português e inglês e você ainda pode listar suas bebidas favoritas.</h3>
 
-#### O projeto é constituído por duas partes: O gerador (o repositório em que você está) e a página <a href="https://github.com/MatheusAndrade23/Landing_Pages">(clique para ver o código)</a>. O gerador (NodeJS) envia um arquivo JSON que contem todas as informações da tela a ser montada para o Front-End (ReactJS), que, por sua vez, as interpreta e faz a renderização.
-
-<br>
-
----
-
-<br>
-
-<h2>Menu de Navegação</h2>
-
-- <a href="#introducao">Introdução</a>
-- <a href="#funcionamento">Como Funciona?</a>
-- <a href="#demo">Demonstração</a>
-  - <a href="#tour">Um pequeno tour pelo Projeto</a>
-- <a href="#tecnologias">Tecnologias Utilizadas</a>
-- <a href="#footer">Rodapé</a>
-
-<br>
-
----
-
-<h2 id="funcionamento">Como Funciona? ❓</h2>
-
-<h3>O usuário escolhe a página que será gerada no gerador, que fica salva no banco de dados. Depois, abre o FrontEnd e faz o login com seu usuário e, como uma truque de mágica, a página escolhida é renderizada. Veja melhor no próximo tópico!</h3>
-
-<br>
+<p align="center">
+ <a href="#introducao">Introdução</a> •
+ <a href="#demo">Demonstração</a> •
+ <a href="#tecnologias">Tecnologias</a> •
+ <a href="#footer">Rodapé</a>
+</p>
 
 ---
 
@@ -39,15 +19,12 @@
 
 _<h3 id="tour">Um pequeno tour pelo Projeto! 🚀</h3>_
 
-<img src="">
+<img src="" alt="GIF Tour pelo projeto">
 
-_<h3 id="trocando">Trocando Páginas! 🚀</h3>_
+_<h3 id="trocando">Adicionando aos favoritos! ⭐</h3>_
 
-<img src="">
+<img src="" alt="GIF Adicionando aos favoritos">
 
-_<h3 id="mensagens">Mensagens! 🚀</h3>_
-
-<img src="">
 
 <br>
 
@@ -57,19 +34,24 @@ _<h3 id="mensagens">Mensagens! 🚀</h3>_
 
 #### FrontEnd: `ReactJS!`
 
-- React-Dom
 - React-Router-Dom
+- I18Next
+- Flag Icons
+- React Icons
+- Axios
 - Styled Components
 - Jest Styled Components
+- React Elastic Carousel
 - Proptypes
-- Storybook
+- Context API
 - React Hooks
 
 #### BackEnd: `NodeJS!`
 
 - Express
 - Express-Handlebars
-- Express-Session
+- JWT
+- Bcrypt
 - Mongoose
 - Nodemon
 - DotEnv
