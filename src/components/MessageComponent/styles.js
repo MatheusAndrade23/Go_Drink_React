@@ -19,5 +19,11 @@ export const MessageContainer = styled.div`
       font-weight: bold;
       font-family: ${theme.fonts.family.secondary};
     }
+
+    @media ${theme.media.smallScreen} {
+      right: 20px;
+      left: 20px;
+      width: 80%;
+    }
   `}
 `;
