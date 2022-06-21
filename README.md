@@ -14,8 +14,8 @@
 <h3 align="center">É um site que fornece mais de 600 receitas de coquetéis do mundo todo, utilizando <a href="https://www.thecocktaildb.com/api.php">The CocktailDB API</a>. Possui tema dark, todos os textos estáticos estão disponíveis em português e inglês e você ainda pode listar suas bebidas favoritas.</h3>
 
 <p align="center">
-  <h4><a href="https://go-drink.vercel.app">Clique para visitar o site!</a></h4>
-  <h4><a href="https://github.com/MatheusAndrade23/GoDrink_Backend">Clique para ver o Backend!</a></h4>
+  <a href="https://go-drink.vercel.app">Clique para visitar o site!</a> -
+  <a href="https://github.com/MatheusAndrade23/GoDrink_Backend">Clique para ver o Backend!</a>
 </p>
 
 ---
@@ -100,5 +100,7 @@ _<h3>Mudança de Língua 🌎</h3>_
 
 ---
 
+<p align="center">🌟 Se você gostou, por favor considere dar uma estrela! 🌟</p>
 <div id="footer" align="center"><a href="https://www.linkedin.com/in/matheus-andrade23/" target="_blank"><img src="https://img.shields.io/badge/-LinkedIn-%230077B5?style=for-the-badge&logo=linkedin&logoColor=white" target="_blank"></a>
 <a href = "mailto:matheusandrade.ma2003@gmail.com"><img src="https://img.shields.io/badge/-Gmail-%23333?style=for-the-badge&logo=gmail&logoColor=white" target="_blank"></a></div>
+
