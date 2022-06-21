@@ -2,6 +2,7 @@ import * as Styled from './styles';
 
 import { useTranslation } from 'react-i18next';
 
+import flags from 'flag-icons';
 import { useEffect, useState } from 'react';
 import { MessageComponent } from '../MessageComponent';
 
