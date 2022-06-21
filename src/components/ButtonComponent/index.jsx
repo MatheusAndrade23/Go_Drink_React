@@ -1,5 +1,4 @@
 import P from 'prop-types';
-import { useTranslation } from 'react-i18next';
 import * as Styled from './styles';
 
 export const ButtonComponent = ({
@@ -11,7 +10,6 @@ export const ButtonComponent = ({
   model = 'standard',
   name = '',
 }) => {
-  const { t } = useTranslation();
   return (
     <Styled.Button
       onClick={handleSubmit}

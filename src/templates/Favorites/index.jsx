@@ -2,7 +2,6 @@ import * as Styled from '../Kinds/styles';
 
 import { useTranslation } from 'react-i18next';
 import { useState, useEffect, useContext } from 'react';
-import { useNavigate } from 'react-router-dom';
 
 import { db } from '../../services/api';
 
@@ -19,8 +18,7 @@ import { ButtonComponent } from '../../components/ButtonComponent';
 import config from '../../config';
 
 export const Favorites = () => {
-  const { user, updateFavorites } = useContext(AuthContext);
-  const navigate = useNavigate();
+  const { user } = useContext(AuthContext);
   const { t } = useTranslation();
   const DRINKS_PER_PAGE = 8;
 
@@ -41,8 +39,6 @@ export const Favorites = () => {
     setNext(nextPage);
     setLoadMoreControl((loaded) => loaded + DRINKS_PER_PAGE);
   };
-
-  const getFavorites = async () => {};
 
   useEffect(() => {
     let favoritesInfo = [];

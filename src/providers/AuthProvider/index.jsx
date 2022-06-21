@@ -3,7 +3,6 @@ import P from 'prop-types';
 import { createContext, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import { ThemeProvider } from '../ThemeProvider';
 import { Loading } from '../../components/Loading';
 import { MessageComponent } from '../../components/MessageComponent';
 
@@ -62,7 +61,7 @@ export const AuthProvider = ({ children }) => {
 
   const register = async (email, password) => {
     try {
-      const response = await api.post('/login/signup', { email, password });
+      await api.post('/login/signup', { email, password });
       login(email, password);
     } catch (error) {
       if (error.response.data) {

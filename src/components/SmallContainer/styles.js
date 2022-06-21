@@ -1,20 +1,20 @@
 import styled, { css } from 'styled-components';
 
 const SetDisposition = {
-  column: (theme) => css`
+  column: () => css`
     flex-direction: column;
   `,
-  row: (theme) => css`
+  row: () => css`
     flex-direction: row;
   `,
 };
 
 export const Container = styled.div`
-  ${({ theme, disposition }) => css`
+  ${({ disposition }) => css`
     width: max-content;
     display: flex;
     justify-content: center;
     align-items: center;
-    ${SetDisposition[disposition](theme)}
+    ${SetDisposition[disposition]()}
   `}
 `;

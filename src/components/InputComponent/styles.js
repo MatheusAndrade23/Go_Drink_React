@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components';
 
 export const Input = styled.input`
-  ${({ theme, type }) => css`
+  ${({ theme }) => css`
     width: 300px;
     outline: none;
     padding: ${theme.spacings.xsmall};

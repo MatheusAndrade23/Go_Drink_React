@@ -39,7 +39,7 @@ export const SmallText = styled.span`
 `;
 
 export const LogoImg = styled.img`
-  ${({ theme }) => css`
+  ${() => css`
     height: 100px;
   `}
 `;

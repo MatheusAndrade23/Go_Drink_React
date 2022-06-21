@@ -65,7 +65,7 @@ export const Info = styled.div`
 `;
 
 export const Favorite = styled.button`
-  ${({ theme }) => css`
+  ${() => css`
       position: absolute;
       background-color: transparent;
       border: none;

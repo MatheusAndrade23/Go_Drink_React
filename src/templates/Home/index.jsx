@@ -1,22 +1,15 @@
 import * as Styled from './styles';
 
-import { useState, useEffect } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 
 import { FaCocktail } from 'react-icons/fa';
 import { GiFruitBowl } from 'react-icons/gi';
 
 import { Header } from '../../components/Header';
-import { Loading } from '../../components/Loading';
 
 import { TextComponent } from '../../components/TextComponent';
-import { LinkComponent } from '../../components/LinkComponent';
-import { ErrorComponent } from '../../components/ErrorComponent';
 import { SmallContainer } from '../../components/SmallContainer';
 import { DrinkComponent } from '../../components/DrinkComponent';
-import { ButtonComponent } from '../../components/ButtonComponent';
-import { LanguageSwitcher } from '../../components/LanguageSwitcher';
 import { RandomDrinkComponent } from '../../components/RandomDrinkComponent';
 
 import config from '../../config';

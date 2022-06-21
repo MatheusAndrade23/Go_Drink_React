@@ -34,7 +34,7 @@ export const GoTop = styled.a`
 `;
 
 export const Icons = styled.div`
-  ${({ theme }) => css`
+  ${() => css`
       display: flex;
       flex-flow: row wrap;
       justify-content: space-evenly;

@@ -2,19 +2,14 @@ import * as Styled from './styles';
 
 import { useTranslation } from 'react-i18next';
 
-import flags from 'flag-icons';
-import { BiDrink } from 'react-icons/bi';
 import { TbApi } from 'react-icons/tb';
-import { RiAwardFill } from 'react-icons/ri';
 import { GiThorHammer } from 'react-icons/gi';
 import { BsFillArrowUpSquareFill } from 'react-icons/bs';
 import { AiOutlineLinkedin, AiOutlineGithub } from 'react-icons/ai';
 
-import { Heading } from '../Heading';
 import { LinkComponent } from '../LinkComponent';
 import { TextComponent } from '../TextComponent';
 import { ThemeSwitcher } from '../ThemeSwitcher';
-import { SmallContainer } from '../SmallContainer';
 import { LanguageSwitcher } from '../../components/LanguageSwitcher';
 
 import config from '../../config';

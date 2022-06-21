@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components';
 
 export const Container = styled.div`
-  ${({ theme }) => css`
+  ${() => css`
     min-height: 100vh;
     display: flex;
     flex-direction: column;

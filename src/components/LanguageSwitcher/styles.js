@@ -23,7 +23,7 @@ export const Container = styled.div`
 `;
 
 export const FlagButton = styled.button`
-  ${({ theme, selected }) => css`
+  ${({ selected }) => css`
     cursor: pointer;
     background: transparent;
     border: none;

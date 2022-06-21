@@ -2,7 +2,6 @@ import * as Styled from './styles';
 
 import { useTranslation } from 'react-i18next';
 import { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
 
 import { db } from '../../services/api';
 
@@ -11,7 +10,6 @@ import { Loading } from '../Loading';
 
 export const RandomDrinkComponent = () => {
   const { t } = useTranslation();
-  const navigate = useNavigate();
 
   const [drink, setDrink] = useState([]);
   const [error, setError] = useState(false);

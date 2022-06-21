@@ -13,7 +13,6 @@ import { TextComponent } from '../../components/TextComponent';
 import { InputComponent } from '../../components/InputComponent';
 import { SmallContainer } from '../../components/SmallContainer';
 import { ButtonComponent } from '../../components/ButtonComponent';
-import { MessageComponent } from '../../components/MessageComponent';
 
 import config from '../../config';
 
@@ -24,7 +23,6 @@ export const Login = () => {
   const navigate = useNavigate();
 
   const [loginControl, setLoginControl] = useState('signIn');
-  const [message, setMessage] = useState(undefined);
   const [userInfo, setUserInfo] = useState({});
 
   const handleGetInfo = (e) => {
@@ -106,7 +104,6 @@ export const Login = () => {
           </LinkComponent>
         </SmallContainer>
       </Styled.Login>
-      {message && <MessageComponent message={message} />}
       <ReturnButton />
     </Styled.Container>
   );
