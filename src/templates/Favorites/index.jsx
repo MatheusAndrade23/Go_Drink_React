@@ -41,8 +41,7 @@ export const Favorites = () => {
   };
 
   useEffect(() => {
-    let favoritesInfo = [];
-    const { authenticated, favorites } = user;
+    const { authenticated, favorites, favoritesInfo } = user;
     if (!authenticated) {
       setErrorControl({
         error: true,
@@ -54,19 +53,8 @@ export const Favorites = () => {
       setDrinks(null);
       return;
     }
-    favorites.map(async (id) => {
-      try {
-        const resp = await db.get(`api/json/v1/1/lookup.php?i=${id}`);
-        const drink = resp.data.drinks[0];
-        favoritesInfo.push(drink);
-        const favoritesFiltered = favoritesInfo.filter((drink, index) => {
-          return favoritesInfo.indexOf(drink) === index;
-        });
-        setDrinks(favoritesFiltered);
-      } catch (err) {
-        setDrinks(undefined);
-      }
-    });
+
+    setDrinks(favoritesInfo);
   }, [t, user]);
 
   useEffect(() => {
