@@ -155,9 +155,9 @@ export const Lists = () => {
                     title={getTemplateTitle(kind, kinds[type])}
                     key={kinds[type]}
                     onClick={() =>
-                      (window.location.href = `/kind/${kind}/${kinds[
-                        type
-                      ].replace(/ /, '_')}`)
+                      (window.location.href = `/kind/${kind}/${kinds[type]
+                        .replace(/ /, '_')
+                        .replace('/', '_')}`)
                     }
                   >
                     {linksImg && <img src={linksImg[index]} />}
