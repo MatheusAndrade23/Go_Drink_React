@@ -89,7 +89,6 @@ export const RandomDrinks = styled.section`
     flex-flow: row wrap;
     align-items: center;
     justify-content: space-evenly;
-    border-bottom: 2px solid ${theme.colors.secondaryColor};
     padding: ${theme.spacings.medium} 0;
   `}
 `;

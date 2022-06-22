@@ -63,6 +63,10 @@ export const Home = () => {
           <RandomDrinkComponent />
           <RandomDrinkComponent />
           <RandomDrinkComponent />
+          <RandomDrinkComponent />
+          <RandomDrinkComponent />
+          <RandomDrinkComponent />
+          <RandomDrinkComponent />
         </Styled.RandomDrinks>
       </Styled.HomeContainer>
     </>
