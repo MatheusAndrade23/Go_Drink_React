@@ -48,9 +48,10 @@ export const Drink = () => {
     setLoadingControl(true);
     try {
       await api.patch(`/drink/favorites/${user._id}`, {
+        drink,
         drinkId: id,
       });
-      await updateFavorites();
+      await updateFavorites(drink);
       setLoadingControl(false);
     } catch (err) {
       setDrink(undefined);
