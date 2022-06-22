@@ -47,7 +47,6 @@ _<h3 id="trocando">Adicionando aos favoritos! ⭐</h3>_
 - Styled Components
 - Jest Styled Components
 - React Elastic Carousel
-- Proptypes
 - Context API
 - React Hooks
 
@@ -65,16 +64,15 @@ _<h3 id="trocando">Adicionando aos favoritos! ⭐</h3>_
 #### Banco de Dados: `MongoDB-Atlas!`
 
  <div style="display: inline_block"><br>
-  <img align="center" alt="HTML" height="35" width="45" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/html5/html5-original.svg">
-  <img align="center" alt="CSS" height="35" width="45" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/css3/css3-original.svg">
-  <img align="center" alt="Sass" height="35" width="45" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/sass/sass-original.svg">
-  <img align="center" alt="Js" height="35" width="45" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/javascript/javascript-plain.svg">
-  <img align="center" alt="MongoDB" height="35" width="45" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-plain.svg">
-  <img align="center" alt="ReactJS" height="35" width="45" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg">
-  <img align="center" alt="Jest" height="35" width="45" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jest/jest-plain.svg">
-  <img align="center" alt="NodeJS" height="35" width="45" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/nodejs/nodejs-plain.svg">
-  <img align="center" alt="Express" height="35" width="45" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg">
-  <img align="center" alt="Handlebars" height="35" width="45" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/handlebars/handlebars-original.svg">
+  <code><img align="center" alt="npm" height="35" width="45" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/npm/npm-original-wordmark.svg" /></code>
+  <code><img align="center" alt="Js" height="35" width="45" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/javascript/javascript-plain.svg"></code>
+  <code><img align="center" alt="Sass" height="35" width="45" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/sass/sass-original.svg"></code>
+  <code><img align="center" alt="ReactJS" height="35" width="45" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg"></code>
+  <code><img align="center" alt="Jest" height="35" width="45" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jest/jest-plain.svg"></code>
+  <code><img align="center" alt="NodeJS" height="35" width="45" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/nodejs/nodejs-plain.svg"></code>
+  <code><img align="center" alt="Express" height="35" width="45" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg"></code>
+  <code><img align="center" alt="Handlebars" height="35" width="45" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/handlebars/handlebars-original.svg"></code>
+  <code><img align="center" alt="MongoDB" height="35" width="45" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-plain.svg"></code>
  </div>
 
  <br>
@@ -83,14 +81,14 @@ _<h3 id="trocando">Adicionando aos favoritos! ⭐</h3>_
 
 <h2 id="funcionalidades">Funcionalidades ⚙️</h2>
 
-- Responsivo
-- Ferramenta de pesquisa
-- Mudança de Tema
-- Mudança de Língua
-- Adicionar coquetéis à lista de favoritos
-- Ver detalhes da bebida escolhida
-- Listagem de tipos de copos, categorias e ingredientes
-- Listagem de bebidas baseada em categoria, ingediente e tipo de copo
+- ✔️ Responsivo
+- ✔️ Ferramenta de pesquisa
+- ✔️ Mudança de Tema
+- ✔️ Mudança de Língua
+- ✔️ Adicionar coquetéis à lista de favoritos
+- ✔️ Ver detalhes da Bebida Escolhida
+- ✔️ Listagem de tipos de Copos, Categorias e Ingredientes
+- ✔️ Listagem de bebidas baseada em Categoria, Ingrediente e tipo de Copo
 
 <br>
 
@@ -114,9 +112,10 @@ _<h3>Mudança de Língua 🌎</h3>_
 
 #### A biblioteca <a href="https://www.npmjs.com/package/react-i18next">React I18Next</a> permite a utilização de diferentes líguas no projeto. Como a API <a href="https://www.thecocktaildb.com/api.php">The CocktailDB</a> responde em inglês, este idioma se torna praticamente obrigatório. Para o o português, não encotrei uma maneira viável de traduzir os textos vindos da API, então essa funcionalidade ainda não está finalizada. A língua escolhida pelo usuário fica salva no local storage e independe de autenticação, assim como o tema.
 
+<br>
+
 ---
 
 <p align="center">🌟 Se você gostou, por favor considere dar uma estrela! 🌟</p>
 <div id="footer" align="center"><a href="https://www.linkedin.com/in/matheus-andrade23/" target="_blank"><img src="https://img.shields.io/badge/-LinkedIn-%230077B5?style=for-the-badge&logo=linkedin&logoColor=white" target="_blank"></a>
 <a href = "mailto:matheusandrade.ma2003@gmail.com"><img src="https://img.shields.io/badge/-Gmail-%23333?style=for-the-badge&logo=gmail&logoColor=white" target="_blank"></a></div>
-
