@@ -7,6 +7,7 @@
 <p align="center">
  <a href="#demo">Demonstração</a> •
  <a href="#tecnologias">Tecnologias</a> •
+  <a href="#funcionalidades">Funcionalidades</a> •
  <a href="#detalhes">Detalhes</a> •
  <a href="#footer">Rodapé</a>
 </p>
@@ -77,6 +78,21 @@ _<h3 id="trocando">Adicionando aos favoritos! ⭐</h3>_
  </div>
 
  <br>
+
+---
+
+<h2 id="funcionalidades">Funcionalidades ⚙️</h2>
+
+- Responsivo
+- Ferramenta de pesquisa
+- Mudança de Tema
+- Mudança de Língua
+- Adicionar coquetéis à lista de favoritos
+- Ver detalhes da bebida escolhida
+- Listagem de tipos de copos, categorias e ingredientes
+- Listagem de bebidas baseada em categoria, ingediente e tipo de copo
+
+<br>
 
 ---
 
