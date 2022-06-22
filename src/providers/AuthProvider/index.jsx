@@ -94,12 +94,21 @@ export const AuthProvider = ({ children }) => {
     try {
       const response = await api.get(`/drink/favorites/${user._id}`);
       const newFavorites = response.data.user.favorites;
+      const newFavoritesInfo = response.data.user.favoritesInfo;
 
       localStorage.setItem(
         'user',
-        JSON.stringify({ ...user, favorites: newFavorites }),
+        JSON.stringify({
+          ...user,
+          favorites: newFavorites,
+          favoritesInfo: newFavoritesInfo,
+        }),
       );
-      setUser({ ...user, favorites: newFavorites });
+      setUser({
+        ...user,
+        favorites: newFavorites,
+        favoritesInfo: newFavoritesInfo,
+      });
     } catch (error) {
       setMessage('Internal server error! Try again later!');
       setTimeout(() => {
