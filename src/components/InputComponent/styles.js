@@ -14,5 +14,6 @@ export const Label = styled.label`
   ${({ theme }) => css`
     color: ${theme.colors.thirdColor};
     margin-right: ${theme.spacings.xsmall};
+    align-self: flex-start;
   `}
 `;
