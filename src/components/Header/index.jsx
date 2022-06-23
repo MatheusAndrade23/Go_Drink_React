@@ -81,11 +81,11 @@ export const Header = () => {
           </ButtonComponent>
         </SmallContainer>
         {user.authenticated ? (
-          <LinkComponent link="/login/signout">
+          <LinkComponent link="/auth/signout">
             {t('loginSingOut')}
           </LinkComponent>
         ) : (
-          <LinkComponent link="/login/signin">{t('loginSingIn')}</LinkComponent>
+          <LinkComponent link="/auth/signin">{t('loginSingIn')}</LinkComponent>
         )}
       </Styled.Header>
       <HeaderMenu />

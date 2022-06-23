@@ -4,6 +4,8 @@ import { useTranslation } from 'react-i18next';
 import { useState, useEffect, useContext } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 
+import { BsFillEyeFill, BsFillEyeSlashFill } from 'react-icons/bs';
+
 import { AuthContext } from '../../providers/AuthProvider/index';
 
 import { Heading } from '../../components/Heading';
@@ -16,13 +18,14 @@ import { ButtonComponent } from '../../components/ButtonComponent';
 
 import config from '../../config';
 
-export const Login = () => {
+export const Auth = () => {
   const { user, login, logout, register } = useContext(AuthContext);
   const { t } = useTranslation();
   const { action } = useParams();
   const navigate = useNavigate();
 
   const [loginControl, setLoginControl] = useState('signIn');
+  const [showPassword, setShowPassword] = useState(false);
   const [userInfo, setUserInfo] = useState({});
 
   const handleGetInfo = (e) => {
@@ -63,7 +66,7 @@ export const Login = () => {
         break;
 
       default:
-        navigate('/');
+        navigate('/not-found');
         break;
     }
   }, [action, logout, navigate, t]);
@@ -81,13 +84,18 @@ export const Login = () => {
           type="email"
           handleChange={handleGetInfo}
         />
-        <InputComponent
-          text={`${t('password')}:`}
-          placeholder={t('typePassword')}
-          name="password"
-          type="password"
-          handleChange={handleGetInfo}
-        />
+        <Styled.PasswordContainer>
+          <InputComponent
+            text={`${t('password')}:`}
+            placeholder={t('typePassword')}
+            name="password"
+            type={showPassword ? 'text' : 'password'}
+            handleChange={handleGetInfo}
+          />
+          <button onClick={() => setShowPassword(!showPassword)}>
+            {showPassword ? <BsFillEyeSlashFill /> : <BsFillEyeFill />}
+          </button>
+        </Styled.PasswordContainer>
         <ButtonComponent bold={false} handleSubmit={handleSubmitLogin}>
           {loginControl === 'signin' ? t('loginSingIn') : t('loginSingUp')}
         </ButtonComponent>
@@ -98,11 +106,16 @@ export const Login = () => {
               : t('haveAccount')}
           </TextComponent>
           <LinkComponent
-            link={loginControl !== 'signin' ? '/login/signin' : '/login/signup'}
+            link={loginControl !== 'signin' ? '/auth/signin' : '/auth/signup'}
           >
             {loginControl !== 'signin' ? t('loginSingIn') : t('loginSingUp')}
           </LinkComponent>
         </SmallContainer>
+        {loginControl === 'signin' && (
+          <Styled.ResetPassword href="/forgot-password">
+            {t('forgotPassword')}
+          </Styled.ResetPassword>
+        )}
       </Styled.Login>
       <ReturnButton />
     </Styled.Container>
