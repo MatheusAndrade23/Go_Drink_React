@@ -2,8 +2,8 @@
   "translation": {
     "welcome": "Bem Vindo ao GODRINK",
     "description": "Um site de código aberto com mais de 600 receitas de coquetéis diferentes de todo o mundo.",
-    "tCocktails": "Total Cocktails: 635",
-    "tIngredients": "Total Ingredients: 488",
+    "tCocktails": "Coquetéis: 635",
+    "tIngredients": "Ingredientes: 488",
     "feature": "Você também pode adicionar suas receitas favoritas a uma lista de favoritos, mas para isso você precisa criar uma conta antes.",
     "drink": "bebida",
     "drinks": "bebidas",
@@ -62,6 +62,13 @@
     "language": "Idioma:",
     "pageNotFoundError": "Erro 404",
     "pageNotFound": "Essa página não existe!",
-    "favorites": "Meus favoritos"
+    "favorites": "Meus favoritos",
+    "forgotPassword": "Esqueci minha senha",
+    "sendMail": "Mandar email",
+    "recPassword": "Mudar senha",
+    "newPassword": "Digite sua nova senha...",
+    "passwordChanged": "Senha alterada com sucesso!",
+    "mailBox": "Verifique sua caixa de email!",
+    "forgotInfo": "Vamos te enviar um email com o link para mudar sua senha!"
   }
 }

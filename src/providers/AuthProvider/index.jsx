@@ -1,5 +1,6 @@
 import P from 'prop-types';
 
+import { useTranslation } from 'react-i18next';
 import { createContext, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
@@ -12,6 +13,7 @@ export const AuthContext = createContext({});
 
 export const AuthProvider = ({ children }) => {
   const navigate = useNavigate();
+  const { t } = useTranslation();
 
   const [loadingControl, setLoadingControl] = useState(true);
   const [message, setMessage] = useState(null);
@@ -51,7 +53,7 @@ export const AuthProvider = ({ children }) => {
           setMessage(null);
         }, 3000);
       } else {
-        setMessage('Internal server error! Try again later!');
+        setMessage(t('error500message'));
         setTimeout(() => {
           setMessage(null);
         }, 3000);
@@ -61,7 +63,7 @@ export const AuthProvider = ({ children }) => {
 
   const register = async (email, password) => {
     try {
-      await api.post('/login/signup', { email, password });
+      await api.post('/auth/signup', { email, password });
       login(email, password);
     } catch (error) {
       if (error.response.data) {
@@ -70,7 +72,7 @@ export const AuthProvider = ({ children }) => {
           setMessage(null);
         }, 3000);
       } else {
-        setMessage('Internal server error! Try again later!');
+        setMessage(t('error500message'));
         setTimeout(() => {
           setMessage(null);
         }, 3000);
@@ -83,7 +85,7 @@ export const AuthProvider = ({ children }) => {
     localStorage.removeItem('token');
     api.defaults.headers.Authorization = null;
     setUser({ authenticated: false });
-    navigate('/login/signin');
+    navigate('/auth/signin');
   };
 
   const updateFavorites = async () => {
@@ -110,16 +112,72 @@ export const AuthProvider = ({ children }) => {
         favoritesInfo: newFavoritesInfo,
       });
     } catch (error) {
-      setMessage('Internal server error! Try again later!');
+      setMessage(t('error500message'));
       setTimeout(() => {
         setMessage(null);
       }, 3000);
     }
   };
 
+  const forgotPassword = async (email) => {
+    try {
+      await api.post('/auth/send-email', { email });
+
+      setMessage(t('mailBox'));
+      setTimeout(() => {
+        setMessage(null);
+      }, 3000);
+      navigate('/');
+    } catch (error) {
+      if (error.response.data) {
+        setMessage(error.response.data.message);
+        setTimeout(() => {
+          setMessage(null);
+        }, 3000);
+      } else {
+        setMessage(t('error500message'));
+        setTimeout(() => {
+          setMessage(null);
+        }, 3000);
+      }
+    }
+  };
+
+  const resetPassword = async (email, token, password) => {
+    try {
+      await api.post('/auth/reset-password', { email, token, password });
+
+      setMessage(t('passwordChanged'));
+      navigate('/auth/signin');
+      setTimeout(() => {
+        setMessage(null);
+      }, 3000);
+    } catch (error) {
+      if (error.response.data) {
+        setMessage(error.response.data.message);
+        setTimeout(() => {
+          setMessage(null);
+        }, 3000);
+      } else {
+        setMessage(t('error500message'));
+        setTimeout(() => {
+          setMessage(null);
+        }, 3000);
+      }
+    }
+  };
+
   return (
     <AuthContext.Provider
-      value={{ user, login, logout, register, updateFavorites }}
+      value={{
+        user,
+        login,
+        logout,
+        register,
+        updateFavorites,
+        resetPassword,
+        forgotPassword,
+      }}
     >
       {message && <MessageComponent message={message} />}
       {loadingControl ? <Loading /> : children}

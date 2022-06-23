@@ -42,6 +42,7 @@ export const Favorites = () => {
 
   useEffect(() => {
     const { authenticated, favorites, favoritesInfo } = user;
+    console.log(authenticated);
     if (!authenticated) {
       setErrorControl({
         error: true,
@@ -90,10 +91,7 @@ export const Favorites = () => {
           {!loadingControl ? (
             <Styled.DrinksContainer>
               {drinksToShow.map((drink, index) => (
-                <DrinkComponent
-                  drink={drink}
-                  key={`${drink.idDrink} + ${index}`}
-                />
+                <DrinkComponent drink={drink} key={drink.idDrink} />
               ))}
             </Styled.DrinksContainer>
           ) : (

@@ -49,7 +49,7 @@
     "lightTheme": "Switch to light theme",
     "darkTheme": "Switch to dark theme",
     "typeEmail": "Type your email here...",
-    "typePassword": "Type your email here...",
+    "typePassword": "Type your password here...",
     "email": "Email",
     "password": "Password",
     "ingredientTitle": "Drinks that are made with",
@@ -61,6 +61,13 @@
     "language": "Language:",
     "pageNotFoundError": "Error 404",
     "pageNotFound": "This page does not exist!",
-    "favorites": "My favorite drinks"
+    "favorites": "My favorite drinks",
+    "forgotPassword": "Forgot my password",
+    "sendMail": "Send Mail",
+    "recPassword": "Change password",
+    "newPassword": "Type your new Password here...",
+    "passwordChanged": "Password changed successfully!",
+    "mailBox": "Check your mail box!",
+    "forgotInfo": "We will send you an email with the link to change your password!"
   }
 }

@@ -15,5 +15,5 @@ export const translate = axios.create({
 });
 
 export const createSession = async (email, password) => {
-  return api.post('/login/signin', { email, password });
+  return api.post('/auth/signin', { email, password });
 };
