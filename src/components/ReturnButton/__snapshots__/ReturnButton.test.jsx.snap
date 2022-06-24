@@ -15,6 +15,13 @@ exports[`<ReturnButton /> should render 1`] = `
   color: #EEEEEE;
 }
 
+@media (max-width:768px) {
+  .c0 {
+    font-size: 40px;
+    top: 20px;
+  }
+}
+
 @media (max-width:420px) {
   .c0 {
     display: none;

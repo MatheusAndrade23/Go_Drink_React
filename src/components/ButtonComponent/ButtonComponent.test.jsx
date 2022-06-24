@@ -88,7 +88,7 @@ describe('<ButtonComponent />', () => {
     });
 
     expect(buttonComponent).toHaveStyle({
-      'font-weight': 'bold',
+      'font-weight': 'normal',
     });
   });
 

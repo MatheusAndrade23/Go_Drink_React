@@ -23,6 +23,14 @@ exports[`<MessageComponent /> should render 1`] = `
   font-family: 'Montserrat',sans-serif;
 }
 
+@media (max-width:560px) {
+  .c0 {
+    right: 20px;
+    left: 20px;
+    width: auto;
+  }
+}
+
 <div>
   <div
     class="c0"

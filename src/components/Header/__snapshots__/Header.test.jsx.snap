@@ -21,6 +21,10 @@ exports[`<Header /> should render 1`] = `
   z-index: 200;
 }
 
+.c0 > a {
+  width: 100px;
+}
+
 .c2 {
   color: #00ADB5;
   font-weight: bold;
@@ -474,7 +478,7 @@ exports[`<Header /> should render 1`] = `
     </div>
     <a
       class="c7"
-      href="/login/signin"
+      href="/auth/signin"
     >
       loginSingIn
     </a>
