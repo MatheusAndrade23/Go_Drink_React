@@ -13,11 +13,12 @@ export const AuthContext = createContext({});
 
 export const AuthProvider = ({ children }) => {
   const navigate = useNavigate();
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
 
+  const [user, setUser] = useState({ authenticated: false });
   const [loadingControl, setLoadingControl] = useState(true);
   const [message, setMessage] = useState(null);
-  const [user, setUser] = useState({ authenticated: false });
+  const [language, setLanguage] = useState('en');
 
   useEffect(() => {
     const recoveredToken = localStorage.getItem('token');
@@ -30,6 +31,10 @@ export const AuthProvider = ({ children }) => {
 
     setLoadingControl(false);
   }, []);
+
+  useEffect(() => {
+    setLanguage(i18n.language + 'Message');
+  }, [i18n.language]);
 
   const login = async (email, password) => {
     try {
@@ -47,13 +52,15 @@ export const AuthProvider = ({ children }) => {
       setUser({ ...loggedUser, authenticated: true });
       navigate('/');
     } catch (error) {
-      if (error.response.data) {
-        setMessage(error.response.data.message);
+      const err = error.response.data;
+
+      if (!err) {
+        setMessage(t('error500message'));
         setTimeout(() => {
           setMessage(null);
         }, 3000);
       } else {
-        setMessage(t('error500message'));
+        setMessage(err[language]);
         setTimeout(() => {
           setMessage(null);
         }, 3000);
@@ -66,13 +73,15 @@ export const AuthProvider = ({ children }) => {
       await api.post('/auth/signup', { email, password });
       login(email, password);
     } catch (error) {
-      if (error.response.data) {
-        setMessage(error.response.data.message);
+      const err = error.response.data;
+
+      if (!err) {
+        setMessage(t('error500message'));
         setTimeout(() => {
           setMessage(null);
         }, 3000);
       } else {
-        setMessage(t('error500message'));
+        setMessage(err[language]);
         setTimeout(() => {
           setMessage(null);
         }, 3000);
@@ -112,10 +121,19 @@ export const AuthProvider = ({ children }) => {
         favoritesInfo: newFavoritesInfo,
       });
     } catch (error) {
-      setMessage(t('error500message'));
-      setTimeout(() => {
-        setMessage(null);
-      }, 3000);
+      const err = error.response.data;
+
+      if (!err) {
+        setMessage(t('error500message'));
+        setTimeout(() => {
+          setMessage(null);
+        }, 3000);
+      } else {
+        setMessage(err[language]);
+        setTimeout(() => {
+          setMessage(null);
+        }, 3000);
+      }
     }
   };
 
@@ -129,13 +147,15 @@ export const AuthProvider = ({ children }) => {
       }, 3000);
       navigate('/');
     } catch (error) {
-      if (error.response.data) {
-        setMessage(error.response.data.message);
+      const err = error.response.data;
+
+      if (!err) {
+        setMessage(t('error500message'));
         setTimeout(() => {
           setMessage(null);
         }, 3000);
       } else {
-        setMessage(t('error500message'));
+        setMessage(err[language]);
         setTimeout(() => {
           setMessage(null);
         }, 3000);
@@ -153,13 +173,15 @@ export const AuthProvider = ({ children }) => {
         setMessage(null);
       }, 3000);
     } catch (error) {
-      if (error.response.data) {
-        setMessage(error.response.data.message);
+      const err = error.response.data;
+
+      if (!err) {
+        setMessage(t('error500message'));
         setTimeout(() => {
           setMessage(null);
         }, 3000);
       } else {
-        setMessage(t('error500message'));
+        setMessage(err[language]);
         setTimeout(() => {
           setMessage(null);
         }, 3000);
