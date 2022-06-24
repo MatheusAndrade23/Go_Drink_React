@@ -11,6 +11,10 @@ export const Header = styled.header`
     border-bottom: 1px solid ${theme.colors.thirdColor};
     z-index: 200;
 
+    & > a{
+        width: 100px;
+      }
+
     @media ${theme.media.smallScreen} {
       & input{
         width: 80%;

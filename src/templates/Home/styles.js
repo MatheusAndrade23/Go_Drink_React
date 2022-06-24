@@ -57,6 +57,10 @@ export const Init = styled.div`
         display: none;
       }
     }
+
+    @media ${theme.media.smallScreen} {
+      padding: 0 20px;
+    }
   `}
 `;
 

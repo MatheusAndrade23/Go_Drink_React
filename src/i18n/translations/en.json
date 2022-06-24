@@ -68,6 +68,7 @@
     "newPassword": "Type your new Password here...",
     "passwordChanged": "Password changed successfully!",
     "mailBox": "Check your mail box!",
-    "forgotInfo": "We will send you an email with the link to change your password!"
+    "forgotInfo": "We will send you an email with the link to change your password!",
+    "weResetPassword": "Please enter your new password below."
   }
 }

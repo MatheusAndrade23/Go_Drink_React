@@ -42,7 +42,6 @@ export const Favorites = () => {
 
   useEffect(() => {
     const { authenticated, favorites, favoritesInfo } = user;
-    console.log(authenticated);
     if (!authenticated) {
       setErrorControl({
         error: true,

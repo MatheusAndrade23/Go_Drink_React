@@ -23,7 +23,7 @@ export const MessageContainer = styled.div`
     @media ${theme.media.smallScreen} {
       right: 20px;
       left: 20px;
-      width: 80%;
+      width: auto;
     }
   `}
 `;

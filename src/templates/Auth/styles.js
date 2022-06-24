@@ -10,6 +10,28 @@ export const Container = styled.div`
   `}
 `;
 
+export const OtherAction = styled.div`
+  ${({ theme }) => css`
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+
+    @media ${theme.media.xsmallScreen} {
+      & > p{
+        margin: 5px 5px;
+        text-align: center;
+      }
+
+      & > a{
+        margin: 0;
+        margin-bottom: 15px;
+      }
+    }
+  `}
+`;
+
 export const ResetPassword = styled.a`
   ${({ theme }) => css`
     align-self: center;
@@ -61,6 +83,10 @@ export const Login = styled.div`
 
     input {
       margin-bottom: ${theme.spacings.small};
+
+      @media ${theme.media.xsmallScreen} {
+        width: 100%;
+      }
     }
 
     button {
@@ -69,6 +95,11 @@ export const Login = styled.div`
 
     div {
       align-self: center;
+      width: 100%;
+    }
+
+    @media ${theme.media.xsmallScreen} {
+      width: 80%;
     }
   `}
 `;

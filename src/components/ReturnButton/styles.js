@@ -14,6 +14,11 @@ export const ReturnLink = styled.a`
       color: ${theme.colors.primaryColor};
     }
 
+    @media ${theme.media.lteMedium} {
+      font-size: ${theme.fonts.sizes.xlarge};
+      top: 20px;
+    }
+
     @media ${theme.media.xsmallScreen} {
       display: none;
     }

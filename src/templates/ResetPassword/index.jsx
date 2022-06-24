@@ -43,7 +43,7 @@ export const ResetPassword = () => {
         <Heading size="medium" as="h4">
           GODRINK
         </Heading>
-        <TextComponent>{t('forgotInfo')}</TextComponent>
+        <TextComponent>{t('weResetPassword')}</TextComponent>
         <Styled.PasswordContainer>
           <InputComponent
             text={`${t('password')}:`}

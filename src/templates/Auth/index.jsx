@@ -99,7 +99,7 @@ export const Auth = () => {
         <ButtonComponent bold={false} handleSubmit={handleSubmitLogin}>
           {loginControl === 'signin' ? t('loginSingIn') : t('loginSingUp')}
         </ButtonComponent>
-        <SmallContainer disposition="row">
+        <Styled.OtherAction>
           <TextComponent>
             {loginControl == 'signin'
               ? t('doNotHaveAccount')
@@ -110,7 +110,7 @@ export const Auth = () => {
           >
             {loginControl !== 'signin' ? t('loginSingIn') : t('loginSingUp')}
           </LinkComponent>
-        </SmallContainer>
+        </Styled.OtherAction>
         {loginControl === 'signin' && (
           <Styled.ResetPassword href="/forgot-password">
             {t('forgotPassword')}
