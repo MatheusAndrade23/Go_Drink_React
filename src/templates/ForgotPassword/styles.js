@@ -33,6 +33,10 @@ export const Login = styled.div`
 
     input {
       margin-bottom: ${theme.spacings.small};
+
+      @media ${theme.media.xsmallScreen} {
+        width: 100%;
+      }
     }
 
     button {
@@ -41,6 +45,11 @@ export const Login = styled.div`
 
     div {
       align-self: center;
+      width: 100%;
+    }
+
+    @media ${theme.media.xsmallScreen} {
+      width: 80%;
     }
   `}
 `;
