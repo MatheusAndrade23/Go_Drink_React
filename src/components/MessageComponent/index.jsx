@@ -1,7 +1,13 @@
 import P from 'prop-types';
+import { useEffect } from 'react';
 import * as Styled from './styles';
 
-export const MessageComponent = ({ message }) => {
+export const MessageComponent = ({ message, hide }) => {
+  useEffect(() => {
+    setTimeout(() => {
+      hide(null);
+    }, 3000);
+  }, [hide]);
   return (
     <Styled.MessageContainer>
       <p>{message}</p>
@@ -11,4 +17,5 @@ export const MessageComponent = ({ message }) => {
 
 MessageComponent.propTypes = {
   message: P.string.isRequired,
+  hide: P.func.isRequired,
 };

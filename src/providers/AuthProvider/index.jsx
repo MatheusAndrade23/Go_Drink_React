@@ -53,17 +53,10 @@ export const AuthProvider = ({ children }) => {
       navigate('/');
     } catch (error) {
       const err = error.response.data;
-
       if (!err) {
         setMessage(t('error500message'));
-        setTimeout(() => {
-          setMessage(null);
-        }, 3000);
       } else {
         setMessage(err[language]);
-        setTimeout(() => {
-          setMessage(null);
-        }, 3000);
       }
     }
   };
@@ -74,17 +67,10 @@ export const AuthProvider = ({ children }) => {
       login(email, password);
     } catch (error) {
       const err = error.response.data;
-
       if (!err) {
         setMessage(t('error500message'));
-        setTimeout(() => {
-          setMessage(null);
-        }, 3000);
       } else {
         setMessage(err[language]);
-        setTimeout(() => {
-          setMessage(null);
-        }, 3000);
       }
     }
   };
@@ -125,14 +111,8 @@ export const AuthProvider = ({ children }) => {
 
       if (!err) {
         setMessage(t('error500message'));
-        setTimeout(() => {
-          setMessage(null);
-        }, 3000);
       } else {
         setMessage(err[language]);
-        setTimeout(() => {
-          setMessage(null);
-        }, 3000);
       }
     }
   };
@@ -140,25 +120,14 @@ export const AuthProvider = ({ children }) => {
   const forgotPassword = async (email) => {
     try {
       await api.post('/auth/send-email', { email });
-
       setMessage(t('mailBox'));
-      setTimeout(() => {
-        setMessage(null);
-      }, 3000);
       navigate('/');
     } catch (error) {
       const err = error.response.data;
-
       if (!err) {
         setMessage(t('error500message'));
-        setTimeout(() => {
-          setMessage(null);
-        }, 3000);
       } else {
         setMessage(err[language]);
-        setTimeout(() => {
-          setMessage(null);
-        }, 3000);
       }
     }
   };
@@ -166,25 +135,14 @@ export const AuthProvider = ({ children }) => {
   const resetPassword = async (email, token, password) => {
     try {
       await api.post('/auth/reset-password', { email, token, password });
-
       setMessage(t('passwordChanged'));
       navigate('/auth/signin');
-      setTimeout(() => {
-        setMessage(null);
-      }, 3000);
     } catch (error) {
       const err = error.response.data;
-
       if (!err) {
         setMessage(t('error500message'));
-        setTimeout(() => {
-          setMessage(null);
-        }, 3000);
       } else {
         setMessage(err[language]);
-        setTimeout(() => {
-          setMessage(null);
-        }, 3000);
       }
     }
   };
@@ -201,7 +159,7 @@ export const AuthProvider = ({ children }) => {
         forgotPassword,
       }}
     >
-      {message && <MessageComponent message={message} />}
+      {message && <MessageComponent message={message} hide={setMessage} />}
       {loadingControl ? <Loading /> : children}
     </AuthContext.Provider>
   );

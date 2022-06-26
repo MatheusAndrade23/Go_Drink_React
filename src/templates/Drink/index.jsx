@@ -40,9 +40,6 @@ export const Drink = () => {
   const handleFavorite = async () => {
     if (!user.authenticated) {
       setMessage(t('notAuthenticated'));
-      setTimeout(() => {
-        setMessage(undefined);
-      }, 3000);
       return;
     }
     setLoadingControl(true);
@@ -166,7 +163,7 @@ export const Drink = () => {
           code={errorControl.code}
         />
       )}
-      {message && <MessageComponent message={message} />}
+      {message && <MessageComponent message={message} hide={setMessage} />}
       <ReturnButton />
     </>
   );

@@ -22,7 +22,6 @@ export const ResetPassword = () => {
   const { t } = useTranslation();
 
   const [showPassword, setShowPassword] = useState(null);
-  const [message, setMessage] = useState(null);
   const [password, setPassword] = useState('');
 
   const handleGetInfo = (e) => {

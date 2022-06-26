@@ -19,7 +19,6 @@ export const ForgotPassword = () => {
   const { token } = useParams();
   const { t } = useTranslation();
 
-  const [message, setMessage] = useState(null);
   const [email, setEmail] = useState('');
 
   const handleGetInfo = (e) => {
