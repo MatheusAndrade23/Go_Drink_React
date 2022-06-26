@@ -41,6 +41,18 @@ export const Info = styled.div`
       background-color: ${theme.colors.primaryColor};
     }
 
+    & h1{
+      max-width: 86%;
+
+      @media ${theme.media.smallScreen} {
+        font-size: 35px;
+      }
+
+      @media ${theme.media.xxsmallScreen} {
+        font-size: ${theme.fonts.sizes.large};
+      }
+    }
+
     & h6 {
       margin-bottom: 10px;
     }
@@ -51,16 +63,12 @@ export const Info = styled.div`
       justify-content: flex-start;
     }
 
-    @media ${theme.media.lteMedium} {
+    @media (max-width: 1080px) {
       width: 100%;
       min-width: 100px;
     }
 
-    @media ${theme.media.xxsmallScreen} {
-      & h1{
-        font-size: ${theme.fonts.sizes.large}
-      }
-    }
+
   `}
 `;
 
@@ -87,11 +95,17 @@ export const DrinkImg = styled.img`
     border: 2px solid ${theme.colors.primaryColor};
     width: 400px;
     margin: 20px;
+    justify-self: center;
 
     @media ${theme.media.lteMedium} {
       max-height: 600px;
       max-width: 600px;
       width: 85%;
+    }
+
+    @media ${theme.media.smallScreen} {
+      align-self: center;
+      justify-self: center;
     }
   `}
 `;
@@ -109,8 +123,6 @@ export const Drink = styled.div`
 
     @media ${theme.media.smallScreen} {
       padding: ${theme.spacings.xsmall};
-      align-items: center;
-      justify-content: center;
     }
   `}
 `;

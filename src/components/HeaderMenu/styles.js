@@ -13,6 +13,7 @@ export const Menu = styled.ul`
     & div.rec-carousel-wrapper{
       padding: ${theme.spacings.small};
       align-items: center;
+      justify-content: center;
 
       @media ${theme.media.xsmallScreen} {
         padding: 10px;
@@ -25,7 +26,6 @@ export const Menu = styled.ul`
       display: none;
 
       &:disabled{
-        cursor: pointer;
         visibility: hidden;
       }
 
@@ -34,7 +34,9 @@ export const Menu = styled.ul`
       }
 
       @media ${theme.media.mediumScreen} {
-        display: block;
+        display: flex;
+        align-items: center;
+        justify-content: center;
       }
     }
 

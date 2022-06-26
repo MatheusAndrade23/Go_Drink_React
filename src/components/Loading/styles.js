@@ -9,7 +9,7 @@ const rotate = () => keyframes`
   }
 `;
 
-export const Container = styled.div`
+export const Container = styled.span`
   ${({ theme }) => css`
     position: absolute;
     left: 0;
