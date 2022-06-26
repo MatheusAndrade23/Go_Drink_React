@@ -14,7 +14,7 @@ export const DrinkComponent = ({ drink }) => {
     >
       <img src={strDrinkThumb} alt={strDrink} loading="lazy" />
       <Heading as="h6" size="small">
-        {strDrink.length > 17 ? `${strDrink.slice(0, 15)}...` : strDrink}
+        {strDrink}
       </Heading>
     </Styled.Drink>
   );

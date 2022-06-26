@@ -13,7 +13,6 @@ export const Logo = styled.a`
 
     @media ${theme.media.lteMedium} {
       & p{
-
         display: none;
       }
     }
@@ -30,6 +29,7 @@ export const SmallText = styled.span`
     font-family: ${theme.fonts.family.secondary};
     display: none;
     @media ${theme.media.lteMedium} {
+      min-width: 100px;
       display: block
     }
     @media ${theme.media.xsmallScreen} {

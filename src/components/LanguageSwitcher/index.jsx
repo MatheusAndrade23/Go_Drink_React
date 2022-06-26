@@ -24,14 +24,11 @@ export const LanguageSwitcher = () => {
 
     if (key == 'ptBr') {
       setMessage('Nem tudo foi traduzido para português!');
-      setTimeout(() => {
-        setMessage(null);
-      }, 3000);
     }
   };
   return (
     <>
-      {message && <MessageComponent message={message} />}
+      {message && <MessageComponent message={message} hide={setMessage} />}
       <Styled.Container>
         <p>{t('language')}</p>
         {LanguageOptions.map((language) => (

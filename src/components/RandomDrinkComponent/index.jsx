@@ -39,9 +39,7 @@ export const RandomDrinkComponent = () => {
         >
           <img src={drink.strDrinkThumb} alt={drink.strDrink} loading="lazy" />
           <Heading as="h6" size="small">
-            {drink.strDrink.length > 17
-              ? `${drink.strDrink.slice(0, 15)}...`
-              : drink.strDrink}
+            {drink.strDrink}
           </Heading>
         </Styled.Drink>
       ) : loadingControl ? (

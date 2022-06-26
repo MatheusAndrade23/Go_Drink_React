@@ -18,6 +18,8 @@ export const Drink = styled.div`
       width: 260px;
       overflow: hidden;
       margin-top: 10px;
+      text-overflow: ellipsis;
+      white-space: nowrap;
     }
 
     & img {
@@ -31,22 +33,27 @@ export const Drink = styled.div`
       box-shadow: 1px 0px 12px 0px ${theme.colors.shadow};
     }
 
-    @media ${theme.media.xsmallScreen} {
+    @media (max-width: 340px) {
       height: 290px;
-      width: 250px;
-
-      & img {
-        width: 210px;
-      }
+      width: 260px;
 
       & h6 {
       width: 210px;
+      }
+
+      & img {
+        width: 210px;
       }
     }
 
     @media ${theme.media.xxsmallScreen} {
       height: 260px;
       width: 230px;
+
+      & h6 {
+        width: 180px;
+      }
+
 
       & img {
         width: 180px;

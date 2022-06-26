@@ -26,9 +26,10 @@ export const Header = styled.header`
       align-items: flex-start;
 
       & > a{
+        text-align: right;
         position: absolute;
         right: 10px;
-        top: 2px;
+        top: 5px;
       }
 
       & div:first-child{
