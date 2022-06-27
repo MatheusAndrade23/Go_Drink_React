@@ -1,7 +1,7 @@
 <h1 align="center">🍹 Go Drink 🍸</h1>
 
 <div align="center">
- <img src="https://img.freepik.com/fotos-gratis/aproxime-se-com-bebidas-deliciosas_23-2149132215.jpg?size=626&ext=jpg" width="400px" alt="Freepick Drinks Image"/>
+ <img src="https://img.freepik.com/fotos-gratis/aproxime-se-com-bebidas-deliciosas_23-2149132215.jpg?size=626&ext=jpg" width="400px" alt="FreePick Drinks Image"/>
 </div>
 
 <p align="center">
@@ -15,8 +15,7 @@
 <h3 align="center">É um site que fornece mais de 600 receitas de coquetéis do mundo todo, utilizando <a href="https://www.thecocktaildb.com/api.php">The CocktailDB API</a>. Possui tema dark, todos os textos estáticos estão disponíveis em português e inglês e você ainda pode listar suas bebidas favoritas.</h3>
 
 <p align="center">
-  <a href="https://go-drink-frontend.vercel.app/">Clique para visitar o site!</a> -
-  <a href="https://github.com/MatheusAndrade23/GoDrink_Backend">Clique para ver o Backend!</a>
+  <a href="https://go-drink-frontend.vercel.app/">Clique para visitar o site!</a>
 </p>
 
 ---
@@ -90,7 +89,7 @@ _<h3 id="trocando">Adicionando aos favoritos! ⭐</h3>_
 - ✔️ Lista de favoritos
 - ✔️ Ver detalhes da Bebida Escolhida
 - ✔️ Listagem de tipos de Copos, Categorias e Ingredientes
-- ✔️ Listagem de bebidas baseada em Categoria, Ingrediente e tipo de Copo
+- ✔️ Listagem de bebidas baseada em Categorias, Ingredientes e tipos de Copos
 
 <br>
 
@@ -112,7 +111,7 @@ _<h3>Mudança de Tema 🎨</h3>_
 
 _<h3>Mudança de Língua 🌎</h3>_
 
-#### A biblioteca <a href="https://www.npmjs.com/package/react-i18next">React I18Next</a> permite a utilização de diferentes líguas no projeto. Como a API <a href="https://www.thecocktaildb.com/api.php">The CocktailDB</a> responde em inglês, este idioma se torna praticamente obrigatório. Para o o português, não encotrei uma maneira viável de traduzir os textos vindos da API, então essa funcionalidade ainda não está finalizada. A língua escolhida pelo usuário fica salva no local storage e independe de autenticação, assim como o tema.
+#### A biblioteca <a href="https://www.npmjs.com/package/react-i18next">React I18Next</a> permite a utilização de diferentes línguas no projeto. Como a API <a href="https://www.thecocktaildb.com/api.php">The CocktailDB</a> responde em inglês, este idioma se torna praticamente obrigatório. Para o o português, não encontrei uma maneira viável de traduzir os textos vindos da API, então essa funcionalidade ainda não está finalizada. A língua escolhida pelo usuário fica salva no local storage e independe de autenticação, assim como o tema.
 
 <br>
 
