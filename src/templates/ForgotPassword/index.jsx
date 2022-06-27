@@ -2,7 +2,6 @@ import * as Styled from './styles';
 
 import { useTranslation } from 'react-i18next';
 import { useState, useEffect, useContext } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
 
 import { AuthContext } from '../../providers/AuthProvider/index';
 
@@ -15,8 +14,7 @@ import { ButtonComponent } from '../../components/ButtonComponent';
 import config from '../../config';
 
 export const ForgotPassword = () => {
-  const { user, forgotPassword } = useContext(AuthContext);
-  const { token } = useParams();
+  const { forgotPassword } = useContext(AuthContext);
   const { t } = useTranslation();
 
   const [email, setEmail] = useState('');

@@ -3,8 +3,6 @@ import * as Styled from '../Kinds/styles';
 import { useTranslation } from 'react-i18next';
 import { useState, useEffect, useContext } from 'react';
 
-import { db } from '../../services/api';
-
 import { AuthContext } from '../../providers/AuthProvider/index';
 
 import { Header } from '../../components/Header';
@@ -89,7 +87,7 @@ export const Favorites = () => {
           </Heading>
           {!loadingControl ? (
             <Styled.DrinksContainer>
-              {drinksToShow.map((drink, index) => (
+              {drinksToShow.map((drink) => (
                 <DrinkComponent drink={drink} key={drink.idDrink} />
               ))}
             </Styled.DrinksContainer>

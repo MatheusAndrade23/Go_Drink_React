@@ -10,7 +10,7 @@ const bounce = () => keyframes`
 `;
 
 export const Container = styled.div`
-  ${({ theme }) => css`
+  ${() => css`
     position: absolute;
     width: 100%;
     height: 100vh;
@@ -25,7 +25,7 @@ export const Container = styled.div`
 `;
 
 export const Loader = styled.div`
-  ${({ theme }) => css`
+  ${() => css`
     width: 120px;
     height: 75px;
     display: flex;

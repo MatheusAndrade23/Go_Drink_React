@@ -174,9 +174,9 @@ export const AuthProvider = ({ children }) => {
         forgotPassword,
       }}
     >
-      {authLoading && <AuthLoading />}
       {message && <MessageComponent message={message} hide={setMessage} />}
       {loadingControl ? <Loading /> : children}
+      {authLoading && <AuthLoading />}
     </AuthContext.Provider>
   );
 };

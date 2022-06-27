@@ -2,7 +2,7 @@ import * as Styled from './styles';
 
 import { useTranslation } from 'react-i18next';
 import { useState, useEffect, useContext } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 
 import { BsFillEyeFill, BsFillEyeSlashFill } from 'react-icons/bs';
 
