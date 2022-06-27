@@ -58,6 +58,7 @@ _<h3 id="trocando">Adicionando aos favoritos! ⭐</h3>_
 - Bcrypt
 - Mongoose
 - Nodemon
+- Nodemailer
 - DotEnv
 - Cors
 
@@ -85,7 +86,8 @@ _<h3 id="trocando">Adicionando aos favoritos! ⭐</h3>_
 - ✔️ Ferramenta de pesquisa
 - ✔️ Mudança de Tema
 - ✔️ Mudança de Língua
-- ✔️ Adicionar coquetéis à lista de favoritos
+- ✔️ Recuperação de Senha
+- ✔️ Lista de favoritos
 - ✔️ Ver detalhes da Bebida Escolhida
 - ✔️ Listagem de tipos de Copos, Categorias e Ingredientes
 - ✔️ Listagem de bebidas baseada em Categoria, Ingrediente e tipo de Copo
