@@ -5,6 +5,7 @@ import { createContext, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import { Loading } from '../../components/Loading';
+import { AuthLoading } from '../../components/AuthLoading';
 import { MessageComponent } from '../../components/MessageComponent';
 
 import { api, createSession } from '../../services/api';
@@ -17,6 +18,7 @@ export const AuthProvider = ({ children }) => {
 
   const [user, setUser] = useState({ authenticated: false });
   const [loadingControl, setLoadingControl] = useState(true);
+  const [authLoading, setAuthLoading] = useState(false);
   const [message, setMessage] = useState(null);
   const [language, setLanguage] = useState('en');
 
@@ -37,6 +39,7 @@ export const AuthProvider = ({ children }) => {
   }, [i18n.language]);
 
   const login = async (email, password) => {
+    setAuthLoading(true);
     try {
       const response = await createSession(email, password);
       const loggedUser = response.data.user;
@@ -50,8 +53,10 @@ export const AuthProvider = ({ children }) => {
       );
       localStorage.setItem('token', token);
       setUser({ ...loggedUser, authenticated: true });
+      setAuthLoading(false);
       navigate('/');
     } catch (error) {
+      setAuthLoading(false);
       const err = error.response.data;
       if (!err) {
         setMessage(t('error500message'));
@@ -62,10 +67,12 @@ export const AuthProvider = ({ children }) => {
   };
 
   const register = async (email, password) => {
+    setAuthLoading(true);
     try {
       await api.post('/auth/signup', { email, password });
       login(email, password);
     } catch (error) {
+      setAuthLoading(false);
       const err = error.response.data;
       if (!err) {
         setMessage(t('error500message'));
@@ -84,6 +91,7 @@ export const AuthProvider = ({ children }) => {
   };
 
   const updateFavorites = async () => {
+    setAuthLoading(true);
     if (!user.authenticated) {
       return;
     }
@@ -106,9 +114,10 @@ export const AuthProvider = ({ children }) => {
         favorites: newFavorites,
         favoritesInfo: newFavoritesInfo,
       });
+      setAuthLoading(false);
     } catch (error) {
+      setAuthLoading(false);
       const err = error.response.data;
-
       if (!err) {
         setMessage(t('error500message'));
       } else {
@@ -118,11 +127,14 @@ export const AuthProvider = ({ children }) => {
   };
 
   const forgotPassword = async (email) => {
+    setAuthLoading(true);
     try {
       await api.post('/auth/send-email', { email });
+      setAuthLoading(false);
       setMessage(t('mailBox'));
       navigate('/');
     } catch (error) {
+      setAuthLoading(false);
       const err = error.response.data;
       if (!err) {
         setMessage(t('error500message'));
@@ -133,11 +145,14 @@ export const AuthProvider = ({ children }) => {
   };
 
   const resetPassword = async (email, token, password) => {
+    setAuthLoading(true);
     try {
       await api.post('/auth/reset-password', { email, token, password });
+      setAuthLoading(false);
       setMessage(t('passwordChanged'));
       navigate('/auth/signin');
     } catch (error) {
+      setAuthLoading(false);
       const err = error.response.data;
       if (!err) {
         setMessage(t('error500message'));
@@ -159,6 +174,7 @@ export const AuthProvider = ({ children }) => {
         forgotPassword,
       }}
     >
+      {authLoading && <AuthLoading />}
       {message && <MessageComponent message={message} hide={setMessage} />}
       {loadingControl ? <Loading /> : children}
     </AuthContext.Provider>
