@@ -69,6 +69,8 @@ exports[`<RandomDrinkComponent /> should render 1`] = `
   width: 260px;
   overflow: hidden;
   margin-top: 10px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .c0 img {
@@ -84,17 +86,17 @@ exports[`<RandomDrinkComponent /> should render 1`] = `
   box-shadow: 1px 0px 12px 0px rgba(255,255,255,0.64);
 }
 
-@media (max-width:420px) {
+@media (max-width:340px) {
   .c0 {
     height: 290px;
-    width: 250px;
-  }
-
-  .c0 img {
-    width: 210px;
+    width: 260px;
   }
 
   .c0 h6 {
+    width: 210px;
+  }
+
+  .c0 img {
     width: 210px;
   }
 }
@@ -103,6 +105,10 @@ exports[`<RandomDrinkComponent /> should render 1`] = `
   .c0 {
     height: 260px;
     width: 230px;
+  }
+
+  .c0 h6 {
+    width: 180px;
   }
 
   .c0 img {
@@ -114,7 +120,7 @@ exports[`<RandomDrinkComponent /> should render 1`] = `
   <div
     class="c0"
   >
-    <div
+    <span
       class="c1"
     />
   </div>
