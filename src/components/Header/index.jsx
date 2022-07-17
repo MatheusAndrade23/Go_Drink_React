@@ -32,9 +32,6 @@ export const Header = () => {
       window.location.href = `/search/${url}`;
     } else {
       setMessage(t('emptySearchMessage'));
-      setTimeout(() => {
-        setMessage(null);
-      }, 3000);
     }
   };
 
@@ -44,9 +41,6 @@ export const Header = () => {
         window.location.href = `/search/${url}`;
       } else if (url.length < 0) {
         setMessage(t('emptySearchMessage'));
-        setTimeout(() => {
-          setMessage(null);
-        }, 3000);
       }
     };
 
@@ -89,7 +83,7 @@ export const Header = () => {
         )}
       </Styled.Header>
       <HeaderMenu />
-      {message && <MessageComponent message={message} />}
+      {message && <MessageComponent message={message} hide={setMessage} />}
     </>
   );
 };
