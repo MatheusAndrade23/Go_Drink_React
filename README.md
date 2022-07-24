@@ -16,7 +16,8 @@
 
 <p align="center">
   <a href="https://go-drink.vercel.app/">Clique para visitar o site!</a> -
-  <a href="https://github.com/MatheusAndrade23/GoDrink_Backend">Clique para ver o Backend</a>
+  <a href="https://github.com/MatheusAndrade23/Go_Drink_Next">Clique para ver a versão em Next!</a> -
+  <a href="https://github.com/MatheusAndrade23/GoDrink_Backend">Clique para ver o Backend!</a>
 </p>
 
 ---
