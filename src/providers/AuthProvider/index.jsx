@@ -32,12 +32,6 @@ export const AuthProvider = ({ children }) => {
     }
 
     setLoadingControl(false);
-
-    if (i18n.language === 'ptBr') {
-      setMessage('Este site não está sendo mais atualizado!');
-    } else {
-      setMessage('This site is no longer being updated!');
-    }
   }, []);
 
   useEffect(() => {

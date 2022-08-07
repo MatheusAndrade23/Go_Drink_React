@@ -16,6 +16,12 @@ export const LanguageSwitcher = () => {
     if (recoveredLanguage) {
       i18n.changeLanguage(recoveredLanguage);
     }
+
+    if (i18n.language === 'ptBr') {
+      setMessage('Este site não está sendo mais atualizado!');
+    } else {
+      setMessage('This site is no longer being updated!');
+    }
   }, [i18n]);
 
   const changeLanguage = (key) => {
